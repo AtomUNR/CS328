@@ -8,14 +8,16 @@ All contributors should use the exact same Unity Editor version and shared Unity
 
 | Component | Version / setting | Verification |
 | --- | --- | --- |
-| Unity Editor | **6000.6.0f1** | Reported from Unity Hub; confirm after uploading `ProjectSettings/ProjectVersion.txt` |
+| Unity Editor | **6000.6.0f1** | Verified in `ProjectSettings/ProjectVersion.txt` |
 | Unity project template | **Universal 2D (URP)** | Selected when creating the project |
-| Input System | **1.20.1** | User reports successful package update; verify in `Packages/manifest.json` |
+| Input System | **1.20.1** | Verified in `Packages/manifest.json` |
 | Active Input Handling | **Input System Package (New)** | Confirmed in Unity Player settings |
-| Asset serialization | **Force Text** | **To verify** in Edit > Project Settings > Editor |
+| Asset serialization | **Force Text** | Verified (`m_SerializationMode: 2`) in `ProjectSettings/EditorSettings.asset` |
+| Universal Render Pipeline | **17.6.0** | Verified in `Packages/manifest.json` |
+| 2D Animation | **16.0.0** | Verified in `Packages/manifest.json` |
 | Version control | Git + GitHub Desktop | Repository `AtomUNR/CS328` |
 
-**Important:** The Unity project itself has not yet been uploaded to GitHub. Versions above reflect the local setup reported during initialization; they cannot be independently validated until the project files are committed.
+**Verified:** Unity project folders and configuration files have been committed to GitHub, including `Assets/Scenes/SampleScene.unity`, `Packages/manifest.json`, `Packages/packages-lock.json`, and `ProjectSettings/ProjectVersion.txt`. Team members should use the exact Editor version shown above.
 
 ## Game structure (planned)
 
@@ -30,7 +32,7 @@ A scene per individual room or enemy is not required.
 
 1. Install Unity Hub, GitHub Desktop, and **Unity Editor 6000.6.0f1**.
 2. Clone `AtomUNR/CS328` through GitHub Desktop.
-3. Once the Unity project files are committed, open the cloned folder in Unity Hub via **Add project from disk** (the folder containing `Assets/`, `Packages/`, and `ProjectSettings/`).
+3. Open the cloned folder in Unity Hub via **Add project from disk** (the folder containing `Assets/`, `Packages/`, and `ProjectSettings/`).
 4. Unity will restore its dependencies from the committed `Packages/manifest.json` and `Packages/packages-lock.json`.
 
 ## What to commit
@@ -52,4 +54,4 @@ Never commit generated `Library/`, `Temp/`, `Logs/`, `Obj/`, `Build/`, or `Build
 
 ## Next milestone
 
-Upload the newly created **COLD METAL** Unity project, verify editor/package versions directly from committed files, then implement the keyboard-driven main menu and its transition to the break room.
+Implement the keyboard-driven main menu and its transition to the break room.
