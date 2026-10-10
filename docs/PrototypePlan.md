@@ -1,48 +1,29 @@
-# CS328 — Playable Prototype Plan
+# COLD METAL — First Playable Prototype
 
 ## Concept
-A 3D cooperative multiplayer horror game exploring sound, memory, and survival. Players communicate, explore threatening spaces, investigate audio clues, and solve objectives while avoiding dangerous encounters. Working title is not finalized.
+2D top-down pixel-art office RPG in a dark, snowy industrial facility. An ordinary office worker confronts an invading robotic army. A placeholder sprite can be replaced later.
 
-## First playable milestone (single-player development slice)
-A small first-person test environment in which a player can:
-- Walk and look around with keyboard and mouse.
-- Sprint and crouch.
-- Interact with an object (such as a door or an audio recording).
-- Hear an audio clue with spatial audio and see basic interaction feedback.
-- Restart or exit the prototype.
+## Core gameplay
+- Keyboard-only controls for menus, exploration, interactions, and battles.
+- Explore a connected industrial office facility.
+- Separate battle scene with turn-based commands and dodge phases.
+- One reusable battle scene configured for individual robots and bosses.
 
-No art polish or networking is required for this first milestone.
+## First milestone
+1. Create and upload Universal 2D Unity project.
+2. Confirm Editor 6000.6.0f1 and Input System 1.20.1 in tracked configuration files.
+3. Display the existing main menu art.
+4. Navigate menu options using the keyboard and press Enter to choose.
+5. Start game -> load BreakRoom scene.
 
-## Later milestones
-1. Cooperative session creation and joining, networked movement and interaction.
-2. Sound and memory mechanics: audio clues and corresponding puzzles.
-3. Sound-reactive enemy behavior, survival objectives, and win/lose states.
-4. Playtesting, accessibility, performance, and content polish.
+## Next milestone
+- Player movement and collisions in the break room.
+- Interaction with objects such as a coffee machine.
+- Doorway to hallway and first robot encounter.
+- Transition to BattleScene and back, preserving state.
 
-## Unity project setup
-1. Install Unity Hub and choose a stable supported Unity Editor version as a team.
-2. Create a **Universal 3D (URP)** project using Unity Hub. Prefer placing the entire Unity project at the root of this repository, containing `Assets/`, `Packages/`, and `ProjectSettings/` (avoid unnecessary nesting).
-3. In **Edit > Project Settings > Editor**, select **Force Text** asset serialization. Keep `.meta` files.
-4. Verify the existing Unity `.gitignore` before committing; avoid committing `Library/` and other generated files.
-5. Save a basic scene such as `Assets/Scenes/Prototype.unity`.
-6. Commit `Assets/`, `Packages/`, `ProjectSettings/`, and any newly created tracked configuration on `main` using GitHub Desktop.
+## Visual direction
+Detailed, atmospheric pixel art with cold dark blues, snowy exteriors, metal architecture, warm localized lighting, and conspicuous robot sensor lights.
 
-## Initial scene (suggested)
-- A floor, four walls, a light source, and a first-person player.
-- One interactable test object.
-- A distinctive spatial audio source or recorded clue.
-- No external paid assets required.
-
-## Decisions to make during implementation
-- Exact Unity Editor version (commit `ProjectSettings/ProjectVersion.txt`).
-- Multiplayer framework (evaluate Netcode for GameObjects once movement prototype works).
-- Final game title and narrative.
-- How sound and memory clues influence puzzles and enemies.
-
-## Team safety
-- Coordinate ownership of shared scenes and prefabs.
-- Pull before work and commit small changes with descriptive messages.
-- Use Git LFS where large binary assets justify it.
-- Test merges and gameplay frequently.
-
-This plan documents intended work; it does not replace a Unity-generated project.
+## Collaboration
+Commit Assets (including .meta files), Packages, and ProjectSettings. Do not commit Library or other generated caches. Coordinate edits to Unity scenes/prefabs.
