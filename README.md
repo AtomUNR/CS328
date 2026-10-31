@@ -1,6 +1,6 @@
 # Battle Tower
 
-**Battle Tower** is a 2D pixel-art game inspired by a leaning tower. The project is in active development and currently includes a keyboard-operated main menu, its scenes, input actions, and supporting scripts.
+**Battle Tower** is a 2D pixel-art game. The project is in active development and currently includes a keyboard-operated main menu, its scenes, input actions, and supporting scripts.
 
 ## Current project
 
