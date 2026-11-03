@@ -17,7 +17,7 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame()
     {
         Debug.Log( "START BUTTON PRESSED \n" );
-        SceneManager.LoadScene("Battle Tower");
+        SceneManager.LoadScene("First Level");
     }
 
     public void QuitGame()
