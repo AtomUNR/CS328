@@ -1,0 +1,678 @@
+fileFormatVersion: 2
+guid: d8ce21c50fc00ff4f9a5109cd989ce54
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5058317476008088038
+    second: Enemy_Guardian_0
+  - first:
+      213: 4066856476595302676
+    second: Enemy_Guardian_1
+  - first:
+      213: 4370332968304844117
+    second: Enemy_Guardian_2
+  - first:
+      213: -3223933341721781283
+    second: Enemy_Guardian_3
+  - first:
+      213: -8657114902449404536
+    second: Enemy_Guardian_4
+  - first:
+      213: 2576287187714901511
+    second: Enemy_Guardian_5
+  - first:
+      213: 1925358241862295832
+    second: Enemy_Guardian_6
+  - first:
+      213: -6428465519062214772
+    second: Enemy_Guardian_7
+  - first:
+      213: -6059118973925505864
+    second: Enemy_Guardian_8
+  - first:
+      213: 1511720784492027550
+    second: Enemy_Guardian_9
+  - first:
+      213: 4863657723532593907
+    second: Enemy_Guardian_10
+  - first:
+      213: -563041628085305536
+    second: Enemy_Guardian_11
+  - first:
+      213: 2086797930985174842
+    second: Enemy_Guardian_12
+  - first:
+      213: 9024880803463524249
+    second: Enemy_Guardian_13
+  - first:
+      213: -1201024702011399599
+    second: Enemy_Guardian_14
+  - first:
+      213: -5418756533664698133
+    second: Enemy_Guardian_15
+  - first:
+      213: 989889651553706290
+    second: Enemy_Guardian_16
+  - first:
+      213: 2114973935500093067
+    second: Enemy_Guardian_17
+  - first:
+      213: 2723830151894768057
+    second: Enemy_Guardian_18
+  - first:
+      213: 8821636010615665600
+    second: Enemy_Guardian_19
+  - first:
+      213: -7336996601539927943
+    second: Enemy_Guardian_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Enemy_Guardian_0
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 318
+        width: 65
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e1dc9eb1f0c23640800000000000000
+      internalID: 5058317476008088038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_1
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 207
+        width: 183
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 411b5f71b60607830800000000000000
+      internalID: 4066856476595302676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_2
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 299
+        width: 33
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55d1dfdfdaa86ac30800000000000000
+      internalID: 4370332968304844117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_3
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 226
+        width: 14
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddb9223f4b94243d0800000000000000
+      internalID: -3223933341721781283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_4
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 211
+        width: 69
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88543c31ddfbbd780800000000000000
+      internalID: -8657114902449404536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_5
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 185
+        width: 29
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70603272c8fc0c320800000000000000
+      internalID: 2576287187714901511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_6
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 163
+        width: 18
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 811a297be1f38ba10800000000000000
+      internalID: 1925358241862295832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_7
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 54
+        width: 81
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c87137d7ba089c6a0800000000000000
+      internalID: -6428465519062214772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_8
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 171
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b44753556fa9eba0800000000000000
+      internalID: -6059118973925505864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_9
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 189
+        width: 38
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9ed8374b06baf410800000000000000
+      internalID: 1511720784492027550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_10
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 45
+        width: 114
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3face384eee2f7340800000000000000
+      internalID: 4863657723532593907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_11
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 76
+        width: 14
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04fb7345f9caf28f0800000000000000
+      internalID: -563041628085305536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_12
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 167
+        width: 39
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a37346279abc5fc10800000000000000
+      internalID: 2086797930985174842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_13
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 68
+        width: 36
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99f6fae5641de3d70800000000000000
+      internalID: 9024880803463524249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_14
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 57
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1522426956a155fe0800000000000000
+      internalID: -1201024702011399599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_15
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 65
+        width: 42
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be0b69674a5bcc4b0800000000000000
+      internalID: -5418756533664698133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_16
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 54
+        width: 57
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 231a1b7b46bccbd00800000000000000
+      internalID: 989889651553706290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_17
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 5
+        width: 341
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8661b6b695e95d10800000000000000
+      internalID: 2114973935500093067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_18
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 26
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b99f28771dfcc520800000000000000
+      internalID: 2723830151894768057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_19
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 23
+        width: 57
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c37a8e663fbc6a70800000000000000
+      internalID: 8821636010615665600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Guardian_20
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 23
+        width: 50
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 970e6f6c670cd2a90800000000000000
+      internalID: -7336996601539927943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Enemy_Guardian_0: 5058317476008088038
+      Enemy_Guardian_1: 4066856476595302676
+      Enemy_Guardian_10: 4863657723532593907
+      Enemy_Guardian_11: -563041628085305536
+      Enemy_Guardian_12: 2086797930985174842
+      Enemy_Guardian_13: 9024880803463524249
+      Enemy_Guardian_14: -1201024702011399599
+      Enemy_Guardian_15: -5418756533664698133
+      Enemy_Guardian_16: 989889651553706290
+      Enemy_Guardian_17: 2114973935500093067
+      Enemy_Guardian_18: 2723830151894768057
+      Enemy_Guardian_19: 8821636010615665600
+      Enemy_Guardian_2: 4370332968304844117
+      Enemy_Guardian_20: -7336996601539927943
+      Enemy_Guardian_3: -3223933341721781283
+      Enemy_Guardian_4: -8657114902449404536
+      Enemy_Guardian_5: 2576287187714901511
+      Enemy_Guardian_6: 1925358241862295832
+      Enemy_Guardian_7: -6428465519062214772
+      Enemy_Guardian_8: -6059118973925505864
+      Enemy_Guardian_9: 1511720784492027550
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
