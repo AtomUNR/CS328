@@ -16,15 +16,15 @@ public class BattleHUDTest : MonoBehaviour
         battleHUD.CommandChosen += OnCommandChosen;
 
         battleHUD.SetPlayerStatus(
-            "ADAM", 1,
-            20, 20,     // Current HP, maximum HP
-            10, 10      // Current MP, maximum MP
+            "ANDREW", 1,
+            40, 40,     // Current HP, maximum HP
+            90, 90      // Current MP, maximum MP
         );
 
         battleHUD.BeginBattle(
             enemySprite,
             "Tower Guardian",
-            "* A tower guardian blocks your path."
+            "* YOU SHALL NOT PASS."
         );
     }
 
