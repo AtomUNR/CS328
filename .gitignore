@@ -15,6 +15,7 @@
 .gradle/
 *.csproj
 *.sln
+*.slnx
 *.suo
 *.tmp
 *.user
