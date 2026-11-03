@@ -17,14 +17,14 @@ public class BattleHUDTest : MonoBehaviour
 
         battleHUD.SetPlayerStatus(
             "ANDREW", 1,
-            40, 40,     // Current HP, maximum HP
-            90, 90      // Current MP, maximum MP
+            10, 50,     // Current HP, maximum HP
+            20, 50      // Current MP, maximum MP
         );
 
         battleHUD.BeginBattle(
             enemySprite,
             "Tower Guardian",
-            "* YOU SHALL NOT PASS."
+            " *YOU SHALL NOT PASS."
         );
     }
 

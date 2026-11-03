@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 57c967f46f0a43a43aaf4cb5a79a21d1
+guid: 96dbdf2108ddfca4f8e335c5425ab2b7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 820734579777877492
-    second: Button_Fight_Selected_0
+      213: 1234798153104908839
+    second: Button_Fight_UnSelected_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -77,7 +77,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button_Fight_Selected_0
+      name: Button_Fight_UnSelected_0
       rect:
         serializedVersion: 2
         x: 6
@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4f53a8a70c5d36b00800000000000000
-      internalID: 820734579777877492
+      spriteID: 7226025c062e22110800000000000000
+      internalID: 1234798153104908839
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Button_Fight_Selected_0: 820734579777877492
+      Button_Fight_UnSelected_0: 1234798153104908839
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
