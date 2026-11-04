@@ -118,7 +118,7 @@
             ]
         },
         {
-            "name": "Gamplay",
+            "name": "Gameplay",
             "id": "a53bb785-212f-4eb2-8578-5bb38c666110",
             "actions": [
                 {
@@ -133,17 +133,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "34c91abf-be21-432b-bf33-ddb55b2ca931",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "2D Vector",
                     "id": "9c91383a-f070-49ff-8f32-40e0ed8afd99",

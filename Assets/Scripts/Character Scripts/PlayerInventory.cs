@@ -3,27 +3,56 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public const int MaxSlots = 10;
+    public const int Capacity = 10;
 
-    [SerializeField] private List<ItemData> items = new List<ItemData>();
+    [Header("Starting Items — maximum 10")]
+    [SerializeField] private List<ItemData> startingItems =
+        new List<ItemData>();
 
-    public IReadOnlyList<ItemData> Items => items;
-    public int ItemCount => items.Count;
+    private readonly List<ItemData> items = new List<ItemData>();
+
+    public int Count => items.Count;
+    public bool IsFull => items.Count >= Capacity;
+    public IReadOnlyList<ItemData> Items => items.AsReadOnly();
+
+    private void Awake()
+    {
+        items.Clear();
+
+        foreach (ItemData item in startingItems)
+        {
+            // Empty Inspector entries do not occupy inventory slots.
+            if (item == null)
+                continue;
+
+            if (!TryAddItem(item))
+            {
+                Debug.LogWarning(
+                    "Starting inventory exceeds 10 items. " +
+                    "Extra items were skipped.",
+                    this
+                );
+
+                break;
+            }
+        }
+    }
 
     public bool TryAddItem(ItemData item)
     {
-        if (item == null || items.Count >= MaxSlots)
+        if (item == null || IsFull)
             return false;
 
         items.Add(item);
         return true;
     }
 
-    public bool RemoveItem(ItemData item)
+    public bool TryRemoveItem(int index)
     {
-        if (item == null)
+        if (index < 0 || index >= items.Count)
             return false;
 
-        return items.Remove(item);
+        items.RemoveAt(index);
+        return true;
     }
 }

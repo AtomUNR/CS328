@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class CharacterStats : MonoBehaviour
 {
     [Header("Health")]
@@ -10,8 +11,8 @@ public class CharacterStats : MonoBehaviour
 
     public int MaxHP => maxHP;
     public int CurrentHP { get; private set; }
-    
-    public int MPCurrent => MPmax;
+
+    public int MaxMP => MPmax;
     public int CurrentMP { get; private set; }
 
     private void Awake()
@@ -23,23 +24,22 @@ public class CharacterStats : MonoBehaviour
         CurrentMP = MPmax;
     }
 
-    public void TakeDamage(int dmg_amount)
+    public void TakeDamage(int amount)
     {
-        if(dmg_amount <= 0)
-        {
+        if (amount <= 0)
             return;
-        }
-        CurrentHP = Mathf.Min(CurrentHP - dmg_amount, 0);
+
+        CurrentHP = Mathf.Max(CurrentHP - amount, 0);
     }
 
-    public void RestoreHP(int heal_amount)
+    public void RestoreHP(int amount)
     {
-        if(heal_amount <= 0)
-        {
+        if (amount <= 0)
             return;
-        }
-        CurrentHP = Mathf.Max(CurrentHP + heal_amount, CurrentHP);
+
+        CurrentHP = Mathf.Min(CurrentHP + amount, maxHP);
     }
+
     public bool TrySpendMP(int amount)
     {
         if (amount <= 0 || CurrentMP < amount)
