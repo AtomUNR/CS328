@@ -5,6 +5,7 @@ public class BattleManager : MonoBehaviour
 {
     [Header("Scene references")]
     [SerializeField] private BattleHudController battleHUD;
+    [SerializeField] private AttackTimer attackTiming;
 
     private enum BattleState
     {
@@ -12,6 +13,7 @@ public class BattleManager : MonoBehaviour
         ChoosingCommand,
         ChoosingAttack,
         ChoosingTarget,
+        AttackTiming,
         PlayerAttackMessage,
         EnemyAttackMessage,
         DefeatDialogue,
