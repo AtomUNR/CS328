@@ -14,16 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackData
   attackName: Spear Rain
   animationFrames:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  framesPerSecond: 8
-  loopAnimation: 1
+  - {fileID: -8206595458414114435, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  - {fileID: -1459698170, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  - {fileID: 416213117, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  - {fileID: 1307367044, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  - {fileID: 1761518904, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  - {fileID: 338080911, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  - {fileID: 1999260132, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  - {fileID: 1192011871, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  - {fileID: 301427670, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  - {fileID: -1481907408, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  - {fileID: 835380667, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  - {fileID: -156928297, guid: dd78802b26b38f643b9175b11f5b2f16, type: 3}
+  framesPerSecond: 12
+  loopAnimation: 0
   windUpDuration: 0.75
   activeDuration: 6
   recoveryDuration: 0.5

@@ -455,6 +455,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2629662393282485423, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}
   m_PrefabInstance: {fileID: 4780827415573082818}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &663051394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2050684969097074229, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}
+  m_PrefabInstance: {fileID: 4780827415573082818}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &809961952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4315764395057528694, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}
@@ -758,6 +769,7 @@ GameObject:
   - component: {fileID: 1349641877}
   - component: {fileID: 1349641879}
   - component: {fileID: 1349641878}
+  - component: {fileID: 1349641880}
   m_Layer: 0
   m_Name: TowerGuardian
   m_TagString: Untagged
@@ -936,6 +948,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   maxHP: 10
   MPmax: 100
+--- !u!95 &1349641880
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349641873}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d82815c1da6f5f43b682d3452836122, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1542452727 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2437324571660101147, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}
@@ -993,17 +1027,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BattleHUDTest
   battleHUD: {fileID: 0}
   enemySprite: {fileID: 21300000, guid: d8ce21c50fc00ff4f9a5109cd989ce54, type: 3}
---- !u!114 &1900985409 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1782120381285111974, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}
-  m_PrefabInstance: {fileID: 4780827415573082818}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &3545318397397085724 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6405311850597330901, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}
@@ -1030,7 +1053,7 @@ MonoBehaviour:
   dodgePanel: {fileID: 265541115}
   arenaArea: {fileID: 340113974}
   essence: {fileID: 1317610163}
-  enemyImage: {fileID: 1900985409}
+  enemyImage: {fileID: 663051394}
   moveSpeed: 300
   invulnerabilityDuration: 0.75
 --- !u!114 &3545318397397085728 stripped
