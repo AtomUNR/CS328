@@ -59,6 +59,11 @@ public sealed class BattleHudController : MonoBehaviour
     [SerializeField] private TMP_Text targetHPText;
     [SerializeField] private Image targetHPFill;
 
+    [Header("Dodge layout")]
+    [SerializeField] private RectTransform dodgeStatusAnchor;
+
+    private Vector3 normalStatusLocalPosition;
+    private bool statusPositionSaved;
     public event Action<BattleCommand> CommandChosen;
     public event Action CancelChosen;
 
@@ -222,6 +227,7 @@ public sealed class BattleHudController : MonoBehaviour
         bool showAttacks,
         bool showTargets)
     {
+        RestoreStatusPosition();
         if (dialoguePanel != null)
             dialoguePanel.SetActive(showDialogue);
 
@@ -348,5 +354,45 @@ public sealed class BattleHudController : MonoBehaviour
     SetMenuPanels(false, false, false, false);
     CommandSelectionEnabled = false;
     lastNavigate = Vector2.zero;
+    }
+    public void ShowDodgePhase()
+    {
+    SetMenuPanels(false, false, false, false);
+
+    CommandSelectionEnabled = false;
+    lastNavigate = Vector2.zero;
+
+    if (playerStatusPanel != null)
+    {
+        playerStatusPanel.SetActive(true);
+        MoveStatusBelowArena();
+    }
+    }
+    private void MoveStatusBelowArena()
+{
+    if (playerStatusPanel == null || dodgeStatusAnchor == null)
+        return;
+
+    RectTransform status =
+        playerStatusPanel.GetComponent<RectTransform>();
+
+    if (!statusPositionSaved)
+    {
+        normalStatusLocalPosition = status.localPosition;
+        statusPositionSaved = true;
+    }
+
+    status.position = dodgeStatusAnchor.position;
+}
+
+    private void RestoreStatusPosition()
+    {
+    if (!statusPositionSaved || playerStatusPanel == null)
+        return;
+
+    playerStatusPanel.transform.localPosition =
+        normalStatusLocalPosition;
+
+    statusPositionSaved = false;
     }
 }

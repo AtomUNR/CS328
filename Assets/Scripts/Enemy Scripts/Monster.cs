@@ -10,6 +10,11 @@ public class Monster : MonoBehaviour
     [Header("Combat")]
     [SerializeField, Min(0)] private int attackDamage = 5;
 
+    [Header("Enemy Attack Patterns")]
+    [SerializeField] private EnemyAttackData[] attacks;
+
+    private int nextAttackIndex;
+
     [Header("Victory Rewards")]
     [SerializeField, Min(0)] private int xpReward = 25;
     [SerializeField, Min(0)] private int moneyReward = 10;
@@ -144,4 +149,29 @@ public class Monster : MonoBehaviour
 
     return (string[])defeatedDialogue.Clone();
     }
+    public void ResetAttackSequence()
+{
+    nextAttackIndex = 0;
+}
+
+public EnemyAttackData GetNextAttack()
+{
+    if (attacks == null || attacks.Length == 0)
+        return null;
+
+    // Cycle through attacks in Inspector order, skipping empty entries.
+    for (int i = 0; i < attacks.Length; i++)
+    {
+        nextAttackIndex %= attacks.Length;
+
+        EnemyAttackData attack = attacks[nextAttackIndex];
+        nextAttackIndex = (nextAttackIndex + 1) % attacks.Length;
+
+        if (attack != null)
+            return attack;
+    }
+
+    return null;
+}
+
 }

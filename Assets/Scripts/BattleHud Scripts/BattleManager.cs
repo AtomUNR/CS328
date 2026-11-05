@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour
 {
     [Header("Scene references")]
     [SerializeField] private BattleHudController battleHUD;
     [SerializeField] private AttackTimer attackTiming;
 
+    [SerializeField] private DodgePhaseController dodgePhase;
     private enum BattleState
     {
         Inactive,
@@ -14,6 +15,7 @@ public class BattleManager : MonoBehaviour
         ChoosingAttack,
         ChoosingTarget,
         TimingAttack,
+        Dodging,
         PlayerAttackMessage,
         EnemyAttackMessage,
         DefeatDialogue,
@@ -45,6 +47,10 @@ public class BattleManager : MonoBehaviour
         {
             attackTiming.AttackFinished += ResolveTimedAttack;
         }
+        if(dodgePhase != null)
+        {
+            dodgePhase.PhaseFinished += HandleDodgeFinished;
+        }
     }
 
     private void OnDisable()
@@ -59,6 +65,10 @@ public class BattleManager : MonoBehaviour
         {
             attackTiming.AttackFinished -= ResolveTimedAttack;
             attackTiming.CancelAttack();
+        }
+        if(dodgePhase != null)
+        {
+            dodgePhase.PhaseFinished -= HandleDodgeFinished;
         }
 
         EndBattle();
@@ -110,6 +120,7 @@ public class BattleManager : MonoBehaviour
 
         defeatLines.Clear();
         monster.ResetDialogue();
+        monster.ResetAttackSequence();
 
         state = BattleState.ChoosingCommand;
         lastTransitionFrame = Time.frameCount;
@@ -282,9 +293,13 @@ public class BattleManager : MonoBehaviour
 
             case BattleState.PlayerDefeated:
                 // Temporary recovery until a Game Over screen is added.
-                player.Stats.RestoreHP(player.Stats.MaxHP);
-                player.Stats.RestoreMP(player.Stats.MaxMP);
-                EndBattle();
+                OpenGameOver();
+                //player.Stats.RestoreHP(player.Stats.MaxHP);
+                //player.Stats.RestoreMP(player.Stats.MaxMP);
+                //EndBattle();
+                break;
+            
+            case BattleState.Dodging:
                 break;
         }
     }
@@ -314,20 +329,33 @@ public class BattleManager : MonoBehaviour
     }
 
     private void EnemyAttack()
+{
+    if (dodgePhase == null)
     {
-        int previousHP = player.Stats.CurrentHP;
-
-        player.Stats.TakeDamage(monster.AttackDamage);
-
-        int damageDealt = previousHP - player.Stats.CurrentHP;
-
-        RefreshPlayerStatus();
-
-        ShowMessage(
-            $"* {monster.DisplayName} dealt {damageDealt} damage.\n" +
-            "* Press Z to continue.",
-            BattleState.EnemyAttackMessage
+        Debug.LogError(
+            "Assign Dodge Phase on BattleManager.",
+            this
         );
+        return;
+    }
+
+    EnemyAttackData attack = monster.GetNextAttack();
+
+    if (attack == null)
+    {
+        Debug.LogError(
+            "Assign at least one EnemyAttackData asset to this monster.",
+            monster
+        );
+        return;
+    }
+
+    if (!dodgePhase.BeginPhase(attack, monster.BattleSprite, player.Stats)){ return; } 
+
+    state = BattleState.Dodging;
+    lastTransitionFrame = Time.frameCount;
+
+    battleHUD.ShowDodgePhase();
     }
 
     private void BeginDefeatDialogue()
@@ -390,6 +418,10 @@ public class BattleManager : MonoBehaviour
 
     public void EndBattle()
     {
+        if(dodgePhase != null)
+        {
+            dodgePhase.CancelPhase();
+        }
         if(attackTiming != null)
         {
             attackTiming.CancelAttack();
@@ -470,5 +502,55 @@ private void BeginTimedAttack()
         OpenTargetSelection();
     }
 }
+    private void HandleDodgeFinished()
+{
+    if (state != BattleState.Dodging)
+        return;
 
+    lastTransitionFrame = Time.frameCount;
+
+    if (player == null || monster == null)
+    {
+        EndBattle();
+        return;
+    }
+
+    RefreshPlayerStatus();
+
+    if (player.Stats.CurrentHP <= 0)
+    {
+        ShowMessage(
+            "* Your essence fades... \n Press Z to continue.",
+            BattleState.PlayerDefeated
+        );
+
+        return;
+    }
+
+    state = BattleState.ChoosingCommand;
+    battleHUD.ShowMainMenu();
+    battleHUD.SetDialogue(monster.GetNextDialogue());
+}
+    private void OpenGameOver()
+    {
+    const string gameOverScene = "Game Over";
+
+    if (!Application.CanStreamedLevelBeLoaded(gameOverScene))
+    {
+        Debug.LogError(
+            "Add the Game Over scene to the build scene list.",
+            this
+        );
+        return;
+    }
+
+    GameOverController.RetrySceneName =
+        SceneManager.GetActiveScene().name;
+
+    // Clears active attacks and closes the battle HUD.
+    EndBattle();
+
+    Time.timeScale = 1f;
+    SceneManager.LoadScene(gameOverScene);
+    }
 }
