@@ -13,7 +13,7 @@ public class BattleManager : MonoBehaviour
         ChoosingCommand,
         ChoosingAttack,
         ChoosingTarget,
-        AttackTiming,
+        TimingAttack,
         PlayerAttackMessage,
         EnemyAttackMessage,
         DefeatDialogue,
@@ -41,6 +41,10 @@ public class BattleManager : MonoBehaviour
             battleHUD.CommandChosen += HandleCommand;
             battleHUD.CancelChosen += HandleCancel;
         }
+        if(attackTiming != null)
+        {
+            attackTiming.AttackFinished += ResolveTimedAttack;
+        }
     }
 
     private void OnDisable()
@@ -49,6 +53,12 @@ public class BattleManager : MonoBehaviour
         {
             battleHUD.CommandChosen -= HandleCommand;
             battleHUD.CancelChosen -= HandleCancel;
+        }
+
+        if(attackTiming != null)
+        {
+            attackTiming.AttackFinished -= ResolveTimedAttack;
+            attackTiming.CancelAttack();
         }
 
         EndBattle();
@@ -227,13 +237,15 @@ public class BattleManager : MonoBehaviour
         switch (state)
         {
             case BattleState.ChoosingAttack:
-                // Physical Attack is the only available attack.
                 OpenTargetSelection();
                 break;
 
             case BattleState.ChoosingTarget:
-                // The timing meter will start here next.
-                // For now, stay on this screen without dealing damage.
+                BeginTimedAttack();
+                break;
+
+            case BattleState.TimingAttack:
+                attackTiming.ConfirmHit();
                 break;
 
             case BattleState.PlayerAttackMessage:
@@ -281,17 +293,24 @@ public class BattleManager : MonoBehaviour
     // No menu currently calls this method directly.
     private void PlayerAttack()
     {
-        int previousHP = monster.Stats.CurrentHP;
+        if (attackTiming == null)
+        {
+            Debug.LogError(
+                "Assign Attack Timing on the BattleManager.",
+                this
+            );
 
-        monster.Stats.TakeDamage(player.AttackDamage);
+            return;
+        }
 
-        int damageDealt = previousHP - monster.Stats.CurrentHP;
+        state = BattleState.TimingAttack;
+        battleHUD.HideActionPanels();
 
-        ShowMessage(
-            $"* You dealt {damageDealt} damage to " +
-            $"{monster.DisplayName}.\n* Press Z to continue.",
-            BattleState.PlayerAttackMessage
-        );
+        if (!attackTiming.BeginAttack())
+        {
+            // Return to target selection if the meter could not start.
+            OpenTargetSelection();
+        }
     }
 
     private void EnemyAttack()
@@ -371,6 +390,10 @@ public class BattleManager : MonoBehaviour
 
     public void EndBattle()
     {
+        if(attackTiming != null)
+        {
+            attackTiming.CancelAttack();
+        }
         if (!IsInBattle)
             return;
 
@@ -389,4 +412,63 @@ public class BattleManager : MonoBehaviour
         monster = null;
         playerMovement = null;
     }
+    private void ResolveTimedAttack(float multiplier)
+{
+    if (state != BattleState.TimingAttack)
+        return;
+
+    lastTransitionFrame = Time.frameCount;
+
+    if (player == null || monster == null)
+    {
+        EndBattle();
+        return;
+    }
+
+    if (multiplier <= 0f)
+    {
+        ShowMessage(
+            "* Your attack missed!\n* Press Z to continue.",
+            BattleState.PlayerAttackMessage
+        );
+
+        return;
+    }
+
+    int damage = Mathf.Max(
+        1,
+        Mathf.RoundToInt(player.AttackDamage * multiplier)
+    );
+
+    int previousHP = monster.Stats.CurrentHP;
+    monster.Stats.TakeDamage(damage);
+
+    int damageDealt = previousHP - monster.Stats.CurrentHP;
+
+    ShowMessage(
+        $"* You dealt {damageDealt} damage to " +
+        $"{monster.DisplayName}.\n* Press Z to continue.",
+        BattleState.PlayerAttackMessage
+    );
+    }
+private void BeginTimedAttack()
+{
+    if (attackTiming == null)
+    {
+        Debug.LogError(
+            "Assign Attack Timing on the BattleManager.",
+            this
+        );
+        return;
+    }
+
+    state = BattleState.TimingAttack;
+    battleHUD.HideActionPanels();
+
+    if (!attackTiming.BeginAttack())
+    {
+        OpenTargetSelection();
+    }
+}
+
 }
