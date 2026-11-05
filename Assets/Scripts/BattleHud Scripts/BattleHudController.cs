@@ -49,6 +49,7 @@ public sealed class BattleHudController : MonoBehaviour
     [SerializeField] private GameObject commandRow;
     [SerializeField] private GameObject attackSelectionPanel;
     [SerializeField] private GameObject targetSelectionPanel;
+    [SerializeField] private GameObject playerStatusPanel;
 
     [Header("Attack selection")]
     [SerializeField] private TMP_Text magicAttackText;
@@ -232,6 +233,9 @@ public sealed class BattleHudController : MonoBehaviour
 
         if (targetSelectionPanel != null)
             targetSelectionPanel.SetActive(showTargets);
+
+        if (playerStatusPanel != null)
+            playerStatusPanel.SetActive(showCommands || showDialogue);
     }
 
     public void SetDialogue(string line)
