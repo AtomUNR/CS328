@@ -183,7 +183,7 @@ public class BattleManager : MonoBehaviour
             EndBattle();
             return;
         }
-        if (state == BattleState.AttackTiming)
+        if (state == BattleState.TimingAttack)
         {
             if (attackTiming != null)
                 attackTiming.ConfirmHit();
@@ -340,7 +340,7 @@ public class BattleManager : MonoBehaviour
     }
     private void HandleAttackFinished(float multiplier)
     {
-        if (state != BattleState.AttackTiming ||
+        if (state != BattleState.TimingAttack ||
             player == null ||
             monster == null)
         {
