@@ -60,6 +60,11 @@ public class BattleManager : MonoBehaviour
             battleHUD.CommandChosen -= HandleCommand;
             battleHUD.CancelChosen -= HandleCancel;
         }
+        if (attackTiming != null)
+        {
+            attackTiming.AttackFinished -= HandleAttackFinished;
+            attackTiming.CancelAttack();
+        }
 
         if(attackTiming != null)
         {
@@ -178,7 +183,13 @@ public class BattleManager : MonoBehaviour
             EndBattle();
             return;
         }
+        if (state == BattleState.AttackTiming)
+        {
+            if (attackTiming != null)
+                attackTiming.ConfirmHit();
 
+            return;
+        }
         // Outside the main menu, Z confirms or advances the current screen.
         if (state != BattleState.ChoosingCommand)
         {
@@ -326,6 +337,32 @@ public class BattleManager : MonoBehaviour
             // Return to target selection if the meter could not start.
             OpenTargetSelection();
         }
+    }
+    private void HandleAttackFinished(float multiplier)
+    {
+        if (state != BattleState.AttackTiming ||
+            player == null ||
+            monster == null)
+        {
+            return;
+        }
+
+        int previousHP = monster.Stats.CurrentHP;
+
+        int damage = Mathf.Max(
+            0,
+            Mathf.RoundToInt(player.AttackDamage * multiplier)
+        );
+
+        monster.Stats.TakeDamage(damage);
+
+        int damageDealt = previousHP - monster.Stats.CurrentHP;
+
+        ShowMessage(
+            $"* You dealt {damageDealt} damage to " +
+            $"{monster.DisplayName}.\n* Press Z to continue.",
+            BattleState.PlayerAttackMessage
+        );
     }
 
     private void EnemyAttack()

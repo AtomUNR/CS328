@@ -64,11 +64,7 @@ public class AttackTimer : MonoBehaviour
         if (!isRunning)
             return;
 
-        float progress = GetProgress();
-        PositionMarker(progress);
-
-        if (progress >= 1f)
-            FinishAttack(0f);
+        PositionMarker(GetProgress());
     }
 
     public void ConfirmHit()
@@ -78,12 +74,6 @@ public class AttackTimer : MonoBehaviour
 
         float progress = GetProgress();
         PositionMarker(progress);
-
-        if (progress >= 1f)
-        {
-            FinishAttack(0f);
-            return;
-        }
 
         // 0 at either edge, 1 at the center.
         float accuracy =
@@ -100,8 +90,11 @@ public class AttackTimer : MonoBehaviour
 
     private float GetProgress()
     {
-        return Mathf.Clamp01(
-            (Time.unscaledTime - startedAt) / sweepDuration
+        float elapsed = Time.unscaledTime - startedAt;
+
+        return Mathf.PingPong(
+            elapsed / sweepDuration,
+            1f
         );
     }
 
