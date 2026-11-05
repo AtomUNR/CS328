@@ -41,6 +41,9 @@ public class BattleManager : MonoBehaviour
             battleHUD.CommandChosen += HandleCommand;
             battleHUD.CancelChosen += HandleCancel;
         }
+
+        if (attackTiming != null)
+            attackTiming.AttackFinished += HandleAttackFinished;
     }
 
     private void OnDisable()
@@ -49,6 +52,11 @@ public class BattleManager : MonoBehaviour
         {
             battleHUD.CommandChosen -= HandleCommand;
             battleHUD.CancelChosen -= HandleCancel;
+        }
+        if (attackTiming != null)
+        {
+            attackTiming.AttackFinished -= HandleAttackFinished;
+            attackTiming.CancelAttack();
         }
 
         EndBattle();
@@ -157,7 +165,13 @@ public class BattleManager : MonoBehaviour
             EndBattle();
             return;
         }
+        if (state == BattleState.AttackTiming)
+        {
+            if (attackTiming != null)
+                attackTiming.ConfirmHit();
 
+            return;
+        }
         // Outside the main menu, Z confirms or advances the current screen.
         if (state != BattleState.ChoosingCommand)
         {
@@ -232,8 +246,15 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case BattleState.ChoosingTarget:
-                // The timing meter will start here next.
-                // For now, stay on this screen without dealing damage.
+                state = BattleState.AttackTiming;
+                battleHUD.ShowDialogueOnly();
+
+                if (attackTiming == null || !attackTiming.BeginAttack())
+                {
+                    state = BattleState.ChoosingTarget;
+                    battleHUD.ShowTargetSelection(monster);
+                }
+
                 break;
 
             case BattleState.PlayerAttackMessage:
@@ -284,6 +305,32 @@ public class BattleManager : MonoBehaviour
         int previousHP = monster.Stats.CurrentHP;
 
         monster.Stats.TakeDamage(player.AttackDamage);
+
+        int damageDealt = previousHP - monster.Stats.CurrentHP;
+
+        ShowMessage(
+            $"* You dealt {damageDealt} damage to " +
+            $"{monster.DisplayName}.\n* Press Z to continue.",
+            BattleState.PlayerAttackMessage
+        );
+    }
+    private void HandleAttackFinished(float multiplier)
+    {
+        if (state != BattleState.AttackTiming ||
+            player == null ||
+            monster == null)
+        {
+            return;
+        }
+
+        int previousHP = monster.Stats.CurrentHP;
+
+        int damage = Mathf.Max(
+            0,
+            Mathf.RoundToInt(player.AttackDamage * multiplier)
+        );
+
+        monster.Stats.TakeDamage(damage);
 
         int damageDealt = previousHP - monster.Stats.CurrentHP;
 
