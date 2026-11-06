@@ -22,6 +22,8 @@ public sealed class DodgePhaseController : MonoBehaviour
 
     public event Action PhaseFinished;
 
+    public Image EnemyImage => enemyImage;
+
     private EnemyAttackData currentAttack;
     private CharacterStats playerStats;
     private EnemyAttackPattern activePattern;
@@ -75,7 +77,7 @@ public sealed class DodgePhaseController : MonoBehaviour
         {
             Debug.LogError(
                 "The attack needs a pattern prefab with a " +
-                "RectTransform and FallingAttackPattern on its root.",
+                "RectTransform and an EnemyAttackPattern on its root.",
                 attack
             );
             return false;
@@ -303,6 +305,10 @@ public sealed class DodgePhaseController : MonoBehaviour
     private void UpdateEnemyAnimation()
     {
         if (enemyImage == null || currentAttack == null)
+            return;
+
+        // A synchronized pattern owns the sprite until ClearPattern restores it.
+        if (activePattern != null && activePattern.ControlsEnemyAnimation)
             return;
 
         float activeEnd =

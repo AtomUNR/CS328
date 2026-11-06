@@ -2,6 +2,9 @@ using UnityEngine;
 
 public abstract class EnemyAttackPattern : MonoBehaviour
 {
+    // Patterns may synchronize enemy poses to their own hazard timing.
+    public virtual bool ControlsEnemyAnimation => false;
+
     public abstract void Initialize(
         DodgePhaseController controller,
         RectTransform arenaArea);

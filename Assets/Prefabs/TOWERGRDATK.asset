@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2332ee319538f479fcbc9f8fe380dd, type: 3}
+  m_Name: TOWERGRDATK
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackData
+  attackName: sparkly attack
+  animationFrames:
+  - {fileID: -8289863828940637271, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  - {fileID: -1402663346583803742, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  - {fileID: -757343298958688160, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  - {fileID: -6434298679980367596, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  - {fileID: -5582716922511870233, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  - {fileID: 3299306431373805623, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  - {fileID: 4193687691561584962, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  - {fileID: -4093221620111607135, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  - {fileID: -3158923173124404, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  - {fileID: 6998329219595473357, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  - {fileID: -2450501221052549030, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  - {fileID: -1103016644273488441, guid: dee74386c10c7d044a3cac7cf287a1cf, type: 3}
+  framesPerSecond: 12
+  loopAnimation: 0
+  windUpDuration: 0.75
+  activeDuration: 6
+  recoveryDuration: 0.5
+  damagePerHit: 5
+  patternPrefab: {fileID: 5846945145350315857, guid: c751b6e06625c0c4aae5dd01a37540f6, type: 3}

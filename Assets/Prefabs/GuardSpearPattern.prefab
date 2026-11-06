@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1637433679834394674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6799289230673511574}
+  - component: {fileID: 8983164891920195897}
+  - component: {fileID: 6102635389482253069}
+  m_Layer: 5
+  m_Name: GuardSpearPattern
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6799289230673511574
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637433679834394674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8983164891920195897
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637433679834394674}
+  m_CullTransparentMesh: 1
+--- !u!114 &6102635389482253069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637433679834394674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa8caced42a5244b88c0bfbeebdf975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpearJabAttackPattern
+  guardianImage: {fileID: 0}
+  guardianFrames:
+  - {fileID: -8995328807821096328, guid: 5279e489d467e96439e600acea9ea849, type: 3}
+  - {fileID: 2760466652060089125, guid: 6750fc18954a45247a33d064073f2eab, type: 3}
+  - {fileID: -5124318234644710624, guid: d9e0ff43487b681499faaeb6ce130c1c, type: 3}
+  - {fileID: -2310762408614679634, guid: 9c968698ecd1b94449d48aab02a778ac, type: 3}
+  - {fileID: -5311269049311109593, guid: 1e70a43be49a52e47ac20428093fe1d9, type: 3}
+  - {fileID: -3381686453424164908, guid: 8b0b037ae58e40148a57d60bbaa22ae8, type: 3}
+  - {fileID: -6775719720096569788, guid: 90313f5d6e0e3694cbe0495ad53383e7, type: 3}
+  - {fileID: -5399981157966850613, guid: e48e9155384e1144fbc56f5b12491f2b, type: 3}
+  spearHeadSprite: {fileID: -7277418748631062735, guid: 42a84538f6b2d0649b0bd6fd0c743de3, type: 3}
+  spearShaftSprite: {fileID: -3914555014399561493, guid: e69da5b108e248443a9d926423dfa6a1, type: 3}
+  impactFrames: []
+  impactFramesPerSecond: 14
+  spearColor: {r: 1, g: 1, b: 1, a: 1}
+  artPixelSize: 20
+  sourcePixelsPerArtPixel: 8
+  warningIconFrames:
+  - {fileID: 3836957846327657821, guid: 1ea5cb033a0f7484ba27908be1c308c5, type: 3}
+  - {fileID: 1467456839143878361, guid: 9fd826a73a8a40846ac76c3a21c3e2a5, type: 3}
+  warningChevronSprite: {fileID: 0}
+  warningColor: {r: 0.98, g: 0.92, b: 0.8, a: 1}
+  warningFlashesPerSecond: 8
+  chevronSpeed: 360
+  firstWaveDelay: 0.3
+  timeBetweenWaves: 0.45
+  laneWidth: 150
+  blockLanes: 7
+  scatterSpears: 5
+  minSafeLanes: 3
+  staggerDelay: 0.06
+  warningTime: 1.2
+  windupTime: 0.42
+  thrustTime: 0.09
+  holdTime: 0.35
+  retractTime: 0.3
+  impactShake: 1.5
+  hitboxScale: 0.85

@@ -959,7 +959,7 @@ MonoBehaviour:
   battleSprite: {fileID: -6404117887561318510, guid: 2b404eafe5d6e7a4a89054deaba70647, type: 3}
   attackDamage: 5
   attacks:
-  - {fileID: 11400000, guid: d686204984a4f5f4d80b9172968ea085, type: 2}
+  - {fileID: 11400000, guid: 87d5eabeb9b7ede4e833c582dcf66ff8, type: 2}
   xpReward: 25
   moneyReward: 10
   lowHealthThreshold: 0.25
@@ -986,7 +986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5a12ea586c4a644a35e042f428a9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  maxHP: 10
+  maxHP: 20
   MPmax: 100
 --- !u!114 &1542452727 stripped
 MonoBehaviour:
