@@ -802,7 +802,7 @@ MonoBehaviour:
   mainMenuScene: Main Menu
   retryText: {fileID: 437466211}
   mainMenuText: {fileID: 1284423152}
-  selectedColor: {r: 0.036845826, g: 0.03773582, b: 0.03773582, a: 1}
+  selectedColor: {r: 0, g: 0.68235296, b: 0.93725497, a: 1}
   unselectedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1596853694
 Transform:

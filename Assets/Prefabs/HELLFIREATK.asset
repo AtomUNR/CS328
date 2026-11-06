@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f2332ee319538f479fcbc9f8fe380dd, type: 3}
   m_Name: HELLFIREATK
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackData
-  attackName: New Attack
+  attackName: Hellfire
   animationFrames:
   - {fileID: -3101004988876853917, guid: 1e994a61cd14ac64d83ad3839386888f, type: 3}
   - {fileID: 6622187859784690628, guid: 0e2371d040fbba342a9fa9a8fdfe58a7, type: 3}
