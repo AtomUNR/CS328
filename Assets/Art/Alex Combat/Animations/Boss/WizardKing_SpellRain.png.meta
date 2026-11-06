@@ -1,0 +1,631 @@
+fileFormatVersion: 2
+guid: dee74386c10c7d044a3cac7cf287a1cf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8289863828940637271
+    second: WizardKing_SpellRain.png_0
+  - first:
+      213: -1402663346583803742
+    second: WizardKing_SpellRain.png_1
+  - first:
+      213: -757343298958688160
+    second: WizardKing_SpellRain.png_2
+  - first:
+      213: -6434298679980367596
+    second: WizardKing_SpellRain.png_3
+  - first:
+      213: -5582716922511870233
+    second: WizardKing_SpellRain.png_4
+  - first:
+      213: 3299306431373805623
+    second: WizardKing_SpellRain.png_5
+  - first:
+      213: 4193687691561584962
+    second: WizardKing_SpellRain.png_6
+  - first:
+      213: -4093221620111607135
+    second: WizardKing_SpellRain.png_7
+  - first:
+      213: -3158923173124404
+    second: WizardKing_SpellRain.png_8
+  - first:
+      213: 6998329219595473357
+    second: WizardKing_SpellRain.png_9
+  - first:
+      213: -2450501221052549030
+    second: WizardKing_SpellRain.png_10
+  - first:
+      213: -1103016644273488441
+    second: WizardKing_SpellRain.png_11
+  - first:
+      213: 5303822870653104999
+    second: WizardKing_SpellRain.png_12
+  - first:
+      213: -7600335615408174132
+    second: WizardKing_SpellRain.png_13
+  - first:
+      213: -2000075976691283439
+    second: WizardKing_SpellRain.png_14
+  - first:
+      213: -4773625597345545942
+    second: WizardKing_SpellRain.png_15
+  - first:
+      213: -6382104914444180651
+    second: WizardKing_SpellRain.png_16
+  - first:
+      213: -3269999932488284677
+    second: WizardKing_SpellRain.png_17
+  - first:
+      213: -939619009070892365
+    second: WizardKing_SpellRain.png_18
+  - first:
+      213: 5283224686417684639
+    second: WizardKing_SpellRain.png_19
+  - first:
+      213: -5854099853766392151
+    second: WizardKing_SpellRain.png_20
+  - first:
+      213: -7207643471968841108
+    second: WizardKing_SpellRain.png_21
+  - first:
+      213: -1597739314602616281
+    second: WizardKing_SpellRain.png_22
+  - first:
+      213: 6615816736718383839
+    second: WizardKing_SpellRain.png_23
+  - first:
+      213: 5538516316747911853
+    second: WizardKing_SpellRain.png_24
+  - first:
+      213: -6753690921525677774
+    second: WizardKing_SpellRain.png_25
+  - first:
+      213: 5707515176910148547
+    second: WizardKing_SpellRain.png_26
+  - first:
+      213: -8586074229516174505
+    second: WizardKing_SpellRain.png_27
+  - first:
+      213: 5485197838426888098
+    second: WizardKing_SpellRain.png_28
+  - first:
+      213: 7466812861631052555
+    second: WizardKing_SpellRain.png_29
+  - first:
+      213: -8345379418589835107
+    second: WizardKing_SpellRain.png_30
+  - first:
+      213: -1981636266574889703
+    second: WizardKing_SpellRain.png_31
+  - first:
+      213: 6017522726770492800
+    second: WizardKing_SpellRain.png_32
+  - first:
+      213: -8340139782191748665
+    second: WizardKing_SpellRain.png_33
+  - first:
+      213: -1222865205293558915
+    second: WizardKing_SpellRain.png_34
+  - first:
+      213: 6575823152480633388
+    second: WizardKing_SpellRain.png_35
+  - first:
+      213: -3880992643964959776
+    second: WizardKing_SpellRain.png_36
+  - first:
+      213: -6557240579246905640
+    second: WizardKing_SpellRain.png_37
+  - first:
+      213: 7257411199073791551
+    second: WizardKing_SpellRain.png_38
+  - first:
+      213: 9050184875870876232
+    second: WizardKing_SpellRain.png_39
+  - first:
+      213: -9151883618371078850
+    second: WizardKing_SpellRain.png_40
+  - first:
+      213: 3403559089687603421
+    second: WizardKing_SpellRain.png_41
+  - first:
+      213: 6990913321138563904
+    second: WizardKing_SpellRain.png_42
+  - first:
+      213: 2203857580312437137
+    second: WizardKing_SpellRain.png_43
+  - first:
+      213: 55266545054249038
+    second: WizardKing_SpellRain.png_44
+  - first:
+      213: 1966457541704301094
+    second: WizardKing_SpellRain.png_45
+  - first:
+      213: 4629817217693418041
+    second: WizardKing_SpellRain.png_46
+  - first:
+      213: -4019249376484035645
+    second: WizardKing_SpellRain.png_47
+  - first:
+      213: 4565630900360916427
+    second: WizardKing_SpellRain.png_48
+  - first:
+      213: 3965332521845416028
+    second: WizardKing_SpellRain.png_49
+  - first:
+      213: -4711952573767813988
+    second: WizardKing_SpellRain.png_50
+  - first:
+      213: 4532308018243457940
+    second: WizardKing_SpellRain.png_51
+  - first:
+      213: -8251685259577321829
+    second: WizardKing_SpellRain.png_52
+  - first:
+      213: -2220651353842155286
+    second: WizardKing_SpellRain.png_53
+  - first:
+      213: 7571105374758622995
+    second: WizardKing_SpellRain.png_54
+  - first:
+      213: 8935129126113200884
+    second: WizardKing_SpellRain.png_55
+  - first:
+      213: -4260469103882076271
+    second: WizardKing_SpellRain.png_56
+  - first:
+      213: -8498083702660952436
+    second: WizardKing_SpellRain.png_57
+  - first:
+      213: -2241421597711873458
+    second: WizardKing_SpellRain.png_58
+  - first:
+      213: 8070015194561284405
+    second: WizardKing_SpellRain.png_59
+  - first:
+      213: 1664718205557635365
+    second: WizardKing_SpellRain.png_60
+  - first:
+      213: -773278118909370193
+    second: WizardKing_SpellRain.png_61
+  - first:
+      213: -151364198780608158
+    second: WizardKing_SpellRain.png_62
+  - first:
+      213: -8908438415205321173
+    second: WizardKing_SpellRain.png_63
+  - first:
+      213: 8520660340660441252
+    second: WizardKing_SpellRain.png_64
+  - first:
+      213: -6426552497997741685
+    second: WizardKing_SpellRain.png_65
+  - first:
+      213: -7794209047289266589
+    second: WizardKing_SpellRain.png_66
+  - first:
+      213: 1279818326989549780
+    second: WizardKing_SpellRain.png_67
+  - first:
+      213: 2409144955087520320
+    second: WizardKing_SpellRain.png_68
+  - first:
+      213: -509237556456040383
+    second: WizardKing_SpellRain.png_69
+  - first:
+      213: -2485836334796630867
+    second: WizardKing_SpellRain.png_70
+  - first:
+      213: 7500897556460536057
+    second: WizardKing_SpellRain.png_71
+  - first:
+      213: -7113620123818455165
+    second: WizardKing_SpellRain.png_72
+  - first:
+      213: -6239467023797672141
+    second: WizardKing_SpellRain.png_73
+  - first:
+      213: 693154068968028458
+    second: WizardKing_SpellRain.png_74
+  - first:
+      213: 4936515296849636183
+    second: WizardKing_SpellRain.png_75
+  - first:
+      213: -5762781990240962218
+    second: WizardKing_SpellRain.png_76
+  - first:
+      213: 1848016198716634167
+    second: WizardKing_SpellRain.png_77
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 724
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ab32a7e4cc74fc80800000000000000
+      internalID: -8289863828940637271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_1
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 724
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a8696f2e1db88ce0800000000000000
+      internalID: -1402663346583803742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_2
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 724
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0608b8c38406d75f0800000000000000
+      internalID: -757343298958688160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_3
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 724
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4116101e077c4b6a0800000000000000
+      internalID: -6434298679980367596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 362
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e63e1899843682b0800000000000000
+      internalID: -5582716922511870233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_5
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 362
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 738823708bd79cd20800000000000000
+      internalID: 3299306431373805623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_6
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 362
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 249c4728cb8f23a30800000000000000
+      internalID: 4193687691561584962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_7
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 362
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aa7c429f94f137c0800000000000000
+      internalID: -4093221620111607135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc6a462e9f6c4fff0800000000000000
+      internalID: -3158923173124404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_9
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 0
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc19933b85f0f1160800000000000000
+      internalID: 6998329219595473357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_10
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 0
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a58708d6f121efdd0800000000000000
+      internalID: -2450501221052549030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WizardKing_SpellRain.png_11
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 0
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cd3cb0c43c41b0f0800000000000000
+      internalID: -1103016644273488441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a48ea0d30356c6a4285e52f7ca251635
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":362.0,"y":362.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      WizardKing_SpellRain.png_0: -8289863828940637271
+      WizardKing_SpellRain.png_1: -1402663346583803742
+      WizardKing_SpellRain.png_10: -2450501221052549030
+      WizardKing_SpellRain.png_11: -1103016644273488441
+      WizardKing_SpellRain.png_2: -757343298958688160
+      WizardKing_SpellRain.png_3: -6434298679980367596
+      WizardKing_SpellRain.png_4: -5582716922511870233
+      WizardKing_SpellRain.png_5: 3299306431373805623
+      WizardKing_SpellRain.png_6: 4193687691561584962
+      WizardKing_SpellRain.png_7: -4093221620111607135
+      WizardKing_SpellRain.png_8: -3158923173124404
+      WizardKing_SpellRain.png_9: 6998329219595473357
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
