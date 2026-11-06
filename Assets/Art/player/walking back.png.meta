@@ -1,0 +1,444 @@
+fileFormatVersion: 2
+guid: 2c0df104718c3e743843494134681b40
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6148579534936088468
+    second: walking back_0
+  - first:
+      213: -8526371884128767897
+    second: walking back_1
+  - first:
+      213: 5118802908634305811
+    second: walking back_2
+  - first:
+      213: 3703551816805273839
+    second: walking back_3
+  - first:
+      213: 7244909904016393662
+    second: walking back_4
+  - first:
+      213: -7719644119578091980
+    second: walking back_5
+  - first:
+      213: 5304815346740892823
+    second: walking back_6
+  - first:
+      213: 4518117700314859860
+    second: walking back_7
+  - first:
+      213: -3811851386991090130
+    second: walking back_8
+  - first:
+      213: 5855089315946976380
+    second: walking back_9
+  - first:
+      213: -4028607116089309441
+    second: walking back_10
+  - first:
+      213: -6768278398405074133
+    second: walking back_11
+  - first:
+      213: 2602676093370705670
+    second: walking back_12
+  - first:
+      213: 6232778415281590065
+    second: walking back_13
+  - first:
+      213: -2431719924679212245
+    second: walking back_14
+  - first:
+      213: -1089223606856587507
+    second: walking back_15
+  - first:
+      213: -389014002092771918
+    second: walking back_16
+  - first:
+      213: -8528727085256138125
+    second: walking back_17
+  - first:
+      213: 9077514753163495621
+    second: walking back_18
+  - first:
+      213: 5315033623782302684
+    second: walking back_19
+  - first:
+      213: -6744347218591771521
+    second: walking back_20
+  - first:
+      213: 3053628767040471860
+    second: walking back_21
+  - first:
+      213: -2711312703005424297
+    second: walking back_22
+  - first:
+      213: 1727386955176774670
+    second: walking back_23
+  - first:
+      213: 6583485944149913523
+    second: walking back_24
+  - first:
+      213: 6310419430508036427
+    second: walking back_25
+  - first:
+      213: 7303069316071023362
+    second: walking back_26
+  - first:
+      213: -8054627807719692026
+    second: walking back_27
+  - first:
+      213: 2760573605105760726
+    second: walking back_28
+  - first:
+      213: 4278819392367497422
+    second: walking back_29
+  - first:
+      213: 7012868466086410772
+    second: walking back_30
+  - first:
+      213: 6402884244888406812
+    second: walking back_31
+  - first:
+      213: -543341117334681149
+    second: walking back_32
+  - first:
+      213: -1969804432603852159
+    second: walking back_33
+  - first:
+      213: 7407995545832302809
+    second: walking back_34
+  - first:
+      213: 5475654709625232057
+    second: walking back_35
+  - first:
+      213: -3788144840177252625
+    second: walking back_36
+  - first:
+      213: 8120989350867228009
+    second: walking back_37
+  - first:
+      213: -6404405281468680139
+    second: walking back_38
+  - first:
+      213: -6058893413740864619
+    second: walking back_39
+  - first:
+      213: -811306261744015546
+    second: walking back_40
+  - first:
+      213: 8477440645875328386
+    second: walking back_41
+  - first:
+      213: -3775418072939988311
+    second: walking back_42
+  - first:
+      213: 538240881126108819
+    second: walking back_43
+  - first:
+      213: 4700982162994375787
+    second: walking back_44
+  - first:
+      213: 350478453984640678
+    second: walking back_45
+  - first:
+      213: -8090954543654542470
+    second: walking back_46
+  - first:
+      213: -1399221184177604041
+    second: walking back_47
+  - first:
+      213: 5663114069216147373
+    second: walking back_48
+  - first:
+      213: 1940488396521077004
+    second: walking back_49
+  - first:
+      213: -8004212403761283782
+    second: walking back_50
+  - first:
+      213: -1286661387449372536
+    second: walking back_51
+  - first:
+      213: -2650032247790843971
+    second: walking back_52
+  - first:
+      213: 8976406597189360851
+    second: walking back_53
+  - first:
+      213: -6258020553743017800
+    second: walking back_54
+  - first:
+      213: 598640040189693738
+    second: walking back_55
+  - first:
+      213: 5527650396894308730
+    second: walking back_56
+  - first:
+      213: 6439913002338001813
+    second: walking back_57
+  - first:
+      213: 6495399784984169180
+    second: walking back_58
+  - first:
+      213: -7445673430947155272
+    second: walking back_59
+  - first:
+      213: -3505737692430670725
+    second: walking back_60
+  - first:
+      213: -4405493944716197436
+    second: walking back_61
+  - first:
+      213: 3793504709910617638
+    second: walking back_62
+  - first:
+      213: -8418733431143295845
+    second: walking back_63
+  - first:
+      213: -1485803661149654593
+    second: walking back_64
+  - first:
+      213: 3176502290097829470
+    second: walking back_65
+  - first:
+      213: -5398885484673113621
+    second: walking back_66
+  - first:
+      213: 2781829468418330030
+    second: walking back_67
+  - first:
+      213: -3589328819279238226
+    second: walking back_68
+  - first:
+      213: -343819741516051418
+    second: walking back_69
+  - first:
+      213: -8008233409170762417
+    second: walking back_70
+  - first:
+      213: -1237984942093920667
+    second: walking back_71
+  - first:
+      213: -1023515539871542461
+    second: walking back_72
+  - first:
+      213: -5865066798348132228
+    second: walking back_73
+  - first:
+      213: -660665068271494863
+    second: walking back_74
+  - first:
+      213: 9079888024575674248
+    second: walking back_75
+  - first:
+      213: -5089292851790559769
+    second: walking back_76
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: walking back_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49f1a1da284245550800000000000000
+      internalID: 6148579534936088468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walking back_1
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76070af22fd3ca980800000000000000
+      internalID: -8526371884128767897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walking back_2
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3155264ff14a90740800000000000000
+      internalID: 5118802908634305811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walking back_3
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe05eef41c8a56330800000000000000
+      internalID: 3703551816805273839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ddf5344c37b4ff94096e0fa9374d961c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":543.0,"y":724.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      walking back_0: 6148579534936088468
+      walking back_1: -8526371884128767897
+      walking back_2: 5118802908634305811
+      walking back_3: 3703551816805273839
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
