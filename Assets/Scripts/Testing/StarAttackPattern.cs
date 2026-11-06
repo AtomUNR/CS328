@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Rains animated stars into the dodge arena. Each star picks a slight
-/// horizontal drift when it spawns, then keeps that path so players can
-/// dodge it predictably.
+/// horizontal drift when it spawns, then bursts outward near the bottom.
 /// </summary>
 public sealed class StarAttackPattern : EnemyAttackPattern
 {
@@ -22,6 +21,10 @@ public sealed class StarAttackPattern : EnemyAttackPattern
     [SerializeField, Min(0f)] private float horizontalDrift = 90f;
     [SerializeField, Range(1, 200)] private int maxStars = 120;
 
+    [Header("Explosion")]
+    [SerializeField, Min(1f)] private float explosionRadius = 44f;
+    [SerializeField, Min(0.05f)] private float explosionDuration = 0.55f;
+
     private sealed class Star
     {
         public RectTransform Rect;
@@ -29,6 +32,8 @@ public sealed class StarAttackPattern : EnemyAttackPattern
         public Vector2 Position;
         public Vector2 Direction;
         public float AnimationTime;
+        public float ExplosionElapsed;
+        public bool IsExploding;
     }
 
     private readonly List<Star> stars = new List<Star>();
@@ -68,47 +73,139 @@ public sealed class StarAttackPattern : EnemyAttackPattern
 
         float bottom = -arena.rect.height * 0.5f;
         float halfWidth = arena.rect.width * 0.5f;
-        float combinedRadius = starRadius + essenceRadius;
-        float combinedRadiusSquared = combinedRadius * combinedRadius;
+        float burstRadius = Mathf.Max(starRadius, explosionRadius);
+        float detonationY = bottom + Mathf.Min(
+            burstRadius,
+            arena.rect.height * 0.25f);
 
         for (int i = stars.Count - 1; i >= 0; i--)
         {
             Star star = stars[i];
+
+            if (star.IsExploding)
+            {
+                if (UpdateExplosion(
+                    star,
+                    deltaTime,
+                    essenceBefore,
+                    essenceAfter,
+                    essenceRadius,
+                    burstRadius))
+                {
+                    owner.TryTakeHit();
+                    RemoveStar(i);
+                }
+                else if (star.ExplosionElapsed >=
+                         Mathf.Max(0.05f, explosionDuration))
+                {
+                    RemoveStar(i);
+                }
+
+                continue;
+            }
+
             Vector2 before = star.Position;
-            Vector2 after = before + star.Direction * fallSpeed * deltaTime;
+            Vector2 after = before +
+                star.Direction * fallSpeed * deltaTime;
+
+            // Swept collision while the star is falling.
+            Vector2 relativeBefore = before - essenceBefore;
+            Vector2 relativeAfter = after - essenceAfter;
+            float fallingCollisionRadius = starRadius + essenceRadius;
+
+            bool hitWhileFalling = DistanceToSegmentSquared(
+                relativeBefore,
+                relativeAfter) <=
+                fallingCollisionRadius * fallingCollisionRadius;
+
+            if (hitWhileFalling)
+            {
+                owner.TryTakeHit();
+                RemoveStar(i);
+                continue;
+            }
 
             star.Position = after;
             star.Rect.anchoredPosition = after;
 
-            if (starFrames != null && starFrames.Length > 0)
+            if (after.y <= detonationY)
             {
-                star.AnimationTime += deltaTime;
-                int frame = Mathf.FloorToInt(
-                    star.AnimationTime * Mathf.Max(1f, framesPerSecond))
-                    % starFrames.Length;
-                star.Image.sprite = starFrames[frame];
+                // Stop near the floor and expand from this point.
+                star.Position = new Vector2(after.x, detonationY);
+                star.Rect.anchoredPosition = star.Position;
+                star.IsExploding = true;
+                star.ExplosionElapsed = 0f;
+                continue;
             }
 
-            // Compare movement relative to the player so fast motion cannot
-            // skip through the collision check between frames.
-            Vector2 relativeBefore = before - essenceBefore;
-            Vector2 relativeAfter = after - essenceAfter;
-
-            bool hit = DistanceToSegmentSquared(
-                relativeBefore,
-                relativeAfter) <= combinedRadiusSquared;
-
-            if (hit)
-            {
-                owner.TryTakeHit();
-                RemoveStar(i);
-            }
-            else if (after.y < bottom - starRadius * 2f ||
-                     Mathf.Abs(after.x) > halfWidth + starRadius * 2f)
+            if (Mathf.Abs(after.x) > halfWidth + starRadius * 2f)
             {
                 RemoveStar(i);
+                continue;
             }
+
+            AnimateStar(star, deltaTime);
         }
+    }
+
+    private bool UpdateExplosion(
+        Star star,
+        float deltaTime,
+        Vector2 essenceBefore,
+        Vector2 essenceAfter,
+        float essenceRadius,
+        float burstRadius)
+    {
+        float duration = Mathf.Max(0.05f, explosionDuration);
+        float previousProgress = Mathf.Clamp01(
+            star.ExplosionElapsed / duration);
+
+        star.ExplosionElapsed += deltaTime;
+
+        float progress = Mathf.Clamp01(
+            star.ExplosionElapsed / duration);
+
+        float currentRadius = Mathf.Lerp(
+            starRadius,
+            burstRadius,
+            progress);
+
+        star.Rect.sizeDelta = Vector2.one * currentRadius * 2f;
+        star.Rect.anchoredPosition = star.Position;
+
+        Color color = starColor;
+        color.a = 1f - progress;
+        star.Image.color = color;
+
+        AnimateStar(star, deltaTime);
+
+        // The growing circle damages the player anywhere inside its
+        // current radius. Relative movement keeps fast dodges detectable.
+        Vector2 relativeBefore = star.Position - essenceBefore;
+        Vector2 relativeAfter = star.Position - essenceAfter;
+        float collisionRadius = currentRadius + essenceRadius;
+
+        bool hit = DistanceToSegmentSquared(
+            relativeBefore,
+            relativeAfter) <= collisionRadius * collisionRadius;
+
+        // Keep the previous progress read here so each frame advances
+        // the expansion by the elapsed time, including a large frame step.
+        return hit && progress >= previousProgress;
+    }
+
+    private void AnimateStar(Star star, float deltaTime)
+    {
+        if (starFrames == null || starFrames.Length == 0)
+            return;
+
+        star.AnimationTime += deltaTime;
+
+        int frame = Mathf.FloorToInt(
+            star.AnimationTime * Mathf.Max(1f, framesPerSecond))
+            % starFrames.Length;
+
+        star.Image.sprite = starFrames[frame];
     }
 
     private void SpawnStar()
