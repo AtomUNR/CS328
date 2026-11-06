@@ -106,11 +106,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 362
-        width: 362
-        height: 362
+        y: 0
+        width: 2172
+        height: 724
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -123,253 +123,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: "Tower Guardian\u2019s Forward Spear Thrust_1"
-      rect:
-        serializedVersion: 2
-        x: 362
-        y: 362
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 524e838b58307e0499c25506f2592453
-      internalID: -1459698170
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Tower Guardian\u2019s Forward Spear Thrust_2"
-      rect:
-        serializedVersion: 2
-        x: 724
-        y: 362
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d25c16ee1b36b784f9e4289962accd27
-      internalID: 416213117
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Tower Guardian\u2019s Forward Spear Thrust_3"
-      rect:
-        serializedVersion: 2
-        x: 1086
-        y: 362
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 004deec33833dcb4ba28b2ee89bc0556
-      internalID: 1307367044
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Tower Guardian\u2019s Forward Spear Thrust_4"
-      rect:
-        serializedVersion: 2
-        x: 1448
-        y: 362
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9cbacd0d5f33acd45a65fde0918f2ae5
-      internalID: 1761518904
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Tower Guardian\u2019s Forward Spear Thrust_5"
-      rect:
-        serializedVersion: 2
-        x: 1810
-        y: 362
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0fa7d1d489504fb4b923074b8f6f02ce
-      internalID: 338080911
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Tower Guardian\u2019s Forward Spear Thrust_6"
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0207971bdb9590f4a8af11403b157a95
-      internalID: 1999260132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Tower Guardian\u2019s Forward Spear Thrust_7"
-      rect:
-        serializedVersion: 2
-        x: 362
-        y: 0
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 374a8fb2ec7833d498c2f50d302b8369
-      internalID: 1192011871
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Tower Guardian\u2019s Forward Spear Thrust_8"
-      rect:
-        serializedVersion: 2
-        x: 724
-        y: 0
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a22ae05a45945042855ad28f97b06f0
-      internalID: 301427670
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Tower Guardian\u2019s Forward Spear Thrust_9"
-      rect:
-        serializedVersion: 2
-        x: 1086
-        y: 0
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6348f1bcc809c004395a32e95fc3c724
-      internalID: -1481907408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Tower Guardian\u2019s Forward Spear Thrust_10"
-      rect:
-        serializedVersion: 2
-        x: 1448
-        y: 0
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5058cb0be3e5e8b46a6cace0ae88cb66
-      internalID: 835380667
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Tower Guardian\u2019s Forward Spear Thrust_11"
-      rect:
-        serializedVersion: 2
-        x: 1810
-        y: 0
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42c70d3824307f045977d7cc8d256cb8
-      internalID: -156928297
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d095654cc94a59e4aa3b7c2037d2999b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -377,22 +135,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":362.0,"y":362.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
       "Tower Guardian\u2019s Forward Spear Thrust_0": -8206595458414114435
-      "Tower Guardian\u2019s Forward Spear Thrust_1": -1459698170
-      "Tower Guardian\u2019s Forward Spear Thrust_10": 835380667
-      "Tower Guardian\u2019s Forward Spear Thrust_11": -156928297
-      "Tower Guardian\u2019s Forward Spear Thrust_2": 416213117
-      "Tower Guardian\u2019s Forward Spear Thrust_3": 1307367044
-      "Tower Guardian\u2019s Forward Spear Thrust_4": 1761518904
-      "Tower Guardian\u2019s Forward Spear Thrust_5": 338080911
-      "Tower Guardian\u2019s Forward Spear Thrust_6": 1999260132
-      "Tower Guardian\u2019s Forward Spear Thrust_7": 1192011871
-      "Tower Guardian\u2019s Forward Spear Thrust_8": 301427670
-      "Tower Guardian\u2019s Forward Spear Thrust_9": -1481907408
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
