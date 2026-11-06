@@ -386,8 +386,17 @@ public class BattleManager : MonoBehaviour
         );
         return;
     }
+        //animation script made with chatGPT
+        Animator monsterAnimator = monster.GetComponent<Animator>();
 
-    if (!dodgePhase.BeginPhase(attack, monster.BattleSprite, player.Stats)){ return; } 
+        if (monsterAnimator != null)
+        {
+            monsterAnimator.enabled = true;
+            monsterAnimator.Rebind();
+            monsterAnimator.Play("Guardian_Spear_Thrust_12", 0, 0f);
+        }
+
+        if (!dodgePhase.BeginPhase(attack, monster.BattleSprite, player.Stats)){ return; } 
 
     state = BattleState.Dodging;
     lastTransitionFrame = Time.frameCount;
