@@ -24,12 +24,6 @@ MonoBehaviour:
   - {fileID: 1582917743957773735, guid: e9310df285125b74b914ac28b5589b5a, type: 3}
   - {fileID: -2710125511733751928, guid: ebe6042a6165a134b891be11c5e49e63, type: 3}
   - {fileID: -2594762806538466579, guid: 837a7b8ae1f8c2e4999c4e43da2ba718, type: 3}
-  - {fileID: 7574826340182185045, guid: b3b8470e337a05945816709e5bd95472, type: 3}
-  - {fileID: -7255013793016944607, guid: 1f075c3160d506d4c9d38ea4eda2ed3b, type: 3}
-  - {fileID: 2758301769739756496, guid: 40ba4f73e9b6dbe439fe78e4a535e1f7, type: 3}
-  - {fileID: 8833946633570979333, guid: 98c4d75dbbcff334993311de1be5751a, type: 3}
-  - {fileID: 8442116528215261392, guid: 61397676ad7367f4c91038943beb5d57, type: 3}
-  - {fileID: -3358801592115557277, guid: b8ce61f0dcf0d89429039520755633ef, type: 3}
   framesPerSecond: 8
   loopAnimation: 1
   windUpDuration: 0.75
