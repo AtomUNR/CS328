@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -7,7 +8,7 @@ public sealed class TowerEntranceTransition : MonoBehaviour
     [Header("Player in this scene")]
     [SerializeField] private Rigidbody2D playerBody;
     [SerializeField] private Collider2D playerCollider;
-    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerInput playerInput;
     [SerializeField] private CharacterStats playerStats;
 
     [Header("Unlock after guard victory")]
@@ -31,7 +32,7 @@ public sealed class TowerEntranceTransition : MonoBehaviour
     {
         entrance = GetComponent<BoxCollider2D>();
         entrance.isTrigger = true;
-        if (playerBody == null || playerCollider == null || playerMovement == null ||
+        if (playerBody == null || playerCollider == null || playerInput == null ||
             playerStats == null || guard == null || battleManager == null ||
             exteriorBlocker == null || interiorSpawn == null || interiorBackground == null ||
             cameraFollow == null || interiorBlocker == null)
@@ -42,7 +43,7 @@ public sealed class TowerEntranceTransition : MonoBehaviour
         }
         if (exteriorBlocker == entrance || interiorBlocker == entrance ||
             exteriorBlocker == interiorBlocker || playerCollider.attachedRigidbody != playerBody ||
-            playerStats.gameObject != playerBody.gameObject || playerMovement.gameObject != playerBody.gameObject)
+            playerStats.gameObject != playerBody.gameObject || playerInput.gameObject != playerBody.gameObject)
         {
             Debug.LogError("Tower entrance: use separate entrance/blocker colliders and components belonging to the same player.", this);
             enabled = false;
@@ -68,7 +69,7 @@ public sealed class TowerEntranceTransition : MonoBehaviour
     private void FixedUpdate()
     {
         if (!unlocked || used || battleManager.IsInBattle || Time.timeScale <= 0f ||
-            !playerMovement.isActiveAndEnabled || playerStats.CurrentHP <= 0 ||
+            !playerInput.isActiveAndEnabled || playerStats.CurrentHP <= 0 ||
             !entrance.enabled || !playerCollider.enabled ||
             !playerBody.gameObject.activeInHierarchy) return;
         ColliderDistance2D overlap = entrance.Distance(playerCollider);
