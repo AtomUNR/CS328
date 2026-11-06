@@ -165,20 +165,20 @@ MonoBehaviour:
   attacks:
   - {fileID: 11400000, guid: fecc40dcc89dcbb48a1bab0ee08a0fff, type: 2}
   - {fileID: 11400000, guid: d686204984a4f5f4d80b9172968ea085, type: 2}
-  xpReward: 25
-  moneyReward: 10
+  xpReward: 500
+  moneyReward: 200
   lowHealthThreshold: 0.25
   normalDialogue:
-  - '* A tower guardian blocks your path.'
-  - '* The guardian tightens its grip on its spear.'
-  - '* The guardian watches your every move.'
+  - '* you made it this far get ready to fall'
+  - '*the wizard is gathering mana'
+  - '* The wizard watches your every move.'
   lowHealthDialogue:
-  - '* The guardian staggers.'
-  - '* Its shield trembles, but it stands firm.'
-  - '* The guardian refuses to surrender.'
+  - '* The wizard staggers.'
+  - '* he tightens his grip on his staff '
+  - '* The wizard refuses to surrender.'
   defeatedDialogue:
-  - '* The guardian falls to its knees.'
-  - '* Its spear clatters against the floor.'
+  - '* The wizard falls to its knees.'
+  - '* Its staff clatters against the floor.'
 --- !u!114 &776378079197100749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,5 +206,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5a12ea586c4a644a35e042f428a9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  maxHP: 50
+  maxHP: 30
   MPmax: 100
