@@ -712,8 +712,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 246472659}
   mapBackground: {fileID: 980036841}
-  horizontalDeadZone: 0.3
-  verticalDeadZone: 0.3
+  horizontalDeadZone: 0
+  verticalDeadZone: 0
 --- !u!1 &1349641873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,11 +1504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6262359121941518836, guid: e937e60e58b40ec48b6477c32ac020d7, type: 3}
       propertyPath: m_Size.y
-      value: 1.4309812
+      value: 0.6096277
       objectReference: {fileID: 0}
     - target: {fileID: 6262359121941518836, guid: e937e60e58b40ec48b6477c32ac020d7, type: 3}
       propertyPath: m_Offset.y
-      value: -0.098632574
+      value: 0.31204414
       objectReference: {fileID: 0}
     - target: {fileID: 6262359121941518836, guid: e937e60e58b40ec48b6477c32ac020d7, type: 3}
       propertyPath: m_IsTrigger
