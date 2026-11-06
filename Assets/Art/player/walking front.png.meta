@@ -1,0 +1,345 @@
+fileFormatVersion: 2
+guid: 5828d1dc204396c42814c7bac8e83723
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1274058195047821029
+    second: walking front_0
+  - first:
+      213: -1817227045470896140
+    second: walking front_1
+  - first:
+      213: 7346328957376452836
+    second: walking front_2
+  - first:
+      213: 8702941756755389181
+    second: walking front_3
+  - first:
+      213: 4097308923872030425
+    second: walking front_4
+  - first:
+      213: 4694692967376896604
+    second: walking front_5
+  - first:
+      213: 3273716411588971891
+    second: walking front_6
+  - first:
+      213: 945657276508517213
+    second: walking front_7
+  - first:
+      213: -8371811225110986272
+    second: walking front_8
+  - first:
+      213: -560569579969948772
+    second: walking front_9
+  - first:
+      213: -66770734478581525
+    second: walking front_10
+  - first:
+      213: 6239567238960173718
+    second: walking front_11
+  - first:
+      213: 4610167462590140231
+    second: walking front_12
+  - first:
+      213: -5147153373541499059
+    second: walking front_13
+  - first:
+      213: -318175601385310974
+    second: walking front_14
+  - first:
+      213: -8722940029127552663
+    second: walking front_15
+  - first:
+      213: -2153779092137673067
+    second: walking front_16
+  - first:
+      213: 4656713515254661457
+    second: walking front_17
+  - first:
+      213: 820655267752064585
+    second: walking front_18
+  - first:
+      213: 9218275894384259071
+    second: walking front_19
+  - first:
+      213: -976294911707900737
+    second: walking front_20
+  - first:
+      213: 6839161974644742534
+    second: walking front_21
+  - first:
+      213: 5492769882197648059
+    second: walking front_22
+  - first:
+      213: 5737169729468698972
+    second: walking front_23
+  - first:
+      213: 5108649469933465898
+    second: walking front_24
+  - first:
+      213: -789979740979674049
+    second: walking front_25
+  - first:
+      213: -6083986263012888453
+    second: walking front_26
+  - first:
+      213: -7032174612942399531
+    second: walking front_27
+  - first:
+      213: 3606821385638554956
+    second: walking front_28
+  - first:
+      213: 1182349941820403176
+    second: walking front_29
+  - first:
+      213: -3017187259960964497
+    second: walking front_30
+  - first:
+      213: -122004713102473091
+    second: walking front_31
+  - first:
+      213: -9142596822114906754
+    second: walking front_32
+  - first:
+      213: -6323239970232241215
+    second: walking front_33
+  - first:
+      213: -7933275443284952126
+    second: walking front_34
+  - first:
+      213: 8922392478382925744
+    second: walking front_35
+  - first:
+      213: -3008722086005825516
+    second: walking front_36
+  - first:
+      213: -8999310979649706766
+    second: walking front_37
+  - first:
+      213: 4782539955465089321
+    second: walking front_38
+  - first:
+      213: -4543576379312800569
+    second: walking front_39
+  - first:
+      213: -379964688862757916
+    second: walking front_40
+  - first:
+      213: 885816708582672287
+    second: walking front_41
+  - first:
+      213: -6962849630881692394
+    second: walking front_42
+  - first:
+      213: -7357166410871118838
+    second: walking front_43
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: walking front_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ee200b9d2d5ea110800000000000000
+      internalID: 1274058195047821029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walking front_1
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ff797651a9e7c6e0800000000000000
+      internalID: -1817227045470896140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walking front_2
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e8d693a34763f560800000000000000
+      internalID: 7346328957376452836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walking front_3
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfaa158ea6f07c870800000000000000
+      internalID: 8702941756755389181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0dc65150d36d7154f8861aaac1ba6f1c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":543.0,"y":724.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      walking front_0: 1274058195047821029
+      walking front_1: -1817227045470896140
+      walking front_2: 7346328957376452836
+      walking front_3: 8702941756755389181
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
