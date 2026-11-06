@@ -165,6 +165,7 @@ MonoBehaviour:
   attacks:
   - {fileID: 11400000, guid: fecc40dcc89dcbb48a1bab0ee08a0fff, type: 2}
   - {fileID: 11400000, guid: d686204984a4f5f4d80b9172968ea085, type: 2}
+  - {fileID: 11400000, guid: 001b4c5c356306742b75949ddcf99ee1, type: 2}
   xpReward: 500
   moneyReward: 200
   lowHealthThreshold: 0.25
