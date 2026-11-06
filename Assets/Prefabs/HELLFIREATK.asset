@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2332ee319538f479fcbc9f8fe380dd, type: 3}
+  m_Name: HELLFIREATK
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackData
+  attackName: New Attack
+  animationFrames:
+  - {fileID: -3101004988876853917, guid: 1e994a61cd14ac64d83ad3839386888f, type: 3}
+  - {fileID: 6622187859784690628, guid: 0e2371d040fbba342a9fa9a8fdfe58a7, type: 3}
+  - {fileID: 6484646615401356032, guid: 17ae4687c6bcd324b8741df539074dbf, type: 3}
+  - {fileID: 5705316902939561382, guid: 10d3eda1062bc5244bd6bcc14e0cc9ab, type: 3}
+  - {fileID: 8597694907398684207, guid: 5e5fe1b2ebf1a7a4e91817908162cb84, type: 3}
+  - {fileID: 2043096388938798109, guid: c32b8d54918974b49bd42349dfe1196c, type: 3}
+  - {fileID: -591826809768128085, guid: fe8f42a91264f6543bc649121a791fb3, type: 3}
+  - {fileID: 1582917743957773735, guid: e9310df285125b74b914ac28b5589b5a, type: 3}
+  - {fileID: -2710125511733751928, guid: ebe6042a6165a134b891be11c5e49e63, type: 3}
+  - {fileID: -2594762806538466579, guid: 837a7b8ae1f8c2e4999c4e43da2ba718, type: 3}
+  - {fileID: 7574826340182185045, guid: b3b8470e337a05945816709e5bd95472, type: 3}
+  - {fileID: -7255013793016944607, guid: 1f075c3160d506d4c9d38ea4eda2ed3b, type: 3}
+  - {fileID: 2758301769739756496, guid: 40ba4f73e9b6dbe439fe78e4a535e1f7, type: 3}
+  - {fileID: 8833946633570979333, guid: 98c4d75dbbcff334993311de1be5751a, type: 3}
+  - {fileID: 8442116528215261392, guid: 61397676ad7367f4c91038943beb5d57, type: 3}
+  - {fileID: -3358801592115557277, guid: b8ce61f0dcf0d89429039520755633ef, type: 3}
+  framesPerSecond: 8
+  loopAnimation: 1
+  windUpDuration: 0.75
+  activeDuration: 6
+  recoveryDuration: 0.5
+  damagePerHit: 5
+  patternPrefab: {fileID: 5846945145350315857, guid: 8efd219c935fee6438c4d8cd70f208ea, type: 3}
