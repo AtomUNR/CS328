@@ -50,7 +50,8 @@ public class BattleInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (battleManager.IsInBattle || monster.IsDefeated)
+        if (battleManager == null || player == null || monster == null ||
+            battleManager.IsInBattle || monster.IsDefeated || Time.timeScale == 0f)
             return;
 
         nearbyPlayerColliders.RemoveWhere(
@@ -60,6 +61,15 @@ public class BattleInteraction : MonoBehaviour
         );
 
         if (nearbyPlayerColliders.Count == 0 || Keyboard.current == null)
+            return;
+
+        ExplorationInventoryMenu inventoryMenu = player.GetComponent<ExplorationInventoryMenu>();
+        if (inventoryMenu != null && inventoryMenu.IsOpen)
+            return;
+
+        // Give inventory open/close priority even if both keys arrive this frame.
+        // This avoids depending on which component's Update runs first.
+        if (Keyboard.current.cKey.wasPressedThisFrame || Keyboard.current.xKey.wasPressedThisFrame)
             return;
 
         if (Keyboard.current.zKey.wasPressedThisFrame)

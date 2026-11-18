@@ -175,6 +175,7 @@ public sealed class BattleHudController : MonoBehaviour
                 (selectedIndex + direction + Commands.Length)
                 % Commands.Length;
 
+            BattleTowerAudio.Play(TowerSound.MenuMove);
             RefreshCommandHighlight();
         }
 

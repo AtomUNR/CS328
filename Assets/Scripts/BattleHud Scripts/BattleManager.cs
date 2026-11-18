@@ -30,6 +30,9 @@ public class BattleManager : MonoBehaviour
     private Player player;
     private Monster monster;
     private PlayerMovement playerMovement;
+    private CharacterMovement characterMovement;
+    private Rigidbody2D explorationBody;
+    private bool characterMovementWasEnabled;
     private PlayerInventory inventory;
     private int selectedItemIndex;
     private float nextDodgeSpeedMultiplier = 1f;
@@ -113,19 +116,21 @@ public class BattleManager : MonoBehaviour
         PlayerMovement movement =
             newPlayer.GetComponent<PlayerMovement>();
 
-        if (movement == null)
+        CharacterMovement animatedMovement = newPlayer.GetComponent<CharacterMovement>();
+        if (movement == null && animatedMovement == null)
         {
             Debug.LogError(
-                "The Player needs PlayerMovement.",
+                "The Player needs CharacterMovement or PlayerMovement.",
                 newPlayer
             );
 
             return false;
         }
 
-        // Release the inventory movement lock before battle captures movement state.
+        // Inventory owns input until closed; do not start an encounter through it.
         ExplorationInventoryMenu explorationInventory = newPlayer.GetComponent<ExplorationInventoryMenu>();
-        if (explorationInventory != null) explorationInventory.CloseMenu();
+        if (explorationInventory != null && explorationInventory.IsOpen)
+            return false;
 
         inventory = newPlayer.GetComponent<PlayerInventory>();
         nextDodgeSpeedMultiplier = 1f;
@@ -133,8 +138,13 @@ public class BattleManager : MonoBehaviour
         monster = newMonster;
         playerMovement = movement;
 
-        movementWasEnabled = playerMovement.enabled;
-        playerMovement.enabled = false;
+        characterMovement = animatedMovement;
+        explorationBody = newPlayer.GetComponent<Rigidbody2D>();
+        movementWasEnabled = playerMovement != null && playerMovement.enabled;
+        characterMovementWasEnabled = characterMovement != null && characterMovement.enabled;
+        if (playerMovement != null) playerMovement.enabled = false;
+        if (characterMovement != null) characterMovement.enabled = false;
+        if (explorationBody != null) explorationBody.linearVelocity = Vector2.zero;
 
         defeatLines.Clear();
         monster.ResetDialogue();
@@ -203,6 +213,8 @@ public class BattleManager : MonoBehaviour
 
             return;
         }
+        if (state != BattleState.ChoosingItem && state != BattleState.Dodging)
+            BattleTowerAudio.Play(TowerSound.Confirm);
         // Outside the main menu, Z confirms or advances the current screen.
         if (state != BattleState.ChoosingCommand)
         {
@@ -241,6 +253,7 @@ public class BattleManager : MonoBehaviour
         switch (state)
         {
             case BattleState.ChoosingItem:
+                BattleTowerAudio.Play(TowerSound.Cancel);
                 lastTransitionFrame = Time.frameCount;
                 state = BattleState.ChoosingCommand;
                 battleHUD.ShowMainMenu();
@@ -248,12 +261,14 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case BattleState.ChoosingAttack:
+                BattleTowerAudio.Play(TowerSound.Cancel);
                 lastTransitionFrame = Time.frameCount;
                 state = BattleState.ChoosingCommand;
                 battleHUD.ShowMainMenu();
                 break;
 
             case BattleState.ChoosingTarget:
+                BattleTowerAudio.Play(TowerSound.Cancel);
                 lastTransitionFrame = Time.frameCount;
                 OpenAttackSelection();
                 break;
@@ -271,7 +286,9 @@ public class BattleManager : MonoBehaviour
     {
         if (state != BattleState.ChoosingItem || inventory == null || inventory.Count == 0)
             return;
+        int previousIndex = selectedItemIndex;
         selectedItemIndex = (selectedItemIndex + direction + inventory.Count) % inventory.Count;
+        if (selectedItemIndex != previousIndex) BattleTowerAudio.Play(TowerSound.MenuMove);
         RefreshItemSelection();
     }
 
@@ -315,6 +332,7 @@ public class BattleManager : MonoBehaviour
     {
         if (inventory == null || inventory.Count == 0)
         {
+            BattleTowerAudio.Play(TowerSound.CannotUse);
             RefreshItemSelection();
             return;
         }
@@ -324,6 +342,7 @@ public class BattleManager : MonoBehaviour
         ItemData item = inventory.Items[selectedItemIndex];
         if (item == null)
         {
+            BattleTowerAudio.Play(TowerSound.CannotUse);
             RefreshItemSelection("This item is unavailable.");
             return;
         }
@@ -338,6 +357,7 @@ public class BattleManager : MonoBehaviour
                            || (magic && amount > 0 && player.Stats.CurrentMP < player.Stats.MaxMP);
         if (!helps)
         {
+            BattleTowerAudio.Play(TowerSound.CannotUse);
             RefreshItemSelection("No effect right now; item kept.");
             return;
         }
@@ -345,6 +365,7 @@ public class BattleManager : MonoBehaviour
         // Commit one inventory entry before applying effects; message state blocks reuse.
         if (!inventory.TryRemoveItem(selectedItemIndex))
         {
+            BattleTowerAudio.Play(TowerSound.CannotUse);
             RefreshItemSelection("Inventory changed; choose again.");
             return;
         }
@@ -353,6 +374,7 @@ public class BattleManager : MonoBehaviour
         if (heal) player.Stats.RestoreHP(Mathf.Min(amount, player.Stats.MaxHP - oldHP));
         if (magic) player.Stats.RestoreMP(Mathf.Min(amount, player.Stats.MaxMP - oldMP));
         nextDodgeSpeedMultiplier = haste ? item.DodgeSpeedMultiplier : 1f;
+        BattleTowerAudio.Play(TowerSound.Heal);
         RefreshPlayerStatus();
         string result = heal ? $"Restored {player.Stats.CurrentHP - oldHP} HP."
                              : $"Restored {player.Stats.CurrentMP - oldMP} MP.";
@@ -616,14 +638,19 @@ public class BattleManager : MonoBehaviour
         if (battleHUD != null)
             battleHUD.EndBattle();
 
+        if (explorationBody != null) explorationBody.linearVelocity = Vector2.zero;
         if (playerMovement != null)
             playerMovement.enabled = movementWasEnabled;
+        if (characterMovement != null)
+            characterMovement.enabled = characterMovementWasEnabled;
 
         defeatLines.Clear();
 
         player = null;
         monster = null;
         playerMovement = null;
+        characterMovement = null;
+        explorationBody = null;
     }
     private void ResolveTimedAttack(float multiplier)
 {

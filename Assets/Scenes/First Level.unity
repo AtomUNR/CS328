@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a61bf2d71d63347822f0f0fcc640e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
-  moveSpeed: 8
+  moveSpeed: 5
   secondsPerFrame: 0.18
   idleDown: {fileID: 1274058195047821029, guid: 15170372aa94abd42892a6debb9fe70b, type: 3}
   idleUp: {fileID: 6148579534936088468, guid: f504914b063482e46a64277a45159497, type: 3}
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246472657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cafea64e3e6def444b93a08d7fe03b0a, type: 3}
   m_Name: 
@@ -593,6 +593,58 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 7665013638979122348, guid: 831d0dedd4100714ab57da4d6ef68eed, type: 3}
   m_PrefabInstance: {fileID: 3033097460300072849}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &685652792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685652794}
+  - component: {fileID: 685652793}
+  m_Layer: 0
+  m_Name: BattleTowerAudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &685652793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685652792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0000e6fcefc0d2408668362d66b4b0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleTowerAudio
+  volume: 0.5
+  menuMove: {fileID: 8300000, guid: 41f303e6f0a046c488674be73be3f392, type: 3}
+  confirm: {fileID: 8300000, guid: c5f6ddc2116726a428aea6844287bec5, type: 3}
+  cancel: {fileID: 8300000, guid: ab2fb36ff831c5645a71e034272ecbf1, type: 3}
+  inventoryOpen: {fileID: 8300000, guid: 7475d664c10891a49a7eb5a9e9772ba0, type: 3}
+  inventoryClose: {fileID: 8300000, guid: 928333cdef4d75b489d426bfd989c555, type: 3}
+  heal: {fileID: 8300000, guid: 19cded7d44e287f4884ac5dbeb46dd89, type: 3}
+  cannotUse: {fileID: 8300000, guid: d5c2f0b1e1781134593afcb635427446, type: 3}
+--- !u!4 &685652794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685652792}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -75.32613, y: 3.10726, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &809961952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4315764395057528694, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}
@@ -1641,3 +1693,4 @@ SceneRoots:
   - {fileID: 3033097460300072849}
   - {fileID: 161944724}
   - {fileID: 1649671997}
+  - {fileID: 685652794}
