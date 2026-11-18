@@ -35,6 +35,8 @@ public sealed class DodgePhaseController : MonoBehaviour
     private float elapsed;
     private float invulnerabilityRemaining;
     private bool isRunning;
+    private float phaseSpeedMultiplier = 1f;
+    public float CurrentMoveSpeed => moveSpeed * phaseSpeedMultiplier;
 
     private void Awake()
     {
@@ -45,7 +47,8 @@ public sealed class DodgePhaseController : MonoBehaviour
     public bool BeginPhase(
         EnemyAttackData attack,
         Sprite normalSprite,
-        CharacterStats stats)
+        CharacterStats stats,
+        float speedMultiplier = 1f)
     {
         if (isRunning)
             return false;
@@ -83,6 +86,8 @@ public sealed class DodgePhaseController : MonoBehaviour
             return false;
         }
 
+        phaseSpeedMultiplier = float.IsNaN(speedMultiplier) || float.IsInfinity(speedMultiplier)
+            ? 1f : Mathf.Clamp(speedMultiplier, 1f, 3f);
         currentAttack = attack;
         playerStats = stats;
         restingSprite = normalSprite;
@@ -241,7 +246,7 @@ public sealed class DodgePhaseController : MonoBehaviour
         direction = Vector2.ClampMagnitude(direction, 1f);
 
         Vector2 position = essence.anchoredPosition;
-        position += direction * moveSpeed * deltaTime;
+        position += direction * CurrentMoveSpeed * deltaTime;
 
         float halfWidth = Mathf.Max(
             0f,
@@ -363,6 +368,7 @@ public sealed class DodgePhaseController : MonoBehaviour
     {
         bool wasRunning = isRunning;
         isRunning = false;
+        phaseSpeedMultiplier = 1f;
 
         ClearPattern();
 

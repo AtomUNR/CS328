@@ -20,7 +20,9 @@ public class BattleManager : MonoBehaviour
         EnemyAttackMessage,
         DefeatDialogue,
         VictoryMessage,
-        PlayerDefeated
+        PlayerDefeated,
+        ChoosingItem,
+        ItemUsedMessage
     }
 
     private BattleState state = BattleState.Inactive;
@@ -28,6 +30,9 @@ public class BattleManager : MonoBehaviour
     private Player player;
     private Monster monster;
     private PlayerMovement playerMovement;
+    private PlayerInventory inventory;
+    private int selectedItemIndex;
+    private float nextDodgeSpeedMultiplier = 1f;
 
     private bool movementWasEnabled;
     private int lastTransitionFrame = -1;
@@ -42,6 +47,7 @@ public class BattleManager : MonoBehaviour
         {
             battleHUD.CommandChosen += HandleCommand;
             battleHUD.CancelChosen += HandleCancel;
+            battleHUD.ItemNavigation += HandleItemNavigation;
         }
         if(attackTiming != null)
         {
@@ -59,6 +65,7 @@ public class BattleManager : MonoBehaviour
         {
             battleHUD.CommandChosen -= HandleCommand;
             battleHUD.CancelChosen -= HandleCancel;
+            battleHUD.ItemNavigation -= HandleItemNavigation;
         }
         if (attackTiming != null)
         {
@@ -116,6 +123,8 @@ public class BattleManager : MonoBehaviour
             return false;
         }
 
+        inventory = newPlayer.GetComponent<PlayerInventory>();
+        nextDodgeSpeedMultiplier = 1f;
         player = newPlayer;
         monster = newMonster;
         playerMovement = movement;
@@ -204,9 +213,7 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case BattleCommand.Item:
-                battleHUD.SetDialogue(
-                    "* The item menu is not connected yet."
-                );
+                OpenItemSelection();
                 break;
 
             case BattleCommand.Stats:
@@ -229,6 +236,13 @@ public class BattleManager : MonoBehaviour
 
         switch (state)
         {
+            case BattleState.ChoosingItem:
+                lastTransitionFrame = Time.frameCount;
+                state = BattleState.ChoosingCommand;
+                battleHUD.ShowMainMenu();
+                battleHUD.SetDialogue("* Choose your action.");
+                break;
+
             case BattleState.ChoosingAttack:
                 lastTransitionFrame = Time.frameCount;
                 state = BattleState.ChoosingCommand;
@@ -240,6 +254,107 @@ public class BattleManager : MonoBehaviour
                 OpenAttackSelection();
                 break;
         }
+    }
+
+    private void OpenItemSelection()
+    {
+        state = BattleState.ChoosingItem;
+        selectedItemIndex = 0;
+        RefreshItemSelection();
+    }
+
+    private void HandleItemNavigation(int direction)
+    {
+        if (state != BattleState.ChoosingItem || inventory == null || inventory.Count == 0)
+            return;
+        selectedItemIndex = (selectedItemIndex + direction + inventory.Count) % inventory.Count;
+        RefreshItemSelection();
+    }
+
+    private void RefreshItemSelection(string notice = null)
+    {
+        if (inventory == null || inventory.Count == 0)
+        {
+            battleHUD.ShowItemSelection("Your inventory is empty.", "Press X to return.", false);
+            return;
+        }
+        selectedItemIndex = Mathf.Clamp(selectedItemIndex, 0, inventory.Count - 1);
+        ItemData item = inventory.Items[selectedItemIndex];
+        string name = item != null ? item.ItemName : "Unavailable item";
+        string effect = "Cannot use this item.";
+        if (item != null)
+        {
+            switch (item.Effect)
+            {
+                case ItemEffect.RestoreHP:
+                    effect = $"Restore {item.RestoreAmount} HP.";
+                    break;
+                case ItemEffect.RestoreMP:
+                    effect = $"Restore {item.RestoreAmount} MP.";
+                    break;
+                case ItemEffect.RestoreHPAndDodgeSpeed:
+                    effect = $"+{item.RestoreAmount} HP / {item.DodgeSpeedMultiplier:0.##}x dodge speed for 1 turn.";
+                    break;
+            }
+        }
+        string description = item != null && !string.IsNullOrWhiteSpace(item.Description)
+            ? item.Description
+            : effect;
+
+        battleHUD.ShowItemSelection(
+            $"[{selectedItemIndex + 1}/{inventory.Count}] {name}",
+            notice ?? description,
+            item != null);
+    }
+
+    private void UseSelectedItem()
+    {
+        if (inventory == null || inventory.Count == 0)
+        {
+            RefreshItemSelection();
+            return;
+        }
+        if (player == null || player.Stats == null || player.Stats.CurrentHP <= 0)
+            return;
+        selectedItemIndex = Mathf.Clamp(selectedItemIndex, 0, inventory.Count - 1);
+        ItemData item = inventory.Items[selectedItemIndex];
+        if (item == null)
+        {
+            RefreshItemSelection("This item is unavailable.");
+            return;
+        }
+
+        bool heal = item.Effect == ItemEffect.RestoreHP ||
+                    item.Effect == ItemEffect.RestoreHPAndDodgeSpeed;
+        bool magic = item.Effect == ItemEffect.RestoreMP;
+        bool haste = item.Effect == ItemEffect.RestoreHPAndDodgeSpeed &&
+                     item.DodgeSpeedMultiplier > 1f;
+        int amount = Mathf.Max(0, item.RestoreAmount);
+        bool helps = haste || (heal && amount > 0 && player.Stats.CurrentHP < player.Stats.MaxHP)
+                           || (magic && amount > 0 && player.Stats.CurrentMP < player.Stats.MaxMP);
+        if (!helps)
+        {
+            RefreshItemSelection("No effect right now; item kept.");
+            return;
+        }
+
+        // Commit one inventory entry before applying effects; message state blocks reuse.
+        if (!inventory.TryRemoveItem(selectedItemIndex))
+        {
+            RefreshItemSelection("Inventory changed; choose again.");
+            return;
+        }
+        int oldHP = player.Stats.CurrentHP;
+        int oldMP = player.Stats.CurrentMP;
+        if (heal) player.Stats.RestoreHP(Mathf.Min(amount, player.Stats.MaxHP - oldHP));
+        if (magic) player.Stats.RestoreMP(Mathf.Min(amount, player.Stats.MaxMP - oldMP));
+        nextDodgeSpeedMultiplier = haste ? item.DodgeSpeedMultiplier : 1f;
+        RefreshPlayerStatus();
+        string result = heal ? $"Restored {player.Stats.CurrentHP - oldHP} HP."
+                             : $"Restored {player.Stats.CurrentMP - oldMP} MP.";
+        if (haste) result += $" Dodge speed: {nextDodgeSpeedMultiplier:0.##}x next turn.";
+        ShowMessage($"* Used {item.ItemName}.\n* {result}\n* Press Z for the enemy turn.",
+            BattleState.ItemUsedMessage);
     }
 
     private void OpenAttackSelection()
@@ -258,6 +373,14 @@ public class BattleManager : MonoBehaviour
     {
         switch (state)
         {
+            case BattleState.ChoosingItem:
+                UseSelectedItem();
+                break;
+
+            case BattleState.ItemUsedMessage:
+                EnemyAttack();
+                break;
+
             case BattleState.ChoosingAttack:
                 OpenTargetSelection();
                 break;
@@ -396,8 +519,9 @@ public class BattleManager : MonoBehaviour
             monsterAnimator.Play("Guardian_Spear_Thrust_12", 0, 0f);
         }
 
-        if (!dodgePhase.BeginPhase(attack, monster.BattleSprite, player.Stats)){ return; } 
+        if (!dodgePhase.BeginPhase(attack, monster.BattleSprite, player.Stats, nextDodgeSpeedMultiplier)){ return; } 
 
+    nextDodgeSpeedMultiplier = 1f;
     state = BattleState.Dodging;
     lastTransitionFrame = Time.frameCount;
 
@@ -458,12 +582,19 @@ public class BattleManager : MonoBehaviour
     private void ShowMessage(string message, BattleState nextState)
     {
         state = nextState;
-        battleHUD.ShowDialogueOnly();
-        battleHUD.SetDialogue(message);
+        if (nextState == BattleState.ItemUsedMessage)
+            battleHUD.ShowItemResult(message);
+        else
+        {
+            battleHUD.ShowDialogueOnly();
+            battleHUD.SetDialogue(message);
+        }
     }
 
     public void EndBattle()
     {
+        nextDodgeSpeedMultiplier = 1f;
+        inventory = null;
         if(dodgePhase != null)
         {
             dodgePhase.CancelPhase();

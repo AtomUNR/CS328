@@ -426,7 +426,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12bca92a2c83b543a7adb8dc75573ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
-  startingItems: []
+  startingItems:
+  - {fileID: 11400000, guid: ec13bf3fde5c8134db66370351019ee8, type: 2}
+  - {fileID: 11400000, guid: ec13bf3fde5c8134db66370351019ee8, type: 2}
+  - {fileID: 11400000, guid: ec13bf3fde5c8134db66370351019ee8, type: 2}
+  - {fileID: 11400000, guid: ec13bf3fde5c8134db66370351019ee8, type: 2}
+  - {fileID: 11400000, guid: ec13bf3fde5c8134db66370351019ee8, type: 2}
 --- !u!61 &246472669
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -485,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a61bf2d71d63347822f0f0fcc640e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
-  moveSpeed: 5
+  moveSpeed: 8
   secondsPerFrame: 0.18
   idleDown: {fileID: 1274058195047821029, guid: 15170372aa94abd42892a6debb9fe70b, type: 3}
   idleUp: {fileID: 6148579534936088468, guid: f504914b063482e46a64277a45159497, type: 3}
