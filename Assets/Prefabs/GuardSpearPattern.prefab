@@ -69,7 +69,11 @@ MonoBehaviour:
   - {fileID: -5399981157966850613, guid: e48e9155384e1144fbc56f5b12491f2b, type: 3}
   spearHeadSprite: {fileID: -7277418748631062735, guid: 42a84538f6b2d0649b0bd6fd0c743de3, type: 3}
   spearShaftSprite: {fileID: -3914555014399561493, guid: e69da5b108e248443a9d926423dfa6a1, type: 3}
-  impactFrames: []
+  impactFrames:
+  - {fileID: 7942057359182484179, guid: e6c5a1d92ddce9b41aef80923ad8eddc, type: 3}
+  - {fileID: -325472537657757878, guid: 9b7f16d671079674ebb01f61a952a013, type: 3}
+  - {fileID: 465541657723503591, guid: daeff363357a8844b9f2fe1a051baff5, type: 3}
+  - {fileID: 352970386835818835, guid: 7068935bd7f8b4b45975fa39c2aa93d7, type: 3}
   impactFramesPerSecond: 14
   spearColor: {r: 1, g: 1, b: 1, a: 1}
   artPixelSize: 20
@@ -84,9 +88,9 @@ MonoBehaviour:
   firstWaveDelay: 0.3
   timeBetweenWaves: 0.45
   laneWidth: 150
-  blockLanes: 7
-  scatterSpears: 5
-  minSafeLanes: 3
+  blockLanes: 8
+  scatterSpears: 8
+  minSafeLanes: 1
   staggerDelay: 0.06
   warningTime: 1.2
   windupTime: 0.42

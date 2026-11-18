@@ -59,6 +59,25 @@ public sealed class BattleHudController : MonoBehaviour
     [SerializeField] private TMP_Text targetHPText;
     [SerializeField] private Image targetHPFill;
 
+    [Header("Item selection")]
+    [SerializeField] private GameObject itemSelectionPanel;
+    [SerializeField] private TMP_Text itemNameText;
+    [SerializeField] private TMP_Text itemDescriptionText;
+    [SerializeField] private GameObject itemSelectionArrow;
+
+    [Header("Item result layout")]
+    [SerializeField, Min(0f)] private float itemResultExtraHeight = 120f;
+    [SerializeField, Min(1f)] private float itemResultFontSize = 32f;
+    [SerializeField] private Vector2 itemResultStatusOffset = new Vector2(0f, -150f);
+    [SerializeField, Min(0f)] private float itemResultTextPadding = 20f;
+
+    private bool itemResultLayoutActive;
+    private Vector2 savedDialogueSize, savedDialoguePosition;
+    private Vector2 savedTextAnchorMin, savedTextAnchorMax;
+    private Vector2 savedTextOffsetMin, savedTextOffsetMax;
+    private float savedDialogueFontSize;
+    private bool savedDialogueAutoSize;
+
     [Header("Dodge layout")]
     [SerializeField] private RectTransform dodgeStatusAnchor;
 
@@ -66,6 +85,8 @@ public sealed class BattleHudController : MonoBehaviour
     private bool statusPositionSaved;
     public event Action<BattleCommand> CommandChosen;
     public event Action CancelChosen;
+    public event Action<int> ItemNavigation;
+    private bool itemSelectionActive;
 
     private int selectedIndex;
     private bool isVisible;
@@ -117,7 +138,7 @@ public sealed class BattleHudController : MonoBehaviour
 
     private void Update()
     {
-        if (!isVisible || !CommandSelectionEnabled ||
+        if (!isVisible || (!CommandSelectionEnabled && !itemSelectionActive) ||
             navigateAction == null || navigateAction.action == null)
         {
             lastNavigate = Vector2.zero;
@@ -125,6 +146,19 @@ public sealed class BattleHudController : MonoBehaviour
         }
 
         Vector2 input = navigateAction.action.ReadValue<Vector2>();
+
+        if (itemSelectionActive)
+        {
+            if (Mathf.Abs(input.y) < 0.5f)
+            {
+                lastNavigate = Vector2.zero;
+                return;
+            }
+            if (Mathf.Abs(lastNavigate.y) < 0.5f)
+                ItemNavigation?.Invoke(input.y > 0f ? -1 : 1);
+            lastNavigate = input;
+            return;
+        }
 
         if (Mathf.Abs(input.x) < 0.5f)
         {
@@ -227,6 +261,10 @@ public sealed class BattleHudController : MonoBehaviour
         bool showAttacks,
         bool showTargets)
     {
+        RestoreItemResultLayout();
+        itemSelectionActive = false;
+        if (itemSelectionPanel != null)
+            itemSelectionPanel.SetActive(false);
         RestoreStatusPosition();
         if (dialoguePanel != null)
             dialoguePanel.SetActive(showDialogue);
@@ -242,6 +280,110 @@ public sealed class BattleHudController : MonoBehaviour
 
         if (playerStatusPanel != null)
             playerStatusPanel.SetActive(showCommands || showDialogue);
+    }
+
+    public void ShowItemSelection(string itemName, string description, bool hasItem = true)
+    {
+        bool panelReady = itemSelectionPanel != null &&
+            itemNameText != null && itemDescriptionText != null;
+
+        if (!itemSelectionActive)
+        {
+            SetMenuPanels(!panelReady, false, false, false);
+            CommandSelectionEnabled = false;
+            lastNavigate = Vector2.zero;
+            itemSelectionActive = true;
+
+            // Hide player status while browsing items.
+            if (playerStatusPanel != null)
+                playerStatusPanel.SetActive(false);
+        }
+
+        if (panelReady)
+        {
+            itemSelectionPanel.SetActive(true);
+            itemNameText.text = itemName;
+            itemDescriptionText.text = description;
+            if (itemSelectionArrow != null)
+                itemSelectionArrow.SetActive(hasItem);
+        }
+        else
+        {
+            // Keep the menu usable until its new Inspector fields are assigned.
+            SetDialogue(itemName + "\n" + description);
+        }
+    }
+
+    public void ShowItemResult(string message)
+    {
+        ShowDialogueOnly();
+        SetDialogue(message);
+
+        RectTransform panel = dialoguePanel != null
+            ? dialoguePanel.GetComponent<RectTransform>() : null;
+        if (panel == null || dialogueText == null)
+            return;
+
+        savedDialogueSize = panel.sizeDelta;
+        savedDialoguePosition = panel.anchoredPosition;
+        RectTransform textRect = dialogueText.rectTransform;
+        savedTextAnchorMin = textRect.anchorMin;
+        savedTextAnchorMax = textRect.anchorMax;
+        savedTextOffsetMin = textRect.offsetMin;
+        savedTextOffsetMax = textRect.offsetMax;
+        savedDialogueFontSize = dialogueText.fontSize;
+        savedDialogueAutoSize = dialogueText.enableAutoSizing;
+        itemResultLayoutActive = true;
+
+        // Extend downward, keeping the top edge below the enemy.
+        float extraHeight = Mathf.Max(0f, itemResultExtraHeight);
+        panel.sizeDelta = savedDialogueSize + new Vector2(0f, extraHeight);
+        panel.anchoredPosition = savedDialoguePosition -
+            new Vector2(0f, extraHeight * (1f - panel.pivot.y));
+
+        textRect.anchorMin = Vector2.zero;
+        textRect.anchorMax = Vector2.one;
+        float padding = Mathf.Max(0f, itemResultTextPadding);
+        textRect.offsetMin = new Vector2(padding, padding);
+        textRect.offsetMax = new Vector2(-padding, -padding);
+        dialogueText.enableAutoSizing = false;
+        dialogueText.fontSize = Mathf.Max(1f, itemResultFontSize);
+
+        if (playerStatusPanel != null)
+        {
+            Transform status = playerStatusPanel.transform;
+            normalStatusLocalPosition = status.localPosition;
+            statusPositionSaved = true;
+            status.localPosition = normalStatusLocalPosition +
+                new Vector3(itemResultStatusOffset.x, itemResultStatusOffset.y, 0f);
+        }
+    }
+
+    private void RestoreItemResultLayout()
+    {
+        if (!itemResultLayoutActive)
+            return;
+
+        if (dialoguePanel != null)
+        {
+            RectTransform panel = dialoguePanel.GetComponent<RectTransform>();
+            if (panel != null)
+            {
+                panel.sizeDelta = savedDialogueSize;
+                panel.anchoredPosition = savedDialoguePosition;
+            }
+        }
+        if (dialogueText != null)
+        {
+            RectTransform textRect = dialogueText.rectTransform;
+            textRect.anchorMin = savedTextAnchorMin;
+            textRect.anchorMax = savedTextAnchorMax;
+            textRect.offsetMin = savedTextOffsetMin;
+            textRect.offsetMax = savedTextOffsetMax;
+            dialogueText.fontSize = savedDialogueFontSize;
+            dialogueText.enableAutoSizing = savedDialogueAutoSize;
+        }
+        itemResultLayoutActive = false;
     }
 
     public void SetDialogue(string line)

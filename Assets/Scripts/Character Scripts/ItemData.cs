@@ -3,7 +3,8 @@ using UnityEngine;
 public enum ItemEffect
 {
     RestoreHP,
-    RestoreMP
+    RestoreMP,
+    RestoreHPAndDodgeSpeed
 }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Battle Tower/Item")]
@@ -15,6 +16,10 @@ public class ItemData : ScriptableObject
     [SerializeField] private Sprite icon;
     [SerializeField] private ItemEffect effect;
     [SerializeField, Min(1)] private int restoreAmount = 20;
+
+    [SerializeField, Range(1f, 3f)] private float dodgeSpeedMultiplier = 1.5f;
+
+    public float DodgeSpeedMultiplier => Mathf.Clamp(dodgeSpeedMultiplier, 1f, 3f);
 
     public string ItemName => itemName;
     public string Description => description;
