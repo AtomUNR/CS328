@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 246472670}
   - component: {fileID: 246472671}
   - component: {fileID: 246472672}
+  - component: {fileID: 246472673}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -432,6 +433,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec13bf3fde5c8134db66370351019ee8, type: 2}
   - {fileID: 11400000, guid: ec13bf3fde5c8134db66370351019ee8, type: 2}
   - {fileID: 11400000, guid: ec13bf3fde5c8134db66370351019ee8, type: 2}
+  - {fileID: 11400000, guid: d0b8d3ae66683ac4cbd1b8e2157ba701, type: 2}
+  - {fileID: 11400000, guid: d0b8d3ae66683ac4cbd1b8e2157ba701, type: 2}
 --- !u!61 &246472669
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -560,6 +563,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   inputActions: {fileID: -944628639613478452, guid: 38eede30605542a4dbe3c0b30488f67f, type: 3}
   moveSpeed: 4
+--- !u!114 &246472673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246472657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95cd0188ba0ed98488e99eaacb85c0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExplorationInventoryMenu
+  battleManager: {fileID: 847181987}
+  menuFont: {fileID: 11400000, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
+  selectionColor: {r: 0, g: 0.95, b: 1, a: 1}
 --- !u!1 &265541115 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2159235185826128173, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}

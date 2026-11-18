@@ -123,6 +123,10 @@ public class BattleManager : MonoBehaviour
             return false;
         }
 
+        // Release the inventory movement lock before battle captures movement state.
+        ExplorationInventoryMenu explorationInventory = newPlayer.GetComponent<ExplorationInventoryMenu>();
+        if (explorationInventory != null) explorationInventory.CloseMenu();
+
         inventory = newPlayer.GetComponent<PlayerInventory>();
         nextDodgeSpeedMultiplier = 1f;
         player = newPlayer;
