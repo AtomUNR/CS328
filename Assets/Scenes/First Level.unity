@@ -1844,7 +1844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerSpikeTrap
   playerStats: {fileID: 246472664}
   playerCollider: {fileID: 246472665}
-  playerMovement: {fileID: 246472665}
+  playerMovement: {fileID: 246472670}
   startDelay: 2.5
   safeDuration: 2
   warningDuration: 0.7
@@ -1878,7 +1878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerSpikeTrap
   playerStats: {fileID: 246472664}
   playerCollider: {fileID: 246472665}
-  playerMovement: {fileID: 246472665}
+  playerMovement: {fileID: 246472670}
   startDelay: 1.25
   safeDuration: 2
   warningDuration: 0.7
@@ -1912,7 +1912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerSpikeTrap
   playerStats: {fileID: 246472664}
   playerCollider: {fileID: 246472665}
-  playerMovement: {fileID: 246472665}
+  playerMovement: {fileID: 246472670}
   startDelay: 0
   safeDuration: 2
   warningDuration: 0.7
