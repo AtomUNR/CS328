@@ -21,6 +21,15 @@ public sealed class HellfireRainPattern : EnemyAttackPattern
     [SerializeField, Min(0f)] private float horizontalScatter = 100f;
     [SerializeField, Range(1, 200)] private int maxFireballs = 120;
 
+    [Header("Attack Sounds")]
+    [Tooltip("Plays when the attack starts. Builds through the wind-up and ignites as the fireballs begin.")]
+    [SerializeField] private AudioClip castSound;
+    [Tooltip("One of these plays for each volley of fireballs.")]
+    [SerializeField] private AudioClip[] launchSounds;
+    [Tooltip("Plays when a fireball hits the player.")]
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField, Range(0f, 1f)] private float soundVolume = 0.7f;
+
     private sealed class Fireball
     {
         public RectTransform Rect;
@@ -46,6 +55,12 @@ public sealed class HellfireRainPattern : EnemyAttackPattern
         volleyTimer = 0f;
 
         ClearProjectiles();
+        PlaySfx(castSound, soundVolume);
+    }
+
+    private void OnDisable()
+    {
+        StopSfx();
     }
 
     // DodgePhaseController calls Tick during the active attack.
@@ -71,6 +86,7 @@ public sealed class HellfireRainPattern : EnemyAttackPattern
                 SpawnFireball(essenceAfter);
             }
 
+            PlayRandomSfx(launchSounds, soundVolume * 0.45f);
             volleyTimer += Mathf.Max(0.05f, volleyInterval);
         }
 
@@ -123,7 +139,10 @@ public sealed class HellfireRainPattern : EnemyAttackPattern
 
             if (collided)
             {
-                owner.TryTakeHit();
+                // Only a hit that actually damages the player makes the impact sound
+                // (the player is briefly invulnerable after being hit).
+                if (owner.TryTakeHit())
+                    PlaySfx(hitSound, soundVolume);
                 RemoveFireball(i);
             }
             // Remove fireballs outside the arena
