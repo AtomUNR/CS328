@@ -9,6 +9,9 @@ public sealed class ChargeRingGraphic : MaskableGraphic
     public const float TargetRadius = 66f;
     public const float GoodHalfWidth = 6f;
     public const float PerfectHalfWidth = 2.6f;
+    // Multipliers on the player's attack stat (5 ATK: Good = 10 damage, Perfect = 15 damage).
+    public const float GoodMultiplier = 2f;
+    public const float PerfectMultiplier = 3f;
     private float progress;
     private Color32 chargeColor = new Color32(86, 230, 236, 255);
     private static readonly Color32 Ivory = new Color32(245, 236, 213, 255);
@@ -27,8 +30,8 @@ public sealed class ChargeRingGraphic : MaskableGraphic
         if (progress >= 1f) return 0f;
         float radius = Mathf.Lerp(StartRadius, EndRadius, Mathf.Clamp01(progress));
         float distance = Mathf.Abs(radius - TargetRadius);
-        if (distance <= PerfectHalfWidth) return 1.5f;
-        return distance <= GoodHalfWidth ? 1f : 0f;
+        if (distance <= PerfectHalfWidth) return PerfectMultiplier;
+        return distance <= GoodHalfWidth ? GoodMultiplier : 0f;
     }
 
     protected override void OnPopulateMesh(VertexHelper vh)
@@ -51,9 +54,9 @@ public sealed class ChargeRingGraphic : MaskableGraphic
                     float distance = new Vector2(x + 0.5f - 96f, y + 0.5f - 96f).magnitude;
                     float targetDistance = Mathf.Abs(distance - TargetRadius);
                     if (targetDistance <= GoodHalfWidth) next = Band;
-                    if (Mathf.Abs(targetDistance - GoodHalfWidth) <= 0.6f) next = Ivory;
-                    if (targetDistance <= 1f) next = Gold;
-                    if (Mathf.Abs(distance - chargeRadius) <= 1.15f) next = chargeColor;
+                    if (Mathf.Abs(targetDistance - GoodHalfWidth) <= 1.1f) next = Ivory;
+                    if (targetDistance <= PerfectHalfWidth) next = Gold; // gold line == the Perfect window
+                    if (Mathf.Abs(distance - chargeRadius) <= 1.9f) next = chargeColor;
                 }
                 if (next.r == previous.r && next.g == previous.g &&
                     next.b == previous.b && next.a == previous.a) continue;

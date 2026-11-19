@@ -753,7 +753,8 @@ public class BattleManager : MonoBehaviour
         state = BattleState.ChargedAttackResult;
         chargedResultShownAt = Time.unscaledTime;
         RefreshPlayerStatus();
-        chargedStrike.ShowResult(label, damageDealt);
+        // Show the strike's full damage; the enemy's remaining HP only caps how much of it is applied.
+        chargedStrike.ShowResult(label, damage);
     }
 
     private void ResolveTimedAttack(float multiplier)

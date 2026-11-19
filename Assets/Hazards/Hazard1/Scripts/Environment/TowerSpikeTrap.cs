@@ -25,10 +25,17 @@ public sealed class TowerSpikeTrap : MonoBehaviour
     public UnityEvent onPlayerHit = new UnityEvent();
     public UnityEvent onPlayerDefeated = new UnityEvent();
 
+    [Header("Hit feedback")]
+    [Tooltip("Font for the floating damage number. Empty uses TextMeshPro's default font.")]
+    public TMPro.TMP_FontAsset popupFont;
+    [Tooltip("Colour of the damage number and the player's flash when hit.")]
+    public Color hitColor = new Color32(239, 115, 124, 255);
+
     [Header("Visuals")]
     [Tooltip("Optional replacement spike sprite. Empty uses the built-in animated metal spikes.")]
     public Sprite spikeSprite;
-    public int sortingOrder = 10;
+    [Tooltip("Base draw order of the trap. Keep it below the player (0) and above the floor (-100) so the player is drawn over the spikes.")]
+    public int sortingOrder = -50;
     [Tooltip("Glow color for the warning, matched to the blue torch flames.")]
     public Color glowColor = new Color(0.3f, 0.8f, 1f, 0.6f);
     [Tooltip("Spike columns per row for the built-in spikes.")]
@@ -123,7 +130,9 @@ public sealed class TowerSpikeTrap : MonoBehaviour
         ColliderDistance2D overlap = area.Distance(playerCollider);
         if (!overlap.isValid || !overlap.isOverlapped) return;
         hitThisRise = true;
+        int hpBefore = playerStats.CurrentHP;
         playerStats.TakeDamage(Mathf.Max(1, damage));
+        ShowHitFeedback(hpBefore - playerStats.CurrentHP);
         Debug.Log($"{name}: player HP {playerStats.CurrentHP}/{playerStats.MaxHP}", this);
         onPlayerHit.Invoke();
         if (playerStats.CurrentHP > 0) return;
@@ -144,6 +153,35 @@ public sealed class TowerSpikeTrap : MonoBehaviour
     }
 
     // ---------------------------------------------------------------- visuals
+
+    // Floating damage number above the player plus a short red flash on their sprite.
+    private void ShowHitFeedback(int amount)
+    {
+        if (amount <= 0 || playerCollider == null) return;
+        Bounds body = playerCollider.bounds;
+        DamagePopup.Spawn(new Vector3(body.center.x, body.max.y + 0.15f, 0f),
+            "-" + amount, hitColor, popupFont, sortingOrder + 100);
+
+        SpriteRenderer sprite = playerCollider.GetComponentInParent<SpriteRenderer>();
+        if (sprite == null) sprite = playerCollider.GetComponentInChildren<SpriteRenderer>();
+        if (sprite != null) StartCoroutine(FlashSprite(sprite));
+    }
+
+    private System.Collections.IEnumerator FlashSprite(SpriteRenderer sprite)
+    {
+        Color original = sprite.color;
+        const int flashes = 3;
+        for (int i = 0; i < flashes; i++)
+        {
+            if (sprite == null) yield break;
+            sprite.color = hitColor;
+            yield return new WaitForSeconds(0.06f);
+            if (sprite == null) yield break;
+            sprite.color = original;
+            yield return new WaitForSeconds(0.06f);
+        }
+        if (sprite != null) sprite.color = original;
+    }
 
     private void RefreshVisuals()
     {

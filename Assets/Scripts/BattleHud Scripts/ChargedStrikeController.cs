@@ -5,14 +5,16 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 // Attach to the active BattleManager object. UI Parent is your BattleHUD RectTransform.
+// All positions are relative to the bottom-centre of the UI Parent.
 public sealed class ChargedStrikeController : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private RectTransform uiParent;
     [SerializeField] private TMP_FontAsset menuFont;
-    [SerializeField] private Vector2 panelSize = new Vector2(1760f, 440f);
-    [SerializeField] private float panelBottom = 120f;
-    [SerializeField, Min(100f)] private float ringSize = 320f;
+    [SerializeField] private Vector2 panelSize = new Vector2(1200f, 468f);
+    [Tooltip("Distance from the bottom of the UI Parent to the bottom of the charge panel.")]
+    [SerializeField] private float panelBottom = 11f;
+    [SerializeField, Min(100f)] private float ringSize = 288f;
 
     [Header("Charge")]
     [SerializeField, Min(1)] private int mpCost = 5;
@@ -30,19 +32,30 @@ public sealed class ChargedStrikeController : MonoBehaviour
     private enum Mode { Hidden, Selecting, WaitForRelease, Ready, Charging, Result }
     private Mode mode;
     private CharacterStats stats;
+    private Player statsOwner;
     private GameObject root, selectionPanel, chargePanel;
-    private TMP_Text basicText, chargedText, selectionNote, chargeTitle, centerText, prompt, footer;
+    private TMP_Text basicText, chargedText, selectionNote, chargeTitle, centerMain, centerSub,
+        resultLine, prompt, nameText, hpText, mpText;
+    private RectTransform hpFill, mpFill;
     private ChargeRingGraphic ring;
     private float startedAt;
+    private float shownProgress; // progress of the ring as last drawn
     private int openedFrame;
+
+    private const float FooterHeight = 80f;
+    private const float FooterGap = 15f;
     private static readonly Color Ivory = new Color32(245, 236, 213, 255);
     private static readonly Color Cyan = new Color32(86, 230, 236, 255);
     private static readonly Color Gold = new Color32(255, 212, 90, 255);
+    private static readonly Color Red = new Color32(239, 115, 124, 255);
+    private static readonly Color Muted = new Color32(176, 170, 150, 255);
+    private static readonly Color Tick = new Color32(110, 106, 98, 255);
+    private static readonly Color ButtonFill = new Color32(24, 24, 24, 255);
 
     public bool ShowSelection(CharacterStats playerStats, bool reset)
     {
         if (playerStats == null || !EnsureUI()) return false;
-        stats = playerStats;
+        SetStats(playerStats);
         if (reset) SelectedCharged = false;
         mode = Mode.Selecting;
         openedFrame = Time.frameCount;
@@ -63,16 +76,16 @@ public sealed class ChargedStrikeController : MonoBehaviour
     public bool BeginAttack(CharacterStats playerStats)
     {
         if (playerStats == null || playerStats.CurrentMP < MPCost || !EnsureUI()) return false;
-        stats = playerStats;
+        SetStats(playerStats);
         mode = Mode.WaitForRelease;
         openedFrame = Time.frameCount;
         root.SetActive(true);
         selectionPanel.SetActive(false);
         chargePanel.SetActive(true);
         chargeTitle.text = "CHARGED STRIKE";
-        centerText.text = "";
-        centerText.color = Ivory;
-        prompt.text = "Release Z, then hold Z to charge.";
+        SetCenter("", "", Ivory);
+        SetResultLine("Release Z, then hold Z to charge.", Muted);
+        prompt.text = "RELEASE Z";
         ring.SetCharge(0f, Cyan);
         UpdateFooter();
         return true;
@@ -100,7 +113,8 @@ public sealed class ChargedStrikeController : MonoBehaviour
             if (!keys.zKey.isPressed)
             {
                 mode = Mode.Ready;
-                prompt.text = "Hold Z. Release in the gold band.";
+                SetResultLine("Hold Z. Release in the gold band.", Muted);
+                prompt.text = "HOLD Z";
             }
             return;
         }
@@ -115,12 +129,14 @@ public sealed class ChargedStrikeController : MonoBehaviour
             }
             mode = Mode.Charging;
             startedAt = Time.time;
-            prompt.text = "Release in the gold band.";
+            shownProgress = 0f;
+            SetCenter("", "", Ivory);
+            SetResultLine("Release in the gold band.", Muted);
+            prompt.text = "RELEASE Z";
             UpdateFooter();
         }
         if (mode != Mode.Charging) return;
         float progress = (Time.time - startedAt) / Mathf.Max(0.5f, chargeDuration);
-        ring.SetCharge(progress, Cyan);
         if (progress >= 1f)
         {
             Complete(0f, "MISS");
@@ -128,9 +144,13 @@ public sealed class ChargedStrikeController : MonoBehaviour
         }
         if (keys.zKey.wasReleasedThisFrame || !keys.zKey.isPressed)
         {
-            float score = ChargeRingGraphic.Score(progress);
-            Complete(score, score > 1f ? "PERFECT!" : score > 0f ? "GOOD HIT" : "MISS");
+            // Score the ring exactly as the player last saw it, not a frame further along.
+            float score = ChargeRingGraphic.Score(shownProgress);
+            Complete(score, score >= ChargeRingGraphic.PerfectMultiplier ? "PERFECT!" : score > 0f ? "GOOD HIT" : "MISS");
+            return;
         }
+        shownProgress = progress;
+        ring.SetCharge(progress, Cyan);
     }
 
     private void Complete(float multiplier, string label)
@@ -144,10 +164,12 @@ public sealed class ChargedStrikeController : MonoBehaviour
     {
         if (root == null) return;
         mode = Mode.Result;
-        chargeTitle.text = label;
-        centerText.text = $"{actualDamage}\nDAMAGE";
-        centerText.color = actualDamage == 0 ? new Color32(239, 115, 124, 255) : Gold;
-        prompt.text = "Press Z to continue.";
+        bool missed = actualDamage <= 0;
+        Color tint = missed ? Red : label.StartsWith("PERFECT") ? Gold : Cyan;
+        chargeTitle.text = "CHARGED STRIKE";
+        SetCenter($"{actualDamage} DMG", missed ? "missed" : "released", missed ? Red : Ivory);
+        SetResultLine(label, tint);
+        prompt.text = $"PRESS Z {Glyph('·', "-")} CONTINUE";
         UpdateFooter();
     }
 
@@ -155,6 +177,32 @@ public sealed class ChargedStrikeController : MonoBehaviour
     {
         mode = Mode.Hidden;
         if (root != null) root.SetActive(false);
+    }
+
+    private void SetStats(CharacterStats playerStats)
+    {
+        stats = playerStats;
+        statsOwner = playerStats.GetComponentInParent<Player>();
+    }
+
+    private void SetCenter(string main, string sub, Color mainColor)
+    {
+        centerMain.text = main;
+        centerMain.color = mainColor;
+        centerSub.text = sub;
+    }
+
+    private void SetResultLine(string text, Color color)
+    {
+        resultLine.text = text;
+        resultLine.color = color;
+    }
+
+    // Pixel fonts often lack typographic symbols; fall back to plain ASCII.
+    private string Glyph(char symbol, string fallback)
+    {
+        if (menuFont == null) return symbol.ToString();
+        return menuFont.HasCharacter(symbol, true, true) ? symbol.ToString() : fallback;
     }
 
     private void UpdateSelection()
@@ -168,8 +216,23 @@ public sealed class ChargedStrikeController : MonoBehaviour
 
     private void UpdateFooter()
     {
-        if (footer != null && stats != null)
-            footer.text = $"HP {stats.CurrentHP}/{stats.MaxHP}          MP {stats.CurrentMP}/{stats.MaxMP}";
+        if (stats == null || hpText == null) return;
+        nameText.text = statsOwner != null ? $"{statsOwner.DisplayName}  LV {statsOwner.Level}" : "";
+        hpText.text = $"HP {stats.CurrentHP}/{stats.MaxHP}";
+        mpText.text = $"MP {stats.CurrentMP}/{stats.MaxMP}";
+        SetBar(hpFill, Fraction(stats.CurrentHP, stats.MaxHP));
+        SetBar(mpFill, Fraction(stats.CurrentMP, stats.MaxMP));
+    }
+
+    private static void SetBar(RectTransform fill, float fraction)
+    {
+        fill.gameObject.SetActive(fraction > 0.001f);
+        fill.anchorMax = new Vector2(fraction, 1f);
+    }
+
+    private static float Fraction(int current, int max)
+    {
+        return max <= 0 ? 0f : Mathf.Clamp01((float)current / max);
     }
 
     private bool EnsureUI()
@@ -187,23 +250,64 @@ public sealed class ChargedStrikeController : MonoBehaviour
         root = holder.gameObject;
         root.transform.SetAsLastSibling();
 
-        RectTransform choose = MakePanel("Attack Choices", holder, new Vector2(panelSize.x, 250f), panelBottom);
+        float footerBottom = panelBottom - FooterHeight - FooterGap;
+        float backdropBottom = footerBottom - 40f;
+        float backdropTop = panelBottom + panelSize.y + 6f;
+
+        // Opaque backdrop so the normal battle menu never shows around the panels.
+        RectTransform backdrop = MakeRect("Backdrop", holder,
+            new Vector2(0f, (backdropBottom + backdropTop) * 0.5f),
+            new Vector2(2400f, backdropTop - backdropBottom));
+        backdrop.anchorMin = backdrop.anchorMax = new Vector2(0.5f, 0f);
+        AddImage(backdrop.gameObject, Color.black);
+
+        // Attack choice panel, centred in the same area as the charge panel.
+        Vector2 chooseSize = new Vector2(panelSize.x, 250f);
+        RectTransform choose = MakePanel("Attack Choices", holder, chooseSize,
+            panelBottom + (panelSize.y - chooseSize.y) * 0.5f);
         selectionPanel = choose.gameObject;
         Label("Title", choose, new Vector2(0f, 85f), new Vector2(panelSize.x - 80f, 45f), "CHOOSE ATTACK", 32f);
         basicText = Label("Basic", choose, new Vector2(0f, 25f), new Vector2(panelSize.x - 120f, 45f), "", 30f);
         chargedText = Label("Charged", choose, new Vector2(0f, -30f), new Vector2(panelSize.x - 120f, 45f), "", 30f);
         selectionNote = Label("Description", choose, new Vector2(0f, -90f), new Vector2(panelSize.x - 80f, 40f), "", 24f);
 
+        // Charge panel: title, ring, centre read-out, result line, prompt button.
         RectTransform panel = MakePanel("Charge Ring Panel", holder, panelSize, panelBottom);
         chargePanel = panel.gameObject;
-        chargeTitle = Label("Title", panel, new Vector2(0f, panelSize.y * 0.5f - 40f), new Vector2(panelSize.x - 80f, 45f), "CHARGED STRIKE", 32f);
-        RectTransform ringRect = MakeRect("Charge Ring", panel, Vector2.zero, new Vector2(ringSize, ringSize));
+        float half = panelSize.y * 0.5f;
+        float ringY = half - 210f;
+        chargeTitle = Label("Title", panel, new Vector2(0f, half - 32f), new Vector2(panelSize.x - 80f, 45f), "CHARGED STRIKE", 34f);
+
+        RectTransform ringRect = MakeRect("Charge Ring", panel, new Vector2(0f, ringY), new Vector2(ringSize, ringSize));
+        ringRect.gameObject.AddComponent<CanvasRenderer>(); // Graphic subclasses are not guaranteed to add one.
         ring = ringRect.gameObject.AddComponent<ChargeRingGraphic>();
         ring.raycastTarget = false;
-        centerText = Label("Damage Result", panel, Vector2.zero, new Vector2(210f, 100f), "", 30f);
-        prompt = Label("Charge Prompt", panel, new Vector2(0f, -panelSize.y * 0.5f + 40f), new Vector2(panelSize.x - 80f, 45f), "", 26f);
-        RectTransform status = MakePanel("Charge Status", holder, new Vector2(panelSize.x, 60f), panelBottom - 80f);
-        footer = Label("HP and MP", status, Vector2.zero, new Vector2(panelSize.x - 60f, 45f), "", 28f);
+
+        // Compass ticks sit just outside the target band.
+        float tickRadius = (ChargeRingGraphic.TargetRadius + ChargeRingGraphic.GoodHalfWidth + 8f) * (ringSize / 192f);
+        MakeTick(panel, new Vector2(0f, ringY + tickRadius));
+        MakeTick(panel, new Vector2(0f, ringY - tickRadius));
+        MakeTick(panel, new Vector2(tickRadius, ringY));
+        MakeTick(panel, new Vector2(-tickRadius, ringY));
+
+        centerMain = Label("Center Main", panel, new Vector2(0f, ringY + 12f), new Vector2(ringSize * 0.7f, 36f), "", 26f);
+        centerSub = Label("Center Sub", panel, new Vector2(0f, ringY - 18f), new Vector2(ringSize * 0.7f, 26f), "", 15f);
+        centerSub.color = Muted;
+        resultLine = Label("Result Line", panel, new Vector2(0f, -half + 106f), new Vector2(panelSize.x - 80f, 40f), "", 28f);
+        resultLine.richText = true;
+
+        RectTransform button = MakeBox("Prompt Button", panel, new Vector2(0f, -half + 41f), new Vector2(540f, 54f), 3f, ButtonFill);
+        prompt = Label("Prompt", button, Vector2.zero, new Vector2(520f, 46f), "", 26f);
+
+        // Footer with name, level, HP and MP bars (matches the mock-up).
+        RectTransform footer = MakePanel("Charge Status", holder, new Vector2(panelSize.x, FooterHeight), footerBottom);
+        nameText = Label("Name", footer, new Vector2(-410f, 0f), new Vector2(340f, 45f), "", 26f);
+        nameText.alignment = TextAlignmentOptions.MidlineLeft;
+        hpText = Label("HP", footer, new Vector2(-95f, 0f), new Vector2(230f, 45f), "", 26f);
+        hpFill = MakeBar("HP Bar", footer, new Vector2(100f, 0f), new Vector2(120f, 26f), Red);
+        mpText = Label("MP", footer, new Vector2(288f, 0f), new Vector2(230f, 45f), "", 26f);
+        mpFill = MakeBar("MP Bar", footer, new Vector2(481f, 0f), new Vector2(120f, 26f), Cyan);
+
         root.SetActive(false);
         return true;
     }
@@ -219,18 +323,49 @@ public sealed class ChargedStrikeController : MonoBehaviour
         return rect;
     }
 
+    private static Image AddImage(GameObject target, Color color)
+    {
+        Image image = target.AddComponent<Image>();
+        image.color = color;
+        image.raycastTarget = false;
+        return image;
+    }
+
     private static RectTransform MakePanel(string name, Transform parent, Vector2 size, float bottom)
     {
-        RectTransform rect = MakeRect(name, parent, new Vector2(0f, bottom + size.y * 0.5f), size);
+        RectTransform rect = MakeBox(name, parent, new Vector2(0f, bottom + size.y * 0.5f), size, 4f, Color.black);
         rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0f);
-        Image border = rect.gameObject.AddComponent<Image>();
-        border.color = Ivory;
-        border.raycastTarget = false;
-        RectTransform interior = MakeRect("Black Fill", rect, Vector2.zero, size - Vector2.one * 8f);
-        Image fill = interior.gameObject.AddComponent<Image>();
-        fill.color = Color.black;
-        fill.raycastTarget = false;
         return rect;
+    }
+
+    // Ivory border with a filled interior.
+    private static RectTransform MakeBox(string name, Transform parent, Vector2 position, Vector2 size, float border, Color fill)
+    {
+        RectTransform rect = MakeRect(name, parent, position, size);
+        AddImage(rect.gameObject, Ivory);
+        RectTransform interior = MakeRect("Fill", rect, Vector2.zero, size - Vector2.one * border * 2f);
+        AddImage(interior.gameObject, fill);
+        return rect;
+    }
+
+    private static void MakeTick(Transform parent, Vector2 position)
+    {
+        AddImage(MakeRect("Tick", parent, position, new Vector2(8f, 8f)).gameObject, Tick);
+    }
+
+    // Returns the fill rect; its anchorMax.x is driven by the current value.
+    private static RectTransform MakeBar(string name, Transform parent, Vector2 position, Vector2 size, Color color)
+    {
+        RectTransform bar = MakeBox(name, parent, position, size, 3f, new Color32(20, 20, 20, 255));
+        RectTransform fill = MakeRect("Value", bar, Vector2.zero, Vector2.zero);
+        fill.anchorMin = new Vector2(0f, 0f);
+        fill.anchorMax = new Vector2(1f, 1f);
+        fill.pivot = new Vector2(0f, 0.5f);
+        fill.offsetMin = new Vector2(3f, 3f);
+        fill.offsetMax = new Vector2(-3f, -3f);
+        AddImage(fill.gameObject, color);
+        // Shrink from the right by moving the anchor; offsets stay as the inner padding.
+        return fill;
     }
 
     private TMP_Text Label(string name, Transform parent, Vector2 position, Vector2 size, string text, float fontSize)
@@ -241,6 +376,7 @@ public sealed class ChargedStrikeController : MonoBehaviour
         label.fontSize = fontSize;
         label.color = Ivory;
         label.alignment = TextAlignmentOptions.Center;
+        label.textWrappingMode = TextWrappingModes.NoWrap;
         label.raycastTarget = false;
         label.richText = false;
         label.text = text;

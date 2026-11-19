@@ -828,9 +828,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChargedStrikeController
   uiParent: {fileID: 3545318397397085729}
   menuFont: {fileID: 11400000, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
-  panelSize: {x: 1200, y: 360}
-  panelBottom: 120
-  ringSize: 240
+  panelSize: {x: 1200, y: 468}
+  panelBottom: 11
+  ringSize: 288
   mpCost: 5
   chargeDuration: 2.2
 --- !u!212 &882263691 stripped
@@ -1574,8 +1574,10 @@ MonoBehaviour:
   onPlayerDefeated:
     m_PersistentCalls:
       m_Calls: []
+  popupFont: {fileID: 11400000, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
+  hitColor: {r: 0.9372549, g: 0.4509804, b: 0.4862745, a: 1}
   spikeSprite: {fileID: 0}
-  sortingOrder: 10
+  sortingOrder: -50
   glowColor: {r: 0.3, g: 0.8, b: 1, a: 0.6}
   spikeColumns: 8
   spikeRows: 2
@@ -1606,8 +1608,10 @@ MonoBehaviour:
   onPlayerDefeated:
     m_PersistentCalls:
       m_Calls: []
+  popupFont: {fileID: 11400000, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
+  hitColor: {r: 0.9372549, g: 0.4509804, b: 0.4862745, a: 1}
   spikeSprite: {fileID: 0}
-  sortingOrder: 10
+  sortingOrder: -50
   glowColor: {r: 0.3, g: 0.8, b: 1, a: 0.6}
   spikeColumns: 8
   spikeRows: 2
@@ -1638,8 +1642,10 @@ MonoBehaviour:
   onPlayerDefeated:
     m_PersistentCalls:
       m_Calls: []
+  popupFont: {fileID: 11400000, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
+  hitColor: {r: 0.9372549, g: 0.4509804, b: 0.4862745, a: 1}
   spikeSprite: {fileID: 0}
-  sortingOrder: 10
+  sortingOrder: -50
   glowColor: {r: 0.3, g: 0.8, b: 1, a: 0.6}
   spikeColumns: 8
   spikeRows: 2
