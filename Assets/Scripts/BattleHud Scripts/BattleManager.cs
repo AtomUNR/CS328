@@ -7,6 +7,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private BattleHudController battleHUD;
     [SerializeField] private AttackTimer attackTiming;
     [SerializeField] private ChargedStrikeController chargedStrike;
+    [Tooltip("Shows a different damage indicator on the enemy for each kind of attack.")]
+    [SerializeField] private EnemyHitFeedback enemyHitFeedback;
     private bool chargedAttackSelected;
     private float chargedResultShownAt;
 
@@ -755,6 +757,13 @@ public class BattleManager : MonoBehaviour
         RefreshPlayerStatus();
         // Show the strike's full damage; the enemy's remaining HP only caps how much of it is applied.
         chargedStrike.ShowResult(label, damage);
+        if (enemyHitFeedback != null)
+        {
+            EnemyHitKind kind = damage <= 0 ? EnemyHitKind.Miss
+                : label.StartsWith("PERFECT") ? EnemyHitKind.ChargedPerfect
+                : EnemyHitKind.ChargedGood;
+            enemyHitFeedback.Play(kind, damage);
+        }
     }
 
     private void ResolveTimedAttack(float multiplier)
@@ -772,6 +781,7 @@ public class BattleManager : MonoBehaviour
 
     if (multiplier <= 0f)
     {
+        if (enemyHitFeedback != null) enemyHitFeedback.Play(EnemyHitKind.Miss, 0);
         ShowMessage(
             "* Your attack missed!\n* Press Z to continue.",
             BattleState.PlayerAttackMessage
@@ -789,6 +799,7 @@ public class BattleManager : MonoBehaviour
     monster.Stats.TakeDamage(damage);
 
     int damageDealt = previousHP - monster.Stats.CurrentHP;
+    if (enemyHitFeedback != null) enemyHitFeedback.Play(EnemyHitKind.Basic, damageDealt);
 
     ShowMessage(
         $"* You dealt {damageDealt} damage to " +

@@ -776,6 +776,7 @@ GameObject:
   - component: {fileID: 847181988}
   - component: {fileID: 847181987}
   - component: {fileID: 847181989}
+  - component: {fileID: 847181990}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -798,6 +799,7 @@ MonoBehaviour:
   battleHUD: {fileID: 3545318397397085724}
   attackTiming: {fileID: 1542452727}
   chargedStrike: {fileID: 847181989}
+  enemyHitFeedback: {fileID: 847181990}
   dodgePhase: {fileID: 3545318397397085728}
 --- !u!4 &847181988
 Transform:
@@ -833,6 +835,21 @@ MonoBehaviour:
   ringSize: 288
   mpCost: 5
   chargeDuration: 2.2
+--- !u!114 &847181990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847181986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145bb2a7fae06104a93878d983c3c0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHitFeedback
+  enemyImage: {fileID: 1489454412}
+  popupParent: {fileID: 3545318397397085729}
+  font: {fileID: 11400000, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
 --- !u!212 &882263691 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1433520923356491995, guid: 831d0dedd4100714ab57da4d6ef68eed, type: 3}
@@ -1309,6 +1326,11 @@ PolygonCollider2D:
       - {x: 1.0149994, y: -1}
       - {x: 1.0149994, y: -1.25}
   m_UseDelaunayMesh: 1
+--- !u!224 &1489454412 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2746140628129345839, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}
+  m_PrefabInstance: {fileID: 4780827415573082818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1542452727 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2437324571660101147, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}
