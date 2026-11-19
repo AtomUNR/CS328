@@ -6,6 +6,11 @@ public class BattleManager : MonoBehaviour
     [Header("Scene references")]
     [SerializeField] private BattleHudController battleHUD;
     [SerializeField] private AttackTimer attackTiming;
+    [SerializeField] private ChargedStrikeController chargedStrike;
+    [Tooltip("Shows a different damage indicator on the enemy for each kind of attack.")]
+    [SerializeField] private EnemyHitFeedback enemyHitFeedback;
+    private bool chargedAttackSelected;
+    private float chargedResultShownAt;
 
     [SerializeField] private DodgePhaseController dodgePhase;
     private enum BattleState
@@ -22,7 +27,9 @@ public class BattleManager : MonoBehaviour
         VictoryMessage,
         PlayerDefeated,
         ChoosingItem,
-        ItemUsedMessage
+        ItemUsedMessage,
+        ChargingAttack,
+        ChargedAttackResult
     }
 
     private BattleState state = BattleState.Inactive;
@@ -52,6 +59,11 @@ public class BattleManager : MonoBehaviour
             battleHUD.CancelChosen += HandleCancel;
             battleHUD.ItemNavigation += HandleItemNavigation;
         }
+        if (chargedStrike != null)
+        {
+            chargedStrike.Finished += ResolveChargedAttack;
+            chargedStrike.Unavailable += HandleChargeUnavailable;
+        }
         if(attackTiming != null)
         {
             attackTiming.AttackFinished += ResolveTimedAttack;
@@ -64,6 +76,12 @@ public class BattleManager : MonoBehaviour
 
     private void OnDisable()
     {
+        if (chargedStrike != null)
+        {
+            chargedStrike.Finished -= ResolveChargedAttack;
+            chargedStrike.Unavailable -= HandleChargeUnavailable;
+            chargedStrike.CancelAttack();
+        }
         if (battleHUD != null)
         {
             battleHUD.CommandChosen -= HandleCommand;
@@ -195,6 +213,11 @@ public class BattleManager : MonoBehaviour
         if (!IsInBattle)
             return;
 
+        // The charge controller owns hold/release input. Never treat its Z as a bar hit.
+        if (state == BattleState.ChargingAttack) return;
+        if (state == BattleState.ChargedAttackResult &&
+            Time.unscaledTime - chargedResultShownAt < 0.75f) return;
+
         // Prevent one press from passing through multiple screens.
         if (Time.frameCount == lastTransitionFrame)
             return;
@@ -204,6 +227,13 @@ public class BattleManager : MonoBehaviour
         if (player == null || monster == null)
         {
             EndBattle();
+            return;
+        }
+        if (state == BattleState.ChoosingAttack && chargedStrike != null &&
+            chargedStrike.IsSelecting && chargedStrike.SelectedCharged &&
+            player.Stats.CurrentMP < chargedStrike.MPCost)
+        {
+            chargedStrike.ShowNotEnoughMP();
             return;
         }
         if (state == BattleState.TimingAttack)
@@ -250,6 +280,14 @@ public class BattleManager : MonoBehaviour
         if (!IsInBattle || Time.frameCount == lastTransitionFrame)
             return;
 
+        if (state == BattleState.ChargingAttack && chargedStrike != null && chargedStrike.CanCancel)
+        {
+            lastTransitionFrame = Time.frameCount;
+            chargedStrike.CancelAttack();
+            BattleTowerAudio.Play(TowerSound.Cancel);
+            OpenTargetSelection();
+            return;
+        }
         switch (state)
         {
             case BattleState.ChoosingItem:
@@ -261,6 +299,7 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case BattleState.ChoosingAttack:
+                if (chargedStrike != null) chargedStrike.CancelAttack();
                 BattleTowerAudio.Play(TowerSound.Cancel);
                 lastTransitionFrame = Time.frameCount;
                 state = BattleState.ChoosingCommand;
@@ -270,7 +309,7 @@ public class BattleManager : MonoBehaviour
             case BattleState.ChoosingTarget:
                 BattleTowerAudio.Play(TowerSound.Cancel);
                 lastTransitionFrame = Time.frameCount;
-                OpenAttackSelection();
+                OpenAttackSelection(false);
                 break;
         }
     }
@@ -383,9 +422,17 @@ public class BattleManager : MonoBehaviour
             BattleState.ItemUsedMessage);
     }
 
-    private void OpenAttackSelection()
+    private void OpenAttackSelection(bool reset = true)
     {
         state = BattleState.ChoosingAttack;
+        if (reset) chargedAttackSelected = false;
+        if (chargedStrike != null && chargedStrike.ShowSelection(player.Stats, reset))
+        {
+            battleHUD.HideActionPanels();
+            return;
+        }
+        // Basic attack still works if the new component has not been assigned.
+        chargedAttackSelected = false;
         battleHUD.ShowAttackSelection();
     }
 
@@ -408,11 +455,28 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case BattleState.ChoosingAttack:
+                chargedAttackSelected = chargedStrike != null && chargedStrike.IsSelecting && chargedStrike.SelectedCharged;
+                if (chargedAttackSelected && player.Stats.CurrentMP < chargedStrike.MPCost)
+                {
+                    chargedStrike.ShowNotEnoughMP();
+                    break;
+                }
+                if (chargedStrike != null) chargedStrike.CancelAttack();
                 OpenTargetSelection();
                 break;
 
             case BattleState.ChoosingTarget:
-                BeginTimedAttack();
+                if (chargedAttackSelected) BeginChargedAttack();
+                else BeginTimedAttack();
+                break;
+
+            case BattleState.ChargedAttackResult:
+                if (chargedStrike != null) chargedStrike.CancelAttack();
+                if (monster.IsDefeated) BeginDefeatDialogue();
+                else EnemyAttack();
+                break;
+
+            case BattleState.ChargingAttack:
                 break;
 
             case BattleState.TimingAttack:
@@ -619,6 +683,7 @@ public class BattleManager : MonoBehaviour
 
     public void EndBattle()
     {
+        if (chargedStrike != null) chargedStrike.CancelAttack();
         nextDodgeSpeedMultiplier = 1f;
         inventory = null;
         if(dodgePhase != null)
@@ -652,6 +717,55 @@ public class BattleManager : MonoBehaviour
         characterMovement = null;
         explorationBody = null;
     }
+    private void BeginChargedAttack()
+    {
+        if (chargedStrike == null || !chargedStrike.BeginAttack(player.Stats))
+        {
+            OpenAttackSelection(false);
+            if (chargedStrike != null && chargedStrike.IsSelecting && player.Stats.CurrentMP < chargedStrike.MPCost)
+                chargedStrike.ShowNotEnoughMP();
+            return;
+        }
+        battleHUD.HideActionPanels();
+        state = BattleState.ChargingAttack;
+        lastTransitionFrame = Time.frameCount;
+    }
+
+    private void HandleChargeUnavailable()
+    {
+        if (state != BattleState.ChargingAttack) return;
+        lastTransitionFrame = Time.frameCount;
+        OpenAttackSelection(false);
+        if (chargedStrike != null && chargedStrike.IsSelecting) chargedStrike.ShowNotEnoughMP();
+    }
+
+    private void ResolveChargedAttack(float multiplier, string label)
+    {
+        if (state != BattleState.ChargingAttack) return;
+        if (player == null || monster == null || monster.Stats == null)
+        {
+            EndBattle();
+            return;
+        }
+        lastTransitionFrame = Time.frameCount;
+        int previousHP = monster.Stats.CurrentHP;
+        int damage = multiplier <= 0f ? 0 : Mathf.Max(1, Mathf.RoundToInt(player.AttackDamage * multiplier));
+        if (damage > 0) monster.Stats.TakeDamage(damage);
+        int damageDealt = previousHP - monster.Stats.CurrentHP;
+        state = BattleState.ChargedAttackResult;
+        chargedResultShownAt = Time.unscaledTime;
+        RefreshPlayerStatus();
+        // Show the strike's full damage; the enemy's remaining HP only caps how much of it is applied.
+        chargedStrike.ShowResult(label, damage);
+        if (enemyHitFeedback != null)
+        {
+            EnemyHitKind kind = damage <= 0 ? EnemyHitKind.Miss
+                : label.StartsWith("PERFECT") ? EnemyHitKind.ChargedPerfect
+                : EnemyHitKind.ChargedGood;
+            enemyHitFeedback.Play(kind, damage);
+        }
+    }
+
     private void ResolveTimedAttack(float multiplier)
 {
     if (state != BattleState.TimingAttack)
@@ -667,6 +781,7 @@ public class BattleManager : MonoBehaviour
 
     if (multiplier <= 0f)
     {
+        if (enemyHitFeedback != null) enemyHitFeedback.Play(EnemyHitKind.Miss, 0);
         ShowMessage(
             "* Your attack missed!\n* Press Z to continue.",
             BattleState.PlayerAttackMessage
@@ -684,6 +799,7 @@ public class BattleManager : MonoBehaviour
     monster.Stats.TakeDamage(damage);
 
     int damageDealt = previousHP - monster.Stats.CurrentHP;
+    if (enemyHitFeedback != null) enemyHitFeedback.Play(EnemyHitKind.Basic, damageDealt);
 
     ShowMessage(
         $"* You dealt {damageDealt} damage to " +

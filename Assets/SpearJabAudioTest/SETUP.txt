@@ -1,0 +1,40 @@
+SPEAR JAB ATTACK AUDIO
+
+1. Exit Play mode. Replace the CONTENTS of your existing SpearJabAttackPattern.cs
+   with the included script. Keep its existing .meta and Inspector assignments.
+   Do not add a second class or a file named SpearJabAttackPattern(3).cs.
+2. Import the three WAVs into Assets/Audio/SFX/Guardian.
+3. Open the GuardSpearPattern prefab that your spear-jab attack asset references.
+4. In Spear Jab Attack Pattern > Attack Sounds, assign:
+   Warning Sound       -> Spear_Warning.wav
+   Spear Release Sound -> Spear_Release.wav
+   Impact Sound        -> Spear_Impact.wav
+   Sound Volume        -> start at 0.7, lower to taste
+5. Save the prefab and test a guardian battle.
+
+No EnemyAttackData or BattleTowerAudio changes are needed. Audio fields are
+stored on this attack prefab. Empty slots are silent. A dedicated 2D AudioSource
+is created on the attack instance as needed; no manual AudioSource is required.
+Keep your scene's one AudioListener enabled and Game view audio unmuted.
+Attack volume here is independent of BattleTowerAudio's menu-effect volume.
+
+TIMING
+- Warning: once per wave as warning lanes appear, not once per flashing frame.
+- Release: when each spear appears and begins its thrust.
+- Impact: when each spear reaches its lowest position, not when player damage
+  occurs. It works even when no impact animation sprites are assigned.
+- Simultaneous releases/impacts share one cue per event type per frame.
+  Staggered strikes still get their own cues on later frames.
+- ClearProjectiles or disabling/destroying the attack stops its audio.
+  Thus an attack ending can cut a sound's tail short intentionally.
+
+The three WAVs are original synthesized effects with no third-party samples.
+Format: mono 44.1 kHz, 16-bit PCM. Optional reproducible Python/numpy synthesis
+source is included; do not import the .py file into Unity as a game script.
+
+VALIDATION
+Audio format and peak levels checked; source diff reviewed for event placement.
+No Unity compiler or playback session is available here. In Play mode verify
+warning -> thrust -> impact, repeated waves, safe dodges, missing optional clips,
+and stopping the phase without lingering sounds. Existing attack behavior,
+collision logic, timing values and visual animation code are retained.
