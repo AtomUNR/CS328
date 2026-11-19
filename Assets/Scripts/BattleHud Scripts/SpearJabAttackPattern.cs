@@ -58,6 +58,38 @@ public sealed class SpearJabAttackPattern : EnemyAttackPattern
     [Tooltip("Idle, Crouch, Rise, Peak, Thrust, Impact, Recoil, Settle (in that order).")]
     [SerializeField] private Sprite[] guardianFrames = new Sprite[GuardFrameCount];
 
+    [Header("Attack Sounds")]
+    [Tooltip("Plays once when each wave's warning lanes appear.")]
+    [SerializeField] private AudioClip warningSound;
+    [Tooltip("Plays when a spear begins its thrust.")]
+    [SerializeField] private AudioClip spearReleaseSound;
+    [Tooltip("Plays when the spear reaches the bottom, even when it misses the player.")]
+    [SerializeField] private AudioClip impactSound;
+    [SerializeField, Range(0f, 1f)] private float soundVolume = 0.7f;
+
+    private AudioSource attackAudio;
+    private int lastReleaseSoundFrame = -1;
+    private int lastImpactSoundFrame = -1;
+
+    // This source belongs to the attack instance, so cancellation stops its audio.
+    private void PlayAttackSound(AudioClip clip)
+    {
+        if (clip == null || !isActiveAndEnabled || soundVolume <= 0f) return;
+        if (attackAudio == null)
+        {
+            attackAudio = gameObject.AddComponent<AudioSource>();
+            attackAudio.playOnAwake = false;
+            attackAudio.loop = false;
+            attackAudio.spatialBlend = 0f;
+        }
+        attackAudio.PlayOneShot(clip, soundVolume);
+    }
+
+    private void OnDisable()
+    {
+        if (attackAudio != null) attackAudio.Stop();
+    }
+
     [Header("Spear art")]
     [SerializeField] private Sprite spearHeadSprite;
     [SerializeField] private Sprite spearShaftSprite;
@@ -228,6 +260,9 @@ public sealed class SpearJabAttackPattern : EnemyAttackPattern
 
     public override void ClearProjectiles()
     {
+        if (attackAudio != null) attackAudio.Stop();
+        lastReleaseSoundFrame = -1;
+        lastImpactSoundFrame = -1;
         for (int i = strikes.Count - 1; i >= 0; i--)
             DestroyStrike(strikes[i]);
 
@@ -322,6 +357,7 @@ public sealed class SpearJabAttackPattern : EnemyAttackPattern
             strikes.Add(CreateStrike(chosenLanes[i], laneX, delays[i]));
         }
 
+        PlayAttackSound(warningSound);
         waveIndex++;
         waveActive = true;
         waveTime = 0f;
@@ -369,7 +405,15 @@ public sealed class SpearJabAttackPattern : EnemyAttackPattern
             strike.WarningGroup.gameObject.SetActive(false);
 
         if (!strike.SpearGroup.gameObject.activeSelf)
+        {
             strike.SpearGroup.gameObject.SetActive(true);
+            // Simultaneous spears share a cue rather than stacking identical audio.
+            if (lastReleaseSoundFrame != Time.frameCount)
+            {
+                lastReleaseSoundFrame = Time.frameCount;
+                PlayAttackSound(spearReleaseSound);
+            }
+        }
 
         float previousTip = strike.TipY;
         float tip = TipYAt(age);
@@ -637,6 +681,11 @@ public sealed class SpearJabAttackPattern : EnemyAttackPattern
     private void StartImpact(Strike strike)
     {
         strike.ImpactStarted = true;
+        if (lastImpactSoundFrame != Time.frameCount)
+        {
+            lastImpactSoundFrame = Time.frameCount;
+            PlayAttackSound(impactSound);
+        }
 
         if (impactFrames == null || impactFrames.Length == 0)
             return;

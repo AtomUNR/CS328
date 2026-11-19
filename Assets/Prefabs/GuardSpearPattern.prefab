@@ -67,6 +67,10 @@ MonoBehaviour:
   - {fileID: -3381686453424164908, guid: 8b0b037ae58e40148a57d60bbaa22ae8, type: 3}
   - {fileID: -6775719720096569788, guid: 90313f5d6e0e3694cbe0495ad53383e7, type: 3}
   - {fileID: -5399981157966850613, guid: e48e9155384e1144fbc56f5b12491f2b, type: 3}
+  warningSound: {fileID: 8300000, guid: cf61b414cfb98264d9f4bbbb44408e84, type: 3}
+  spearReleaseSound: {fileID: 8300000, guid: d8f855fa0a5822f419a699bf4ae7e730, type: 3}
+  impactSound: {fileID: 8300000, guid: cf61b414cfb98264d9f4bbbb44408e84, type: 3}
+  soundVolume: 0.7
   spearHeadSprite: {fileID: -7277418748631062735, guid: 42a84538f6b2d0649b0bd6fd0c743de3, type: 3}
   spearShaftSprite: {fileID: -3914555014399561493, guid: e69da5b108e248443a9d926423dfa6a1, type: 3}
   impactFrames:
