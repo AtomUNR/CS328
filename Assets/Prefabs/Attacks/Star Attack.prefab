@@ -55,10 +55,10 @@ MonoBehaviour:
   waveInterval: 0.35
   starsPerWave: 4
   fallSpeed: 250
-  starRadius: 10
+  starRadius: 14
   horizontalDrift: 90
   maxStars: 120
-  explosionRadius: 44
+  explosionRadius: 57
   explosionDuration: 0.55
   castSound: {fileID: 8300000, guid: 3b17236b5392e3040a5bd4072a2ed599, type: 3}
   spawnSounds:

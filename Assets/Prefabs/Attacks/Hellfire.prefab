@@ -63,7 +63,7 @@ MonoBehaviour:
   fireballsPerVolley: 4
   fallSpeed: 260
   horizontalTrackingSpeed: 145
-  fireballRadius: 11
+  fireballRadius: 15
   horizontalScatter: 100
   maxFireballs: 120
   castSound: {fileID: 8300000, guid: fbc8045a7fa989246aa031812319d330, type: 3}
