@@ -27,7 +27,7 @@ public class BattleManager : MonoBehaviour
 
     private Player player;
     private Monster monster;
-    private PlayerMovement playerMovement;
+    private Behaviour playerMovement;
 
     private bool movementWasEnabled;
     private int lastTransitionFrame = -1;
@@ -103,13 +103,14 @@ public class BattleManager : MonoBehaviour
         if (newPlayer.Stats.CurrentHP <= 0 || newMonster.IsDefeated)
             return false;
 
-        PlayerMovement movement =
-            newPlayer.GetComponent<PlayerMovement>();
+        Behaviour movement = newPlayer.GetComponent<PlayerMovement>();
+        if (movement == null)
+            movement = newPlayer.GetComponent<AnimatedPlayerMovement>();
 
         if (movement == null)
         {
             Debug.LogError(
-                "The Player needs PlayerMovement.",
+                "The Player needs PlayerMovement or AnimatedPlayerMovement.",
                 newPlayer
             );
 
@@ -386,16 +387,6 @@ public class BattleManager : MonoBehaviour
         );
         return;
     }
-        //animation script made with chatGPT
-        Animator monsterAnimator = monster.GetComponent<Animator>();
-
-        if (monsterAnimator != null)
-        {
-            monsterAnimator.enabled = true;
-            monsterAnimator.Rebind();
-            monsterAnimator.Play("Guardian_Spear_Thrust_12", 0, 0f);
-        }
-
         if (!dodgePhase.BeginPhase(attack, monster.BattleSprite, player.Stats)){ return; } 
 
     state = BattleState.Dodging;

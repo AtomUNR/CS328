@@ -350,7 +350,7 @@ public sealed class BattleHudController : MonoBehaviour
             actionReference.action.Disable();
     }
     public void HideActionPanels()
-    {   
+    {
     SetMenuPanels(false, false, false, false);
     CommandSelectionEnabled = false;
     lastNavigate = Vector2.zero;
