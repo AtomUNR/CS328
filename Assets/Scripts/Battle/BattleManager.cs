@@ -36,7 +36,7 @@ public class BattleManager : MonoBehaviour
 
     private Player player;
     private Monster monster;
-    private PlayerMovement playerMovement;
+    private Behaviour playerMovement;
     private CharacterMovement characterMovement;
     private Rigidbody2D explorationBody;
     private bool characterMovementWasEnabled;
@@ -133,14 +133,15 @@ public class BattleManager : MonoBehaviour
         if (newPlayer.Stats.CurrentHP <= 0 || newMonster.IsDefeated)
             return false;
 
-        PlayerMovement movement =
-            newPlayer.GetComponent<PlayerMovement>();
+        Behaviour movement = newPlayer.GetComponent<PlayerMovement>();
+        if (movement == null)
+            movement = newPlayer.GetComponent<AnimatedPlayerMovement>();
 
         CharacterMovement animatedMovement = newPlayer.GetComponent<CharacterMovement>();
         if (movement == null && animatedMovement == null)
         {
             Debug.LogError(
-                "The Player needs CharacterMovement or PlayerMovement.",
+                "The Player needs CharacterMovement, PlayerMovement or AnimatedPlayerMovement.",
                 newPlayer
             );
 

@@ -4,9 +4,18 @@ public class BattleHUDTest : MonoBehaviour
 {
     [SerializeField] private BattleHudController battleHUD;
     [SerializeField] private Sprite enemySprite;
+    [SerializeField] private BattleManager battleManager;
+    [SerializeField] private Player player;
+    [SerializeField] private Monster monster;
 
     private void Start()
     {
+        if (battleManager != null && player != null && monster != null)
+        {
+            battleManager.StartBattle(player, monster);
+            return;
+        }
+
         if (battleHUD == null)
         {
             Debug.LogError("Assign the BattleHUD reference.", this);
