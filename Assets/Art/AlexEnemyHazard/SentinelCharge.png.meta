@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: c10246389b146684d8c7acd07896991a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4682535778316397038
+    second: Shield Sentinel Charge Sprite Sheet_0
+  - first:
+      213: 4044926772780101155
+    second: Shield Sentinel Charge Sprite Sheet_1
+  - first:
+      213: -2796387457152352400
+    second: Shield Sentinel Charge Sprite Sheet_2
+  - first:
+      213: -7809828782482164919
+    second: Shield Sentinel Charge Sprite Sheet_3
+  - first:
+      213: -3468389473085301967
+    second: Shield Sentinel Charge Sprite Sheet_4
+  - first:
+      213: -4157736697081618862
+    second: Shield Sentinel Charge Sprite Sheet_5
+  - first:
+      213: -8886198735000737816
+    second: Shield Sentinel Charge Sprite Sheet_6
+  - first:
+      213: -7285683157661914582
+    second: Shield Sentinel Charge Sprite Sheet_7
+  - first:
+      213: 3322511655930476197
+    second: Shield Sentinel Charge Sprite Sheet_8
+  - first:
+      213: -9047304093773910941
+    second: Shield Sentinel Charge Sprite Sheet_9
+  - first:
+      213: -4320524833678625899
+    second: Shield Sentinel Charge Sprite Sheet_10
+  - first:
+      213: -803032831203377765
+    second: Shield Sentinel Charge Sprite Sheet_11
+  - first:
+      213: -6927583661269320985
+    second: Shield Sentinel Charge Sprite Sheet_12
+  - first:
+      213: 4960067506549996745
+    second: Shield Sentinel Charge Sprite Sheet_13
+  - first:
+      213: 2816332340858176480
+    second: Shield Sentinel Charge Sprite Sheet_14
+  - first:
+      213: 5286270951205269515
+    second: Shield Sentinel Charge Sprite Sheet_15
+  - first:
+      213: 7204695414771589566
+    second: Shield Sentinel Charge Sprite Sheet_16
+  - first:
+      213: -7089626285917419953
+    second: Shield Sentinel Charge Sprite Sheet_17
+  - first:
+      213: -8947672562643858434
+    second: Shield Sentinel Charge Sprite Sheet_18
+  - first:
+      213: 7164556949918803448
+    second: Shield Sentinel Charge Sprite Sheet_19
+  - first:
+      213: -8275486852779543285
+    second: Shield Sentinel Charge Sprite Sheet_20
+  - first:
+      213: 2499393794641382280
+    second: Shield Sentinel Charge Sprite Sheet_21
+  - first:
+      213: -589778224243175275
+    second: Shield Sentinel Charge Sprite Sheet_22
+  - first:
+      213: 1955465227168781407
+    second: Shield Sentinel Charge Sprite Sheet_23
+  - first:
+      213: 4973702111524881132
+    second: Shield Sentinel Charge Sprite Sheet_24
+  - first:
+      213: 74274560775560495
+    second: Shield Sentinel Charge Sprite Sheet_25
+  - first:
+      213: 7221702369663133796
+    second: Shield Sentinel Charge Sprite Sheet_26
+  - first:
+      213: -6851525188257727014
+    second: Shield Sentinel Charge Sprite Sheet_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SentinelCharge_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 724
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3df09df77cf830444a012f0b8a921117
+      internalID: 427978540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SentinelCharge_1
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 724
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13b6b836c5966574f864f19ec1ffec9e
+      internalID: 1306938790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SentinelCharge_2
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 724
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86188749e36d3ca479777203b95a0317
+      internalID: -1707269554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SentinelCharge_3
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 724
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1254102876c5f2d458d7ee9837daee99
+      internalID: -650009496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SentinelCharge_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 362
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 500c244873f49884cba14474069dad25
+      internalID: -831863110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SentinelCharge_5
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 362
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa10d931016fa624dac85d45a349d890
+      internalID: -791302264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SentinelCharge_6
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 362
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38b0acd8572ec984992ae7d07fb16c2f
+      internalID: -1114170016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SentinelCharge_7
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 362
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 025f5ccc49ae12b42bca8a07767ef284
+      internalID: 2107965817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SentinelCharge_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6688acf295b23324bac2753ace6a4654
+      internalID: -1855628212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SentinelCharge_9
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 0
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690e32630017f6c41a04f255d66d229e
+      internalID: 1004110486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SentinelCharge_10
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 0
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdc2f6bb96156304b97133b31428e0cf
+      internalID: 1451795808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SentinelCharge_11
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 0
+        width: 362
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae5fc14d5e09c7a4da805aeb192f0386
+      internalID: 1852449135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f317ef2246a59434facfdd4c097d59ce
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":3.0},"gridSpriteSize":{"x":362.0,"y":362.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      SentinelCharge_0: 427978540
+      SentinelCharge_1: 1306938790
+      SentinelCharge_10: 1451795808
+      SentinelCharge_11: 1852449135
+      SentinelCharge_2: -1707269554
+      SentinelCharge_3: -650009496
+      SentinelCharge_4: -831863110
+      SentinelCharge_5: -791302264
+      SentinelCharge_6: -1114170016
+      SentinelCharge_7: 2107965817
+      SentinelCharge_8: -1855628212
+      SentinelCharge_9: 1004110486
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
