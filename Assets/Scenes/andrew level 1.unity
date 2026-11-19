@@ -383,9 +383,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 814466631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cafea64e3e6def444b93a08d7fe03b0a, type: 3}
+  m_Script: {fileID: 11500000, guid: ab4afc795cc1449a96e055102244a2cf, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
+  m_EditorClassIdentifier: Assembly-CSharp::AnimatedPlayerMovement
   inputActions: {fileID: -944628639613478452, guid: 38eede30605542a4dbe3c0b30488f67f, type: 3}
   moveSpeed: 4
 --- !u!50 &814466636

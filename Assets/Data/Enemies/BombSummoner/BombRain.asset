@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2332ee319538f479fcbc9f8fe380dd, type: 3}
+  m_Name: BombRain
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackData
+  attackName: Bomb Rain
+  animationFrames:
+  - {fileID: -3718250251277295445, guid: 13244190016c0f74fb76933c14006395, type: 3}
+  - {fileID: -8140256616438677672, guid: 13244190016c0f74fb76933c14006395, type: 3}
+  - {fileID: -2431688199032919440, guid: 13244190016c0f74fb76933c14006395, type: 3}
+  - {fileID: -7617187978949116469, guid: 13244190016c0f74fb76933c14006395, type: 3}
+  - {fileID: -2683203287380908246, guid: 13244190016c0f74fb76933c14006395, type: 3}
+  - {fileID: -693535326205479102, guid: 13244190016c0f74fb76933c14006395, type: 3}
+  - {fileID: -1818281300919909064, guid: 13244190016c0f74fb76933c14006395, type: 3}
+  - {fileID: -2910662241090742210, guid: 13244190016c0f74fb76933c14006395, type: 3}
+  framesPerSecond: 8
+  loopAnimation: 0
+  windUpDuration: 0.5
+  activeDuration: 8
+  recoveryDuration: 0.5
+  damagePerHit: 5
+  patternPrefab: {fileID: 5935370256937945955, guid: e6a19a87f41466d4496b33e1ff0d8d4e, type: 3}
