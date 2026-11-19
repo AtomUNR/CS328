@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6757597169048235748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 196984789181695935}
+  - component: {fileID: 2487781505726829475}
+  - component: {fileID: 7197147910720290136}
+  - component: {fileID: 1727767232083666227}
+  m_Layer: 5
+  m_Name: BombProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &196984789181695935
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757597169048235748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 32, y: 38.73684}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2487781505726829475
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757597169048235748}
+  m_CullTransparentMesh: 1
+--- !u!114 &7197147910720290136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757597169048235748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 8257024542084308071, guid: da7c3ec7db60a4e49a68d89170d55600, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1727767232083666227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757597169048235748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688f34aade0cf7149b9afe3b9ce01534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bomb
+  shardPrefab: {fileID: 3961791214093905688, guid: 29ea01aae5c6a9e4ba52391a4d175aa6, type: 3}
+  fallFrames:
+  - {fileID: 8257024542084308071, guid: da7c3ec7db60a4e49a68d89170d55600, type: 3}
+  - {fileID: 1887839185363380779, guid: 9b9c162caaab7cc4c91c98318bd1e311, type: 3}
+  flashWhite: {fileID: 2080275861148699574, guid: a07dfaee8da97694a876826f4211a8dc, type: 3}
+  flashRed: {fileID: 506073027846818195, guid: 27c693db67b067b44b7826669535d738, type: 3}
+  flashSfx: {fileID: 8300000, guid: c741c8e2c61206942b4fbaeb2ca4edfc, type: 3}
+  explodeSfx: {fileID: 8300000, guid: 593d767fb0bf5a34bbca8bfb7c6c67b3, type: 3}
+  sfxVolume: 0.8
+  fallSpeed: 150
+  fuseFlicker: 0.12
+  flashTime: 0.45
+  shardCount: 5
+  shardSpeed: 210
+  explodeY: 0

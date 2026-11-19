@@ -1,0 +1,415 @@
+fileFormatVersion: 2
+guid: 13244190016c0f74fb76933c14006395
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7870013019451803686
+    second: HoodedSummoner_0
+  - first:
+      213: -3815680698131245484
+    second: HoodedSummoner_1
+  - first:
+      213: 6155425238411649958
+    second: HoodedSummoner_2
+  - first:
+      213: 7667360045885898806
+    second: HoodedSummoner_3
+  - first:
+      213: -5427530450969037006
+    second: HoodedSummoner_4
+  - first:
+      213: -5159416882373094891
+    second: HoodedSummoner_5
+  - first:
+      213: -3909629245141673210
+    second: HoodedSummoner_6
+  - first:
+      213: -1722734944233012920
+    second: HoodedSummoner_7
+  - first:
+      213: 3418370817272039199
+    second: HoodedSummoner_8
+  - first:
+      213: -3517883705779720452
+    second: HoodedSummoner_9
+  - first:
+      213: 1669240672599883646
+    second: HoodedSummoner_10
+  - first:
+      213: -8949665207050117098
+    second: HoodedSummoner_11
+  - first:
+      213: 895553799274932584
+    second: HoodedSummoner_12
+  - first:
+      213: -8710334215056258711
+    second: HoodedSummoner_13
+  - first:
+      213: -1110326093720004637
+    second: HoodedSummoner_14
+  - first:
+      213: 4837299007129630238
+    second: HoodedSummoner_15
+  - first:
+      213: 6248986594796881929
+    second: HoodedSummoner_16
+  - first:
+      213: -1386467564705913588
+    second: HoodedSummoner_17
+  - first:
+      213: -8756881175691822338
+    second: HoodedSummoner_18
+  - first:
+      213: 4901092413370816537
+    second: HoodedSummoner_19
+  - first:
+      213: 2384437119265969498
+    second: HoodedSummoner_20
+  - first:
+      213: 4709336575270281795
+    second: HoodedSummoner_21
+  - first:
+      213: -3718250251277295445
+    second: Summoner_0
+  - first:
+      213: -8140256616438677672
+    second: Summoner_1
+  - first:
+      213: -2431688199032919440
+    second: Summoner_2
+  - first:
+      213: -7617187978949116469
+    second: Summoner_3
+  - first:
+      213: -2683203287380908246
+    second: Summoner_4
+  - first:
+      213: -693535326205479102
+    second: Summoner_5
+  - first:
+      213: -1818281300919909064
+    second: Summoner_6
+  - first:
+      213: -2910662241090742210
+    second: Summoner_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 439
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Summoner_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 439
+        height: 439
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba02c9ab81f166cc0800000000000000
+      internalID: -3718250251277295445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summoner_1
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 0
+        width: 439
+        height: 439
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85f36ac7cbff70f80800000000000000
+      internalID: -8140256616438677672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summoner_2
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 0
+        width: 439
+        height: 439
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07a22247778e04ed0800000000000000
+      internalID: -2431688199032919440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summoner_3
+      rect:
+        serializedVersion: 2
+        x: 1317
+        y: 0
+        width: 439
+        height: 439
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcdbc5704ef4a4690800000000000000
+      internalID: -7617187978949116469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summoner_4
+      rect:
+        serializedVersion: 2
+        x: 1756
+        y: 0
+        width: 439
+        height: 439
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a27208b83d853cad0800000000000000
+      internalID: -2683203287380908246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summoner_5
+      rect:
+        serializedVersion: 2
+        x: 2195
+        y: 0
+        width: 439
+        height: 439
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 247765a9b411066f0800000000000000
+      internalID: -693535326205479102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summoner_6
+      rect:
+        serializedVersion: 2
+        x: 2634
+        y: 0
+        width: 439
+        height: 439
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8350fec5aca24c6e0800000000000000
+      internalID: -1818281300919909064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summoner_7
+      rect:
+        serializedVersion: 2
+        x: 3073
+        y: 0
+        width: 439
+        height: 439
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e38d4a2fc104b97d0800000000000000
+      internalID: -2910662241090742210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      HoodedSummoner_0: -7870013019451803686
+      HoodedSummoner_1: -3815680698131245484
+      HoodedSummoner_10: 1669240672599883646
+      HoodedSummoner_11: -8949665207050117098
+      HoodedSummoner_12: 895553799274932584
+      HoodedSummoner_13: -8710334215056258711
+      HoodedSummoner_14: -1110326093720004637
+      HoodedSummoner_15: 4837299007129630238
+      HoodedSummoner_16: 6248986594796881929
+      HoodedSummoner_17: -1386467564705913588
+      HoodedSummoner_18: -8756881175691822338
+      HoodedSummoner_19: 4901092413370816537
+      HoodedSummoner_2: 6155425238411649958
+      HoodedSummoner_20: 2384437119265969498
+      HoodedSummoner_21: 4709336575270281795
+      HoodedSummoner_3: 7667360045885898806
+      HoodedSummoner_4: -5427530450969037006
+      HoodedSummoner_5: -5159416882373094891
+      HoodedSummoner_6: -3909629245141673210
+      HoodedSummoner_7: -1722734944233012920
+      HoodedSummoner_8: 3418370817272039199
+      HoodedSummoner_9: -3517883705779720452
+      Summoner_0: -3718250251277295445
+      Summoner_1: -8140256616438677672
+      Summoner_2: -2431688199032919440
+      Summoner_3: -7617187978949116469
+      Summoner_4: -2683203287380908246
+      Summoner_5: -693535326205479102
+      Summoner_6: -1818281300919909064
+      Summoner_7: -2910662241090742210
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
