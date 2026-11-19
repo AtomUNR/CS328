@@ -942,7 +942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHitFeedback
   enemyImage: {fileID: 1489454412}
   popupParent: {fileID: 3545318397397085729}
-  font: {fileID: 11400000, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
+  font: {fileID: 11400000, guid: 1f1f92ebc7b344548bae546ec724fa56, type: 2}
 --- !u!212 &882263691 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1433520923356491995, guid: 831d0dedd4100714ab57da4d6ef68eed, type: 3}
@@ -1857,7 +1857,7 @@ MonoBehaviour:
   onPlayerDefeated:
     m_PersistentCalls:
       m_Calls: []
-  popupFont: {fileID: 11400000, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
+  popupFont: {fileID: 11400000, guid: 1f1f92ebc7b344548bae546ec724fa56, type: 2}
   hitColor: {r: 0.9372549, g: 0.4509804, b: 0.4862745, a: 1}
   spikeSprite: {fileID: 0}
   sortingOrder: -50
@@ -1891,7 +1891,7 @@ MonoBehaviour:
   onPlayerDefeated:
     m_PersistentCalls:
       m_Calls: []
-  popupFont: {fileID: 11400000, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
+  popupFont: {fileID: 11400000, guid: 1f1f92ebc7b344548bae546ec724fa56, type: 2}
   hitColor: {r: 0.9372549, g: 0.4509804, b: 0.4862745, a: 1}
   spikeSprite: {fileID: 0}
   sortingOrder: -50
@@ -1925,7 +1925,7 @@ MonoBehaviour:
   onPlayerDefeated:
     m_PersistentCalls:
       m_Calls: []
-  popupFont: {fileID: 11400000, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
+  popupFont: {fileID: 11400000, guid: 1f1f92ebc7b344548bae546ec724fa56, type: 2}
   hitColor: {r: 0.9372549, g: 0.4509804, b: 0.4862745, a: 1}
   spikeSprite: {fileID: 0}
   sortingOrder: -50

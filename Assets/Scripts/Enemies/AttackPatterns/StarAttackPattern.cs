@@ -25,6 +25,21 @@ public sealed class StarAttackPattern : EnemyAttackPattern
     [SerializeField, Min(1f)] private float explosionRadius = 44f;
     [SerializeField, Min(0.05f)] private float explosionDuration = 0.55f;
 
+    [Header("Attack Sounds")]
+    [Tooltip("Plays when the attack starts. Shimmers through the wind-up and strikes as the stars begin to fall.")]
+    [SerializeField] private AudioClip castSound;
+    [Tooltip("One of these plays for each wave of stars.")]
+    [SerializeField] private AudioClip[] spawnSounds;
+    [Tooltip("Plays when a star bursts at the bottom of the arena.")]
+    [SerializeField] private AudioClip burstSound;
+    [Tooltip("Plays when a star or burst hits the player.")]
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField, Range(0f, 1f)] private float soundVolume = 0.7f;
+    [Tooltip("A whole wave usually bursts at the same moment, so burst sounds are limited to one per this many seconds.")]
+    [SerializeField, Min(0f)] private float burstSoundCooldown = 0.09f;
+
+    private float lastBurstSoundTime = -10f;
+
     private sealed class Star
     {
         public RectTransform Rect;
@@ -49,7 +64,14 @@ public sealed class StarAttackPattern : EnemyAttackPattern
         owner = controller;
         arena = arenaArea;
         waveTimer = 0f;
+        lastBurstSoundTime = -10f;
         ClearProjectiles();
+        PlaySfx(castSound, soundVolume);
+    }
+
+    private void OnDisable()
+    {
+        StopSfx();
     }
 
     public override void Tick(
@@ -68,6 +90,7 @@ public sealed class StarAttackPattern : EnemyAttackPattern
             for (int i = 0; i < starsPerWave && stars.Count < maxStars; i++)
                 SpawnStar();
 
+            PlayRandomSfx(spawnSounds, soundVolume * 0.4f);
             waveTimer += Mathf.Max(0.05f, waveInterval);
         }
 
@@ -92,7 +115,8 @@ public sealed class StarAttackPattern : EnemyAttackPattern
                     essenceRadius,
                     burstRadius))
                 {
-                    owner.TryTakeHit();
+                    if (owner.TryTakeHit())
+                        PlaySfx(hitSound, soundVolume);
                     RemoveStar(i);
                 }
                 else if (star.ExplosionElapsed >=
@@ -120,7 +144,8 @@ public sealed class StarAttackPattern : EnemyAttackPattern
 
             if (hitWhileFalling)
             {
-                owner.TryTakeHit();
+                if (owner.TryTakeHit())
+                    PlaySfx(hitSound, soundVolume);
                 RemoveStar(i);
                 continue;
             }
@@ -135,6 +160,12 @@ public sealed class StarAttackPattern : EnemyAttackPattern
                 star.Rect.anchoredPosition = star.Position;
                 star.IsExploding = true;
                 star.ExplosionElapsed = 0f;
+
+                if (Time.time - lastBurstSoundTime >= burstSoundCooldown)
+                {
+                    lastBurstSoundTime = Time.time;
+                    PlaySfx(burstSound, soundVolume * 0.6f);
+                }
                 continue;
             }
 

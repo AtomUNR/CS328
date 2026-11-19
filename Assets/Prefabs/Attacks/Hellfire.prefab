@@ -66,3 +66,10 @@ MonoBehaviour:
   fireballRadius: 11
   horizontalScatter: 100
   maxFireballs: 120
+  castSound: {fileID: 8300000, guid: fbc8045a7fa989246aa031812319d330, type: 3}
+  launchSounds:
+  - {fileID: 8300000, guid: 22dea66efecfa0541997b42e1fde2836, type: 3}
+  - {fileID: 8300000, guid: 4e11ed5b5b7c9de44a0b64c60973074e, type: 3}
+  - {fileID: 8300000, guid: 216cbaed70c17fd4fa1b1f4b792307c8, type: 3}
+  hitSound: {fileID: 8300000, guid: 929fa8cd2d0ef414baa43cb2981b1564, type: 3}
+  soundVolume: 0.7

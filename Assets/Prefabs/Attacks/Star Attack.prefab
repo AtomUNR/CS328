@@ -60,3 +60,12 @@ MonoBehaviour:
   maxStars: 120
   explosionRadius: 44
   explosionDuration: 0.55
+  castSound: {fileID: 8300000, guid: 3b17236b5392e3040a5bd4072a2ed599, type: 3}
+  spawnSounds:
+  - {fileID: 8300000, guid: b2569adac30b8fc4998e1f7b6f875c1c, type: 3}
+  - {fileID: 8300000, guid: 67f97ca3e4d55f44598d9c10527fc611, type: 3}
+  - {fileID: 8300000, guid: 99c7c7b075138d644a6e3e64bea8e9c4, type: 3}
+  burstSound: {fileID: 8300000, guid: ae9ecf33aa1925a4787a3fd0effcc3be, type: 3}
+  hitSound: {fileID: 8300000, guid: a9d64077f8f47434181cab421b234d45, type: 3}
+  soundVolume: 0.7
+  burstSoundCooldown: 0.09

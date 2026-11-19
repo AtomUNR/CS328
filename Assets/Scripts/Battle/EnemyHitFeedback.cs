@@ -99,8 +99,8 @@ public sealed class EnemyHitFeedback : MonoBehaviour
             default:
                 return new Style
                 {
-                    color = Ivory, tint = new Color(1f, 1f, 1f, 0.25f), fontSize = 72f, rise = 110f,
-                    life = 0.85f, popScale = 1.25f, shake = 10f, shakeTime = 0.22f, horizontalOnly = true, blinks = 2
+                    color = Ivory, tint = new Color(1f, 1f, 1f, 0.25f), fontSize = 96f, rise = 90f,
+                    life = 1.0f, popScale = 1.2f, shake = 10f, shakeTime = 0.22f, horizontalOnly = true, blinks = 2
                 };
         }
     }
@@ -146,7 +146,8 @@ public sealed class EnemyHitFeedback : MonoBehaviour
     private IEnumerator PopupRoutine(string message, Style style)
     {
         RectTransform rect = MakeRect("Enemy Hit Popup", new Vector2(600f, 220f));
-        Vector2 start = enemyImage.anchoredPosition + new Vector2(Random.Range(-40f, 40f), 70f);
+        // Start above the enemy's head (not over its dark face) so the number is easy to read.
+        Vector2 start = enemyImage.anchoredPosition + new Vector2(Random.Range(-30f, 30f), enemyImage.rect.height * 0.33f);
         rect.anchoredPosition = start;
 
         TextMeshProUGUI label = rect.gameObject.AddComponent<TextMeshProUGUI>();
@@ -157,7 +158,9 @@ public sealed class EnemyHitFeedback : MonoBehaviour
         label.alignment = TextAlignmentOptions.Center;
         label.textWrappingMode = TextWrappingModes.NoWrap;
         label.raycastTarget = false;
-        label.outlineWidth = 0.3f;
+        // Keep the outline thin: a thick one fills the small holes in digits like 8 and 5
+        // in this pixel font, making them look alike. The HUD background is black anyway.
+        label.outlineWidth = 0.08f;
         label.outlineColor = Outline;
 
         float t = 0f;
@@ -168,8 +171,9 @@ public sealed class EnemyHitFeedback : MonoBehaviour
             float eased = 1f - (1f - u) * (1f - u);
             rect.anchoredPosition = start + Vector2.up * (style.rise * eased);
 
-            float scale = u < 0.12f ? Mathf.Lerp(0.4f, style.popScale, u / 0.12f)
-                                    : Mathf.Lerp(style.popScale, 1f, Mathf.Clamp01((u - 0.12f) / 0.2f));
+            // Pop in from nearly full size: a tiny starting scale made digits like 8 look like 5.
+            float scale = u < 0.1f ? Mathf.Lerp(0.85f, style.popScale, u / 0.1f)
+                                   : Mathf.Lerp(style.popScale, 1f, Mathf.Clamp01((u - 0.1f) / 0.2f));
             rect.localScale = Vector3.one * scale;
 
             float alpha = u < 0.6f ? 1f : 1f - (u - 0.6f) / 0.4f;
