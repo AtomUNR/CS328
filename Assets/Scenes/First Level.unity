@@ -586,6 +586,63 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2159235185826128173, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}
   m_PrefabInstance: {fileID: 4780827415573082818}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &282546252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 282546254}
+  - component: {fileID: 282546253}
+  m_Layer: 0
+  m_Name: GameMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &282546253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282546252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a822326fb2dd549a1681039009d63c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameMusic
+  exteriorMusic: {fileID: 8300000, guid: a30d808107775e943985fec56e13abae, type: 3}
+  interiorMusic: {fileID: 8300000, guid: 966797b18cc9b5f409b8aec33978b9bf, type: 3}
+  guardBattleMusic: {fileID: 8300000, guid: 525e0334c406fd04f9db8b74f94635ec, type: 3}
+  bossBattleMusic: {fileID: 8300000, guid: f8b10689ee7a0994591ebdabf21479cb, type: 3}
+  exteriorVolume: 0.7
+  interiorVolume: 0.36
+  guardBattleVolume: 0.42
+  bossBattleVolume: 0.62
+  fadeSeconds: 0.8
+  player: {fileID: 246472659}
+  interiorBackground: {fileID: 882263691}
+  battleManager: {fileID: 847181987}
+  boss: {fileID: 1433575701}
+--- !u!4 &282546254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282546252}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &340113974 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2629662393282485423, guid: 8ad54ce11b056c54a930cb2c70c462f5, type: 3}
@@ -1268,6 +1325,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 310947588478728721, guid: fcb37be7af1204e419ee1cd60ef64644, type: 3}
   m_PrefabInstance: {fileID: 161944724}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1433575701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4805679659103827614, guid: fcb37be7af1204e419ee1cd60ef64644, type: 3}
+  m_PrefabInstance: {fileID: 161944724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433575698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2655463cf11585d428e6a47251143ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster
 --- !u!60 &1433575706
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1980,3 +2048,4 @@ SceneRoots:
   - {fileID: 1649671997}
   - {fileID: 685652794}
   - {fileID: 387500741}
+  - {fileID: 282546254}
