@@ -26,10 +26,14 @@ public sealed class TowerSpikeTrap : MonoBehaviour
     public UnityEvent onPlayerDefeated = new UnityEvent();
 
     [Header("Visuals")]
-    [Tooltip("Optional replacement spike sprite. Empty uses simple triangular test spikes.")]
+    [Tooltip("Optional replacement spike sprite. Empty uses the built-in animated metal spikes.")]
     public Sprite spikeSprite;
     public int sortingOrder = 10;
-    public Color warningColor = new Color(1f, 0.65f, 0.15f, 0.6f);
+    [Tooltip("Glow color for the warning, matched to the blue torch flames.")]
+    public Color glowColor = new Color(0.3f, 0.8f, 1f, 0.6f);
+    [Tooltip("Spike columns per row for the built-in spikes.")]
+    [Range(3, 16)] public int spikeColumns = 8;
+    [Range(1, 4)] public int spikeRows = 2;
 
     private enum Phase { Safe, Warning, Raised }
     private Phase phase;
@@ -39,10 +43,23 @@ public sealed class TowerSpikeTrap : MonoBehaviour
     private GameObject visuals;
     private GameObject spikes;
     private SpriteRenderer warning;
+    private SpriteRenderer plate;
+    private SpriteRenderer[] border;
+    private Transform[] tips;
+    private float[] tipDelay;
+    private float tipBaseWidth, tipMaxHeight;
     private Texture2D pixel;
     private Sprite square;
     private Mesh spikeMesh;
     private Material spikeMaterial;
+
+    // Palette sampled from the tower interior art: slate stone, tan trim, black outlines, blue flame.
+    private static readonly Color PlateColor = new Color(0.1f, 0.1f, 0.18f, 0.92f);
+    private static readonly Color HoleColor = new Color(0.02f, 0.02f, 0.05f, 1f);
+    private static readonly Color BorderSafe = new Color(0.62f, 0.52f, 0.42f, 1f);   // dull tan trim
+    private static readonly Color BorderHot = new Color(0.55f, 0.92f, 1f, 1f);       // flame blue
+    private static readonly Color Outline = new Color(0.03f, 0.03f, 0.06f, 1f);
+    private const int PixelSteps = 7; // spike height snaps to steps for a pixel-art feel
 
     private void Awake()
     {
@@ -126,16 +143,104 @@ public sealed class TowerSpikeTrap : MonoBehaviour
                 "' to your build scene list, or correct Death Scene Name on the traps.", this);
     }
 
+    // ---------------------------------------------------------------- visuals
+
     private void RefreshVisuals()
     {
-        if (spikes != null) spikes.SetActive(phase == Phase.Raised);
-        if (warning != null)
+        if (warning == null) return;
+        float duration = Duration();
+        float t = Mathf.Max(0f, elapsed);
+        float progress = Mathf.Clamp01(t / duration);
+        float pulse = 0.5f + 0.5f * Mathf.Sin(Time.time * (phase == Phase.Warning ? 22f : 3f));
+
+        // Pit floor and hazard border are always visible so the trap reads as dangerous.
+        Color edge = BorderSafe;
+        Color fill = glowColor;
+        fill.a = 0f;
+
+        if (phase == Phase.Warning)
         {
-            warning.gameObject.SetActive(phase == Phase.Warning);
-            Color tint = warningColor;
-            tint.a *= 0.55f + 0.45f * Mathf.Abs(Mathf.Sin(elapsed * 12f));
-            warning.color = tint;
+            // Pulse faster as the spikes get closer to firing.
+            float rate = Mathf.Lerp(10f, 34f, progress);
+            pulse = 0.5f + 0.5f * Mathf.Sin(Time.time * rate);
+            fill = glowColor;
+            fill.a *= Mathf.Lerp(0.35f, 1f, pulse) * Mathf.Lerp(0.6f, 1f, progress);
+            edge = Color.Lerp(BorderSafe, BorderHot, 0.4f + 0.6f * pulse);
         }
+        else if (phase == Phase.Raised)
+        {
+            float flash = Mathf.Clamp01(1f - t / 0.18f);
+            fill = Color.Lerp(glowColor, new Color(0.9f, 0.98f, 1f), flash);
+            fill.a = 0.7f * flash;
+            edge = Color.Lerp(BorderHot, BorderSafe, progress);
+        }
+
+        warning.color = fill;
+        warning.enabled = fill.a > 0.01f;
+        for (int i = 0; i < border.Length; i++) border[i].color = edge;
+
+        if (tips == null)
+        {
+            // Custom sprite path: show the sprite while raised.
+            if (spikes != null) spikes.SetActive(phase == Phase.Raised);
+            return;
+        }
+
+        for (int i = 0; i < tips.Length; i++)
+        {
+            float h = TipHeight(i, t, duration, progress);
+            bool visible = h > 0.004f;
+            if (tips[i].gameObject.activeSelf != visible) tips[i].gameObject.SetActive(visible);
+            if (visible)
+            {
+                float stepped = Mathf.Ceil(h * PixelSteps) / PixelSteps;
+                tips[i].localScale = new Vector3(tipBaseWidth, tipMaxHeight * stepped, 1f);
+            }
+        }
+    }
+
+    private float TipHeight(int index, float t, float duration, float progress)
+    {
+        if (phase == Phase.Safe) return 0f;
+        if (phase == Phase.Warning)
+        {
+            // Tips twitch up out of their holes.
+            float twitch = 0.03f * Mathf.Sin(Time.time * 55f + index * 1.7f);
+            return Mathf.Clamp01(Mathf.Lerp(0.04f, 0.2f, progress) + twitch * progress);
+        }
+
+        const float riseTime = 0.09f, startHeight = 0.2f;
+        float retract = Mathf.Min(0.22f, duration * 0.3f);
+        float local = t - tipDelay[index];
+        if (local < 0f) return startHeight;
+        if (local < riseTime)
+        {
+            // Fast thrust with a little overshoot.
+            float s = local / riseTime - 1f;
+            const float c1 = 1.70158f, c3 = c1 + 1f;
+            float eased = 1f + c3 * s * s * s + c1 * s * s;
+            return Mathf.LerpUnclamped(startHeight, 1f, eased);
+        }
+        float retractStart = duration - retract;
+        if (t > retractStart)
+        {
+            float r = Mathf.Clamp01((t - retractStart) / retract);
+            return 1f - r * r;
+        }
+        return 1f;
+    }
+
+    private SpriteRenderer MakeSprite(string objectName, Transform parent, Vector3 localPos, Vector2 size, Color color, int order)
+    {
+        GameObject go = new GameObject(objectName);
+        go.transform.SetParent(parent, false);
+        go.transform.localPosition = localPos;
+        go.transform.localScale = new Vector3(size.x, size.y, 1f);
+        SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = square;
+        sr.color = color;
+        sr.sortingOrder = order;
+        return sr;
     }
 
     private void BuildVisuals()
@@ -147,12 +252,21 @@ public sealed class TowerSpikeTrap : MonoBehaviour
         pixel.SetPixel(0, 0, Color.white);
         pixel.Apply();
         square = Sprite.Create(pixel, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1);
-        GameObject flash = new GameObject("Warning");
-        flash.transform.SetParent(visuals.transform, false);
-        flash.transform.localScale = new Vector3(area.size.x, area.size.y, 1);
-        warning = flash.AddComponent<SpriteRenderer>();
-        warning.sprite = square;
-        warning.sortingOrder = sortingOrder;
+
+        Vector2 size = area.size;
+        plate = MakeSprite("Pit", visuals.transform, Vector3.zero, size, PlateColor, sortingOrder - 1);
+
+        // Hazard border: four strips around the trap area.
+        const float thick = 0.07f;
+        border = new SpriteRenderer[4];
+        border[0] = MakeSprite("EdgeTop", visuals.transform, new Vector3(0, (size.y - thick) * 0.5f, 0), new Vector2(size.x, thick), BorderSafe, sortingOrder + 2);
+        border[1] = MakeSprite("EdgeBottom", visuals.transform, new Vector3(0, -(size.y - thick) * 0.5f, 0), new Vector2(size.x, thick), BorderSafe, sortingOrder + 2);
+        border[2] = MakeSprite("EdgeLeft", visuals.transform, new Vector3(-(size.x - thick) * 0.5f, 0, 0), new Vector2(thick, size.y), BorderSafe, sortingOrder + 2);
+        border[3] = MakeSprite("EdgeRight", visuals.transform, new Vector3((size.x - thick) * 0.5f, 0, 0), new Vector2(thick, size.y), BorderSafe, sortingOrder + 2);
+
+        // Glow overlay for warning and the strike flash.
+        warning = MakeSprite("Warning", visuals.transform, Vector3.zero, size, glowColor, sortingOrder + 1);
+
         spikes = new GameObject("RaisedSpikes");
         spikes.transform.SetParent(visuals.transform, false);
 
@@ -160,38 +274,69 @@ public sealed class TowerSpikeTrap : MonoBehaviour
         {
             SpriteRenderer sprite = spikes.AddComponent<SpriteRenderer>();
             sprite.sprite = spikeSprite;
-            sprite.sortingOrder = sortingOrder + 1;
-            Vector3 size = spikeSprite.bounds.size;
-            spikes.transform.localScale = new Vector3(area.size.x / size.x, area.size.y / size.y, 1);
+            sprite.sortingOrder = sortingOrder + 3;
+            Vector3 spriteSize = spikeSprite.bounds.size;
+            spikes.transform.localScale = new Vector3(size.x / spriteSize.x, size.y / spriteSize.y, 1);
             spikes.transform.localPosition = -Vector3.Scale(spikeSprite.bounds.center, spikes.transform.localScale);
             return;
         }
 
-        // Code-built placeholder geometry: replace with your own sprite whenever ready.
+        // Spike mesh: base at y=0, tip at y=1. A black outline triangle sits behind two
+        // flat-shaded faces in the tower's slate-blue stone tones, with a pale tan-steel tip.
+        Color baseDark = new Color(0.2f, 0.21f, 0.33f);
+        Color baseLight = new Color(0.36f, 0.38f, 0.52f);
+        Color tipLeft = new Color(0.62f, 0.64f, 0.78f);
+        Color tipRight = new Color(0.9f, 0.84f, 0.72f);
         spikeMesh = new Mesh();
-        spikeMesh.vertices = new[] { new Vector3(-0.45f, -0.45f, 0), new Vector3(0.45f, -0.45f, 0), new Vector3(0, 0.45f, 0) };
-        spikeMesh.colors = new[] { Color.white, Color.white, Color.white };
-        spikeMesh.uv = new[] { Vector2.zero, Vector2.right, Vector2.up };
-        spikeMesh.triangles = new[] { 0, 1, 2 };
+        spikeMesh.vertices = new[]
+        {
+            new Vector3(-0.56f, -0.04f, 0), new Vector3(0.56f, -0.04f, 0), new Vector3(0, 1.08f, 0),
+            new Vector3(-0.5f, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 1, 0),
+            new Vector3(0, 0, 0), new Vector3(0.5f, 0, 0), new Vector3(0, 1, 0)
+        };
+        spikeMesh.colors = new[]
+        {
+            Outline, Outline, Outline,
+            baseDark, baseDark, tipLeft, baseLight, baseLight, tipRight
+        };
+        spikeMesh.uv = new Vector2[9];
+        spikeMesh.triangles = new[] { 0, 2, 1, 3, 5, 4, 6, 8, 7 };
         spikeMesh.RecalculateBounds();
         Shader shader = Shader.Find("Sprites/Default");
         if (shader == null) { Debug.LogError("Sprites/Default shader missing.", this); return; }
         spikeMaterial = new Material(shader);
-        spikeMaterial.color = new Color(0.95f, 0.93f, 0.82f);
-        const int columns = 6, rows = 2;
+        spikeMaterial.color = Color.white;
+
+        int columns = Mathf.Max(1, spikeColumns), rows = Mathf.Max(1, spikeRows);
+        float cellW = size.x / columns, cellH = size.y / rows;
+        tipBaseWidth = cellW * 0.9f;
+        tipMaxHeight = cellH * 1.1f;
+        tips = new Transform[columns * rows];
+        tipDelay = new float[columns * rows];
+        int n = 0;
         for (int row = 0; row < rows; row++)
             for (int column = 0; column < columns; column++)
             {
+                Vector3 basePos = new Vector3(
+                    ((column + 0.5f) / columns - 0.5f) * size.x,
+                    (float)row / rows * size.y - size.y * 0.5f + cellH * 0.12f, 0);
+
+                // Dark hole the spike emerges from.
+                MakeSprite("Hole", visuals.transform, basePos + new Vector3(0, cellH * 0.02f, 0),
+                    new Vector2(cellW * 0.55f, cellH * 0.16f), HoleColor, sortingOrder);
+
                 GameObject tip = new GameObject("Spike");
                 tip.transform.SetParent(spikes.transform, false);
-                tip.transform.localPosition = new Vector3(
-                    ((column + 0.5f) / columns - 0.5f) * area.size.x,
-                    ((row + 0.5f) / rows - 0.5f) * area.size.y, 0);
-                tip.transform.localScale = new Vector3(area.size.x / columns, area.size.y / rows, 1);
+                tip.transform.localPosition = basePos;
                 tip.AddComponent<MeshFilter>().sharedMesh = spikeMesh;
                 MeshRenderer meshRenderer = tip.AddComponent<MeshRenderer>();
                 meshRenderer.sharedMaterial = spikeMaterial;
-                meshRenderer.sortingOrder = sortingOrder + 1;
+                meshRenderer.sortingOrder = sortingOrder + 3 + row;
+                tip.SetActive(false);
+                tips[n] = tip.transform;
+                // Slight wave across the trap so the spikes do not fire in perfect lockstep.
+                tipDelay[n] = (column + row * 0.5f) * 0.012f;
+                n++;
             }
     }
 
