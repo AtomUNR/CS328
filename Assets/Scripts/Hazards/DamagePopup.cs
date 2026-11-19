@@ -30,7 +30,7 @@ public sealed class DamagePopup : MonoBehaviour
         text.sortingOrder = sortingOrder;
         text.rectTransform.sizeDelta = new Vector2(6f, 2f);
         // Dark outline keeps the number readable over any floor colour.
-        text.outlineWidth = 0.3f;
+        text.outlineWidth = 0.12f; // thin: a thick outline blobs the small holes in digits
         text.outlineColor = new Color32(10, 8, 12, 255);
 
         popup.label = text;
