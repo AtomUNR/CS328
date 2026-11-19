@@ -1,0 +1,518 @@
+fileFormatVersion: 2
+guid: 5d28bacf71b548040be9941430c8c898
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2533667539028496930
+    second: Navy brick floor collapse animation_0
+  - first:
+      213: -1156813400712236878
+    second: Navy brick floor collapse animation_1
+  - first:
+      213: 2181386486196958512
+    second: Navy brick floor collapse animation_2
+  - first:
+      213: 7306124593817538067
+    second: Navy brick floor collapse animation_3
+  - first:
+      213: -1239232250539888360
+    second: Navy brick floor collapse animation_4
+  - first:
+      213: 8919619257781322421
+    second: Navy brick floor collapse animation_5
+  - first:
+      213: -2633205975228191920
+    second: Navy brick floor collapse animation_6
+  - first:
+      213: -8810462742021930689
+    second: Navy brick floor collapse animation_7
+  - first:
+      213: -9095932867983499459
+    second: Navy brick floor collapse animation_8
+  - first:
+      213: 5333307424608462264
+    second: Navy brick floor collapse animation_9
+  - first:
+      213: 6302337112133016685
+    second: Navy brick floor collapse animation_10
+  - first:
+      213: -5431700354549332736
+    second: Navy brick floor collapse animation_11
+  - first:
+      213: 8461342204335504423
+    second: Navy brick floor collapse animation_12
+  - first:
+      213: 2106322051156804542
+    second: Navy brick floor collapse animation_13
+  - first:
+      213: -815199584038981517
+    second: Navy brick floor collapse animation_14
+  - first:
+      213: 2584758225039597392
+    second: Navy brick floor collapse animation_15
+  - first:
+      213: -4342259325368189221
+    second: Navy brick floor collapse animation_16
+  - first:
+      213: -5824782123687897738
+    second: Navy brick floor collapse animation_17
+  - first:
+      213: -5765319381417547100
+    second: Navy brick floor collapse animation_18
+  - first:
+      213: 9194904687934228380
+    second: Navy brick floor collapse animation_19
+  - first:
+      213: 4898847531887915315
+    second: Navy brick floor collapse animation_20
+  - first:
+      213: -6761034552397925770
+    second: Navy brick floor collapse animation_21
+  - first:
+      213: 5466138960204510644
+    second: Navy brick floor collapse animation_22
+  - first:
+      213: 4744141809399071094
+    second: Navy brick floor collapse animation_23
+  - first:
+      213: -1766966491870092106
+    second: Navy brick floor collapse animation_24
+  - first:
+      213: 5158171186499798643
+    second: Navy brick floor collapse animation_25
+  - first:
+      213: 703430063966581861
+    second: Navy brick floor collapse animation_26
+  - first:
+      213: -1100931193126605421
+    second: Navy brick floor collapse animation_27
+  - first:
+      213: 5447252997930119223
+    second: Navy brick floor collapse animation_28
+  - first:
+      213: -3624749137288941395
+    second: Navy brick floor collapse animation_29
+  - first:
+      213: 7553118496225884212
+    second: Navy brick floor collapse animation_30
+  - first:
+      213: 1937605159901025751
+    second: Navy brick floor collapse animation_31
+  - first:
+      213: 8334177136622644969
+    second: Navy brick floor collapse animation_32
+  - first:
+      213: -1637611110019941966
+    second: Navy brick floor collapse animation_33
+  - first:
+      213: -4695819665993689584
+    second: Navy brick floor collapse animation_34
+  - first:
+      213: -5576709131577021629
+    second: Navy brick floor collapse animation_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 57
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FloorCollapse_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 666
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb8155f979468db4dbd23334d9edc1ed
+      internalID: -652375449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCollapse_1
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 666
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f9a85e4e5aa0034fbb00f0d9afe237b
+      internalID: 1875035121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCollapse_2
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 666
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df77fa24e94e7ce47a7bf3ab3aa35b15
+      internalID: -676757585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCollapse_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 445
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47030bfafdff8f44597851d16543d0e3
+      internalID: -1642373452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCollapse_4
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 445
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9dea6768c2da24a832766ab6dca929
+      internalID: -387276541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCollapse_5
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 445
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af038959e0ed383498f21b0351f8af15
+      internalID: 876863956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCollapse_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1596dbb761262144b8ae0cb2320676e5
+      internalID: 1084108567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCollapse_7
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 224
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31bb943074423874585331195f1d1be6
+      internalID: 2084370180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCollapse_8
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 224
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6ff7107f3c62cd48abd87a57a330c05
+      internalID: -1988685020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCollapse_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a74e0ae5fed6add40b38e1ff3a6b5813
+      internalID: 822168662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCollapse_10
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 3
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 968a0527814af984ea4f7b12a39d7167
+      internalID: 202248225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorCollapse_11
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 3
+        width: 591
+        height: 221
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac2d5f681b4f53143959c73059e3dbbc
+      internalID: -54748703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ed9a5cfcce0a07a42b094b4a742d10af
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":4.0},"gridSpriteSize":{"x":591.0,"y":221.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      FloorCollapse_0: -652375449
+      FloorCollapse_1: 1875035121
+      FloorCollapse_10: 202248225
+      FloorCollapse_11: -54748703
+      FloorCollapse_2: -676757585
+      FloorCollapse_3: -1642373452
+      FloorCollapse_4: -387276541
+      FloorCollapse_5: 876863956
+      FloorCollapse_6: 1084108567
+      FloorCollapse_7: 2084370180
+      FloorCollapse_8: -1988685020
+      FloorCollapse_9: 822168662
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

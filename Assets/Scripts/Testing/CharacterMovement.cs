@@ -42,8 +42,19 @@ public class CharacterMovement : MonoBehaviour
     // Called by Player Input using Send Messages
     public void OnMove(InputValue value)
     {
+        if (!isActiveAndEnabled) return;
         moveInput = value.Get<Vector2>();
         moveInput = Vector2.ClampMagnitude(moveInput, 1f);
+    }
+
+    private void OnDisable()
+    {
+        moveInput = Vector2.zero;
+        animationTimer = 0f;
+        frameIndex = 0;
+        if (rb != null) rb.linearVelocity = Vector2.zero;
+        Sprite idle = GetIdleSprite();
+        if (spriteRenderer != null && idle != null) spriteRenderer.sprite = idle;
     }
 
     private void Update()
