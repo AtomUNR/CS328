@@ -50,6 +50,8 @@ public class BattleManager : MonoBehaviour
     private readonly Queue<string> defeatLines = new Queue<string>();
 
     public bool IsInBattle => state != BattleState.Inactive;
+    /// <summary>Unscaled time when the last battle ended (win, loss or flee). Used to stop mashed Z presses from starting the next fight.</summary>
+    public float LastBattleEndedAt { get; private set; } = -999f;
     /// <summary>The monster being fought, or null outside battle.</summary>
     public Monster CurrentMonster => monster;
 
@@ -709,6 +711,7 @@ public class BattleManager : MonoBehaviour
             return;
 
         state = BattleState.Inactive;
+        LastBattleEndedAt = Time.unscaledTime;
         lastTransitionFrame = Time.frameCount;
 
         if (battleHUD != null)
