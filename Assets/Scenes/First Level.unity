@@ -2110,12 +2110,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d54f5381e2b07447a9925ed52b52752, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossBarrier
   requiredEnemies:
   - {fileID: 1349641878}
   - {fileID: 905264238}
   - {fileID: 1202867668}
+  - {fileID: 2861818262573149821}
   battleManager: {fileID: 847181987}
   blocker: {fileID: 339737065}
   labelFont: {fileID: 11400000, guid: 1f1f92ebc7b344548bae546ec724fa56, type: 2}
@@ -2289,6 +2290,82 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6110550786429119399, guid: 831d0dedd4100714ab57da4d6ef68eed, type: 3}
   m_PrefabInstance: {fileID: 3033097460300072849}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2861818262573149820
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2681178072677329303, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: m_Name
+      value: Flamethrower
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201460885729421135, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 246472667}
+    - target: {fileID: 3201460885729421135, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: battleManager
+      value: 
+      objectReference: {fileID: 847181987}
+    - target: {fileID: 8616106734365411820, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -95.560005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616106734365411820, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616106734365411820, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616106734365411820, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616106734365411820, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616106734365411820, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616106734365411820, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616106734365411820, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616106734365411820, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616106734365411820, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+--- !u!114 &2861818262573149821 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4039214308410720807, guid: 3135347971b83ce48885d54287d7aaae, type: 3}
+  m_PrefabInstance: {fileID: 2861818262573149820}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2655463cf11585d428e6a47251143ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster
 --- !u!1001 &3033097460300072849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2836,3 +2913,4 @@ SceneRoots:
   - {fileID: 387500741}
   - {fileID: 282546254}
   - {fileID: 1202867671}
+  - {fileID: 2861818262573149820}
