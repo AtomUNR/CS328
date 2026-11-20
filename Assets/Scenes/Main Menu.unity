@@ -712,7 +712,7 @@ MonoBehaviour:
 
     <color=#56E6EC>C</color>       INVENTORY
 
-    <color=#56E6EC>ESC</color>     QUIT'
+    <color=#56E6EC>ESC</color>     PAUSE MENU'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
   m_sharedMaterial: {fileID: -8256261171199925575, guid: ea8985b663b12884c92ac476a0910ba6, type: 2}
@@ -1217,7 +1217,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 36, y: 36}
-  m_SizeDelta: {x: 720, y: 300}
+  m_SizeDelta: {x: 750, y: 300}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &943782518
 MonoBehaviour:

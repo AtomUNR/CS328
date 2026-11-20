@@ -50,6 +50,8 @@ public class BattleManager : MonoBehaviour
     private readonly Queue<string> defeatLines = new Queue<string>();
 
     public bool IsInBattle => state != BattleState.Inactive;
+    /// <summary>Unscaled time when the last battle ended (win, loss or flee). Used to stop mashed Z presses from starting the next fight.</summary>
+    public float LastBattleEndedAt { get; private set; } = -999f;
     /// <summary>The monster being fought, or null outside battle.</summary>
     public Monster CurrentMonster => monster;
 
@@ -131,6 +133,10 @@ public class BattleManager : MonoBehaviour
         }
 
         if (newPlayer.Stats.CurrentHP <= 0 || newMonster.IsDefeated)
+            return false;
+
+        BossBarrier barrier = newMonster.GetComponent<BossBarrier>();
+        if (barrier != null && !barrier.IsUnlocked)
             return false;
 
         Behaviour movement = newPlayer.GetComponent<PlayerMovement>();
@@ -670,6 +676,10 @@ public class BattleManager : MonoBehaviour
         EndBattle();
 
         defeatedMonster.gameObject.SetActive(false);
+
+        // The level boss is the monster with a BossBarrier: beating it ends the level.
+        if (defeatedMonster.GetComponent<BossBarrier>() != null)
+            CongratulationsScreen.Show(defeatedMonster.DisplayName);
     }
 
     private void ShowMessage(string message, BattleState nextState)
@@ -701,6 +711,7 @@ public class BattleManager : MonoBehaviour
             return;
 
         state = BattleState.Inactive;
+        LastBattleEndedAt = Time.unscaledTime;
         lastTransitionFrame = Time.frameCount;
 
         if (battleHUD != null)
