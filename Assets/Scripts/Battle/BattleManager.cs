@@ -674,6 +674,10 @@ public class BattleManager : MonoBehaviour
         EndBattle();
 
         defeatedMonster.gameObject.SetActive(false);
+
+        // The level boss is the monster with a BossBarrier: beating it ends the level.
+        if (defeatedMonster.GetComponent<BossBarrier>() != null)
+            CongratulationsScreen.Show(defeatedMonster.DisplayName);
     }
 
     private void ShowMessage(string message, BattleState nextState)

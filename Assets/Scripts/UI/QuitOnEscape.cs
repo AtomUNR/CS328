@@ -88,7 +88,7 @@ public sealed class QuitOnEscape : MonoBehaviour
     {
         if (prompt == null) prompt = BuildPrompt();
         RefreshHp();
-        previousTimeScale = Time.timeScale > 0f ? Time.timeScale : 1f;
+        previousTimeScale = Time.timeScale; // may already be 0 (e.g. the congratulations screen is up)
         Time.timeScale = 0f;
         prompt.SetActive(true);
         open = true;
