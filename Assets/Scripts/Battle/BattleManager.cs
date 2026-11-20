@@ -133,6 +133,10 @@ public class BattleManager : MonoBehaviour
         if (newPlayer.Stats.CurrentHP <= 0 || newMonster.IsDefeated)
             return false;
 
+        BossBarrier barrier = newMonster.GetComponent<BossBarrier>();
+        if (barrier != null && !barrier.IsUnlocked)
+            return false;
+
         Behaviour movement = newPlayer.GetComponent<PlayerMovement>();
         if (movement == null)
             movement = newPlayer.GetComponent<AnimatedPlayerMovement>();
